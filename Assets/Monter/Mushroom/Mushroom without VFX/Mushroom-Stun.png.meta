@@ -178,7 +178,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -244,12 +244,12 @@ TextureImporter:
       name: Mushroom-Stun_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 33
-        width: 11
-        height: 10
+        x: 0
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -266,12 +266,12 @@ TextureImporter:
       name: Mushroom-Stun_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 33
-        width: 11
-        height: 10
+        x: 80
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -288,12 +288,12 @@ TextureImporter:
       name: Mushroom-Stun_2
       rect:
         serializedVersion: 2
-        x: 106
-        y: 33
-        width: 11
-        height: 10
+        x: 160
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -310,12 +310,12 @@ TextureImporter:
       name: Mushroom-Stun_3
       rect:
         serializedVersion: 2
-        x: 126
-        y: 32
-        width: 11
-        height: 10
+        x: 240
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -332,12 +332,12 @@ TextureImporter:
       name: Mushroom-Stun_4
       rect:
         serializedVersion: 2
-        x: 188
-        y: 34
-        width: 11
-        height: 10
+        x: 320
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -354,12 +354,12 @@ TextureImporter:
       name: Mushroom-Stun_5
       rect:
         serializedVersion: 2
-        x: 204
-        y: 32
-        width: 11
-        height: 10
+        x: 400
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -376,12 +376,12 @@ TextureImporter:
       name: Mushroom-Stun_6
       rect:
         serializedVersion: 2
-        x: 277
-        y: 32
-        width: 11
-        height: 13
+        x: 480
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -398,12 +398,12 @@ TextureImporter:
       name: Mushroom-Stun_7
       rect:
         serializedVersion: 2
-        x: 355
-        y: 32
-        width: 16
-        height: 12
+        x: 560
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -420,12 +420,12 @@ TextureImporter:
       name: Mushroom-Stun_8
       rect:
         serializedVersion: 2
-        x: 429
-        y: 32
-        width: 11
-        height: 10
+        x: 640
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -442,12 +442,12 @@ TextureImporter:
       name: Mushroom-Stun_9
       rect:
         serializedVersion: 2
-        x: 443
-        y: 34
-        width: 11
-        height: 10
+        x: 720
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -464,12 +464,12 @@ TextureImporter:
       name: Mushroom-Stun_10
       rect:
         serializedVersion: 2
-        x: 504
-        y: 33
-        width: 11
-        height: 10
+        x: 800
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -486,12 +486,12 @@ TextureImporter:
       name: Mushroom-Stun_11
       rect:
         serializedVersion: 2
-        x: 528
-        y: 33
-        width: 11
-        height: 10
+        x: 880
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -508,12 +508,12 @@ TextureImporter:
       name: Mushroom-Stun_12
       rect:
         serializedVersion: 2
-        x: 586
-        y: 33
-        width: 11
-        height: 10
+        x: 960
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -530,12 +530,12 @@ TextureImporter:
       name: Mushroom-Stun_13
       rect:
         serializedVersion: 2
-        x: 606
-        y: 32
-        width: 11
-        height: 10
+        x: 1040
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -552,12 +552,12 @@ TextureImporter:
       name: Mushroom-Stun_14
       rect:
         serializedVersion: 2
-        x: 668
-        y: 34
-        width: 11
-        height: 10
+        x: 1120
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -574,12 +574,12 @@ TextureImporter:
       name: Mushroom-Stun_15
       rect:
         serializedVersion: 2
-        x: 684
-        y: 32
-        width: 11
-        height: 10
+        x: 1200
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -596,12 +596,12 @@ TextureImporter:
       name: Mushroom-Stun_16
       rect:
         serializedVersion: 2
-        x: 757
-        y: 32
-        width: 11
-        height: 13
+        x: 1280
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -618,12 +618,12 @@ TextureImporter:
       name: Mushroom-Stun_17
       rect:
         serializedVersion: 2
-        x: 835
-        y: 32
-        width: 16
-        height: 12
+        x: 1360
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -636,671 +636,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_18
-      rect:
-        serializedVersion: 2
-        x: 909
-        y: 32
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a91f142511cad8940800000000000000
-      internalID: 5300081526879416730
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_19
-      rect:
-        serializedVersion: 2
-        x: 923
-        y: 34
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5017387417593fab0800000000000000
-      internalID: -4975468849550626555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_20
-      rect:
-        serializedVersion: 2
-        x: 984
-        y: 33
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: de11cb4ea6f72bc80800000000000000
-      internalID: -8308438265464352275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_21
-      rect:
-        serializedVersion: 2
-        x: 1008
-        y: 33
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a4374893b8e82fa90800000000000000
-      internalID: -7281600918888090806
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_22
-      rect:
-        serializedVersion: 2
-        x: 1066
-        y: 33
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6d5c28bf8b1af9370800000000000000
-      internalID: 8331555651524412886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_23
-      rect:
-        serializedVersion: 2
-        x: 1086
-        y: 32
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4b41f0732d78bbd50800000000000000
-      internalID: 6754141403108807860
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_24
-      rect:
-        serializedVersion: 2
-        x: 1148
-        y: 34
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e02bcfb523ce425c0800000000000000
-      internalID: -4241005248040357362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_25
-      rect:
-        serializedVersion: 2
-        x: 1164
-        y: 32
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c7898ad17a50e6d20800000000000000
-      internalID: 3273560194460194940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_26
-      rect:
-        serializedVersion: 2
-        x: 1237
-        y: 32
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab10cb9ebc62ef100800000000000000
-      internalID: 143594895364063674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_27
-      rect:
-        serializedVersion: 2
-        x: 1315
-        y: 32
-        width: 16
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cf3f9d5125babe8f0800000000000000
-      internalID: -510125763734146052
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_28
-      rect:
-        serializedVersion: 2
-        x: 1389
-        y: 32
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 46775a7707e015b40800000000000000
-      internalID: 5427134902164617060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_29
-      rect:
-        serializedVersion: 2
-        x: 1403
-        y: 34
-        width: 11
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 326c6ea978e2021b0800000000000000
-      internalID: -5683491569787288029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_30
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: abd3f3b27694723f0800000000000000
-      internalID: -925690490945323590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_31
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 37fa5d6c9dfafa360800000000000000
-      internalID: 7183153280557887347
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_32
-      rect:
-        serializedVersion: 2
-        x: 190
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 41f0465d85e3b1210800000000000000
-      internalID: 1304705068312039188
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_33
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f732c13f3b356e60800000000000000
-      internalID: 7954829459423639537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_34
-      rect:
-        serializedVersion: 2
-        x: 346
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7b679dcb26fa38310800000000000000
-      internalID: 1406160347279750839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_35
-      rect:
-        serializedVersion: 2
-        x: 423
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c94d1a0979f5dce50800000000000000
-      internalID: 6831221314362135708
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_36
-      rect:
-        serializedVersion: 2
-        x: 502
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 494f71272f2d6c310800000000000000
-      internalID: 1425058270847431828
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_37
-      rect:
-        serializedVersion: 2
-        x: 582
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5e4343e4cb7b8e780800000000000000
-      internalID: -8653464664598629147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_38
-      rect:
-        serializedVersion: 2
-        x: 666
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 308f738d58644f820800000000000000
-      internalID: 2951061196506658819
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_39
-      rect:
-        serializedVersion: 2
-        x: 749
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2b6bcff3863165e10800000000000000
-      internalID: 2185956007606007474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_40
-      rect:
-        serializedVersion: 2
-        x: 830
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: debd71d3c18f0a9c0800000000000000
-      internalID: -3917858875644584979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_41
-      rect:
-        serializedVersion: 2
-        x: 910
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 18ed598e7602632d0800000000000000
-      internalID: -3299414046346453375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_42
-      rect:
-        serializedVersion: 2
-        x: 990
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2b6abf038d636aef0800000000000000
-      internalID: -97330039779252558
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_43
-      rect:
-        serializedVersion: 2
-        x: 1066
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fb57e417c0169000800000000000000
-      internalID: 42239693741841400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_44
-      rect:
-        serializedVersion: 2
-        x: 1143
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13db1156f83c92cf0800000000000000
-      internalID: -276474881463173839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_45
-      rect:
-        serializedVersion: 2
-        x: 1222
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b3ed0e574fa386e40800000000000000
-      internalID: 5649830554160389691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_46
-      rect:
-        serializedVersion: 2
-        x: 1302
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 65cf0bde65965ba90800000000000000
-      internalID: -7298811799008117674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-Stun_47
-      rect:
-        serializedVersion: 2
-        x: 1382
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 304e148c70b964290800000000000000
-      internalID: -7906461638075489277
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7911742704d29a345947a33d60d4b732
     internalID: 0
     vertices: []
     indices: 
@@ -1308,7 +648,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":18.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Mushroom-Stun_0: -3835885357355642201
       Mushroom-Stun_1: 7940049087014482242
@@ -1320,39 +662,9 @@ TextureImporter:
       Mushroom-Stun_15: 8748336905701633270
       Mushroom-Stun_16: 5144344165800758085
       Mushroom-Stun_17: -6677180919910369103
-      Mushroom-Stun_18: 5300081526879416730
-      Mushroom-Stun_19: -4975468849550626555
       Mushroom-Stun_2: 2233997142566384352
-      Mushroom-Stun_20: -8308438265464352275
-      Mushroom-Stun_21: -7281600918888090806
-      Mushroom-Stun_22: 8331555651524412886
-      Mushroom-Stun_23: 6754141403108807860
-      Mushroom-Stun_24: -4241005248040357362
-      Mushroom-Stun_25: 3273560194460194940
-      Mushroom-Stun_26: 143594895364063674
-      Mushroom-Stun_27: -510125763734146052
-      Mushroom-Stun_28: 5427134902164617060
-      Mushroom-Stun_29: -5683491569787288029
       Mushroom-Stun_3: -8646583030954965757
-      Mushroom-Stun_30: -925690490945323590
-      Mushroom-Stun_31: 7183153280557887347
-      Mushroom-Stun_32: 1304705068312039188
-      Mushroom-Stun_33: 7954829459423639537
-      Mushroom-Stun_34: 1406160347279750839
-      Mushroom-Stun_35: 6831221314362135708
-      Mushroom-Stun_36: 1425058270847431828
-      Mushroom-Stun_37: -8653464664598629147
-      Mushroom-Stun_38: 2951061196506658819
-      Mushroom-Stun_39: 2185956007606007474
       Mushroom-Stun_4: 8295402236443255130
-      Mushroom-Stun_40: -3917858875644584979
-      Mushroom-Stun_41: -3299414046346453375
-      Mushroom-Stun_42: -97330039779252558
-      Mushroom-Stun_43: 42239693741841400
-      Mushroom-Stun_44: -276474881463173839
-      Mushroom-Stun_45: 5649830554160389691
-      Mushroom-Stun_46: -7298811799008117674
-      Mushroom-Stun_47: -7906461638075489277
       Mushroom-Stun_5: 8906915541844651060
       Mushroom-Stun_6: 5750878170810722599
       Mushroom-Stun_7: 7311889240315323320

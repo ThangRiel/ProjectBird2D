@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -114,18 +114,18 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2e0a190a3c679ce40800000000000000
-      internalID: 5677199387861819618
+      spriteID: 8b68ffd96fd365c449b5cea5938b9514
+      internalID: -1470632349
       vertices: []
       indices: 
       edges: []
@@ -134,20 +134,20 @@ TextureImporter:
       name: propeller_1
       rect:
         serializedVersion: 2
-        x: 18
+        x: 16
         y: 0
-        width: 13
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c30f6fd0f86502cc0800000000000000
-      internalID: -3737892518302912452
+      spriteID: 017fa419e7daea342b782ed5c48cfe68
+      internalID: 533022552
       vertices: []
       indices: 
       edges: []
@@ -156,20 +156,20 @@ TextureImporter:
       name: propeller_2
       rect:
         serializedVersion: 2
-        x: 36
+        x: 32
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 47336494df1b74b90800000000000000
-      internalID: -7257636573070085260
+      spriteID: 19c912103535f314aaaba59478c9cf6f
+      internalID: -2000101781
       vertices: []
       indices: 
       edges: []
@@ -178,20 +178,20 @@ TextureImporter:
       name: propeller_3
       rect:
         serializedVersion: 2
-        x: 49
+        x: 48
         y: 0
-        width: 13
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3307d943cb2b97a90800000000000000
-      internalID: -7315619598280331213
+      spriteID: 31bbd70bda7d59048aa7cb19af1f0a9b
+      internalID: 109366920
       vertices: []
       indices: 
       edges: []
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7419a5aa7edf6134b919d3b3e5272b3e
     internalID: 0
     vertices: []
     indices: 
@@ -208,12 +208,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      propeller_0: 5677199387861819618
-      propeller_1: -3737892518302912452
-      propeller_2: -7257636573070085260
-      propeller_3: -7315619598280331213
+      propeller_0: -1470632349
+      propeller_1: 533022552
+      propeller_2: -2000101781
+      propeller_3: 109366920
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

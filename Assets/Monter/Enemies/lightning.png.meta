@@ -67,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -133,12 +133,12 @@ TextureImporter:
       name: lightning_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 75
-        width: 17
-        height: 21
+        x: 0
+        y: 0
+        width: 32
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: lightning_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 62
-        width: 11
-        height: 15
+        x: 32
+        y: 0
+        width: 32
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: lightning_2
       rect:
         serializedVersion: 2
-        x: 40
-        y: 9
-        width: 20
-        height: 87
+        x: 64
+        y: 0
+        width: 32
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -199,12 +199,12 @@ TextureImporter:
       name: lightning_3
       rect:
         serializedVersion: 2
-        x: 74
+        x: 96
         y: 0
-        width: 67
+        width: 32
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -221,12 +221,12 @@ TextureImporter:
       name: lightning_4
       rect:
         serializedVersion: 2
-        x: 174
-        y: 53
-        width: 13
-        height: 41
+        x: 128
+        y: 0
+        width: 32
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -243,12 +243,12 @@ TextureImporter:
       name: lightning_5
       rect:
         serializedVersion: 2
-        x: 206
-        y: 14
-        width: 12
-        height: 79
+        x: 160
+        y: 0
+        width: 32
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -265,12 +265,12 @@ TextureImporter:
       name: lightning_6
       rect:
         serializedVersion: 2
-        x: 150
-        y: 10
-        width: 33
-        height: 26
+        x: 192
+        y: 0
+        width: 32
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,12 +287,12 @@ TextureImporter:
       name: lightning_7
       rect:
         serializedVersion: 2
-        x: 176
-        y: 37
-        width: 7
-        height: 17
+        x: 224
+        y: 0
+        width: 32
+        height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -305,77 +305,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: lightning_8
-      rect:
-        serializedVersion: 2
-        x: 237
-        y: 23
-        width: 13
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a2e0fe2f8a9e3c1c0800000000000000
-      internalID: -4484483892091351510
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lightning_9
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 0
-        width: 14
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 551c24224b3683e10800000000000000
-      internalID: 2177600045153698133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lightning_10
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 8
-        width: 7
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5c2dddac2206831e0800000000000000
-      internalID: -2217917113931279675
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ad7598a152bef3745920c62e2e2ca366
     internalID: 0
     vertices: []
     indices: 
@@ -383,19 +317,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       lightning_0: -2983090718515566234
       lightning_1: -1461059339494140160
-      lightning_10: -2217917113931279675
       lightning_2: -7846319024340782248
       lightning_3: -822904614842124242
       lightning_4: 5855786134774209288
       lightning_5: -5474615802020834216
       lightning_6: 1432331140008966410
       lightning_7: -7866223080666467939
-      lightning_8: -4484483892091351510
-      lightning_9: 2177600045153698133
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

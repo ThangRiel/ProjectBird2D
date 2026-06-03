@@ -160,7 +160,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -226,12 +226,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_0
       rect:
         serializedVersion: 2
-        x: 339
-        y: 1
-        width: 30
-        height: 33
+        x: 0
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -248,12 +248,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_1
       rect:
         serializedVersion: 2
-        x: 653
-        y: 2
-        width: 33
-        height: 32
+        x: 80
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -270,12 +270,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_2
       rect:
         serializedVersion: 2
-        x: 826
+        x: 160
         y: 0
-        width: 32
-        height: 43
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -292,12 +292,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_3
       rect:
         serializedVersion: 2
-        x: 906
-        y: 33
-        width: 11
-        height: 10
+        x: 240
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -314,12 +314,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_4
       rect:
         serializedVersion: 2
-        x: 926
-        y: 32
-        width: 11
-        height: 10
+        x: 320
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -336,12 +336,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_5
       rect:
         serializedVersion: 2
-        x: 988
-        y: 34
-        width: 11
-        height: 10
+        x: 400
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -358,12 +358,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_6
       rect:
         serializedVersion: 2
-        x: 1004
-        y: 32
-        width: 11
-        height: 10
+        x: 480
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -380,12 +380,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_7
       rect:
         serializedVersion: 2
-        x: 1077
-        y: 32
-        width: 11
-        height: 13
+        x: 560
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -402,12 +402,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_8
       rect:
         serializedVersion: 2
-        x: 1155
-        y: 32
-        width: 16
-        height: 12
+        x: 640
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -424,12 +424,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_9
       rect:
         serializedVersion: 2
-        x: 1229
-        y: 32
-        width: 11
-        height: 10
+        x: 720
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -446,12 +446,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_10
       rect:
         serializedVersion: 2
-        x: 1243
-        y: 34
-        width: 11
-        height: 10
+        x: 800
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -468,12 +468,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_11
       rect:
         serializedVersion: 2
-        x: 1304
-        y: 33
-        width: 11
-        height: 10
+        x: 880
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -490,12 +490,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_12
       rect:
         serializedVersion: 2
-        x: 1328
-        y: 33
-        width: 11
-        height: 10
+        x: 960
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -512,12 +512,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_13
       rect:
         serializedVersion: 2
-        x: 1386
-        y: 33
-        width: 11
-        height: 10
+        x: 1040
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -534,12 +534,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_14
       rect:
         serializedVersion: 2
-        x: 1406
-        y: 32
-        width: 11
-        height: 10
+        x: 1120
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -556,12 +556,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_15
       rect:
         serializedVersion: 2
-        x: 1468
-        y: 34
-        width: 11
-        height: 10
+        x: 1200
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -578,12 +578,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_16
       rect:
         serializedVersion: 2
-        x: 1484
-        y: 32
-        width: 11
-        height: 10
+        x: 1280
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -600,12 +600,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_17
       rect:
         serializedVersion: 2
-        x: 1557
-        y: 32
-        width: 11
-        height: 13
+        x: 1360
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -622,12 +622,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_18
       rect:
         serializedVersion: 2
-        x: 1635
-        y: 32
-        width: 16
-        height: 12
+        x: 1440
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -644,12 +644,12 @@ TextureImporter:
       name: Mushroom-AttackWithStun_19
       rect:
         serializedVersion: 2
-        x: 1710
-        y: 32
-        width: 9
-        height: 10
+        x: 1520
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -666,20 +666,20 @@ TextureImporter:
       name: Mushroom-AttackWithStun_20
       rect:
         serializedVersion: 2
-        x: 1724
-        y: 34
-        width: 9
-        height: 10
+        x: 1600
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7dbb27a3bf4ed3410800000000000000
-      internalID: 1458573622006430679
+      spriteID: ee97219da574ff947ac3a83f8b3346c9
+      internalID: 468723463
       vertices: []
       indices: 
       edges: []
@@ -688,20 +688,20 @@ TextureImporter:
       name: Mushroom-AttackWithStun_21
       rect:
         serializedVersion: 2
-        x: 1785
+        x: 1680
         y: 0
-        width: 32
-        height: 43
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 110de6e50be7f15d0800000000000000
-      internalID: -3089611523389206511
+      spriteID: bc06f0771c81d124284e644d3bff633c
+      internalID: -242294761
       vertices: []
       indices: 
       edges: []
@@ -710,20 +710,20 @@ TextureImporter:
       name: Mushroom-AttackWithStun_22
       rect:
         serializedVersion: 2
-        x: 24
+        x: 1760
         y: 0
-        width: 32
-        height: 33
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e610bfa3c9d305310800000000000000
-      internalID: 1391680026071204206
+      spriteID: c91c740115e68a443b2d58e934a9ad67
+      internalID: -879568671
       vertices: []
       indices: 
       edges: []
@@ -732,416 +732,20 @@ TextureImporter:
       name: Mushroom-AttackWithStun_23
       rect:
         serializedVersion: 2
-        x: 115
+        x: 1840
         y: 0
-        width: 31
-        height: 32
+        width: 80
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cf5aa8ab8ce88afa0800000000000000
-      internalID: -5789220328210520580
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_24
-      rect:
-        serializedVersion: 2
-        x: 199
-        y: 0
-        width: 36
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 773ea0539dff21a50800000000000000
-      internalID: 6490531321357198199
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_25
-      rect:
-        serializedVersion: 2
-        x: 279
-        y: 0
-        width: 36
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 85981e99e9f8ba130800000000000000
-      internalID: 3579112240225290584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_26
-      rect:
-        serializedVersion: 2
-        x: 404
-        y: 0
-        width: 34
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cac7d7b17b1c9b850800000000000000
-      internalID: 6393354138213514412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_27
-      rect:
-        serializedVersion: 2
-        x: 483
-        y: 0
-        width: 34
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 81eaf0b28b7963780800000000000000
-      internalID: -8703602412594680296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_28
-      rect:
-        serializedVersion: 2
-        x: 562
-        y: 0
-        width: 34
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d1d8c3cad07a25d0800000000000000
-      internalID: -3086530509719154219
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_29
-      rect:
-        serializedVersion: 2
-        x: 744
-        y: 0
-        width: 32
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4433143cbd6b512b0800000000000000
-      internalID: -5614380305457532092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_30
-      rect:
-        serializedVersion: 2
-        x: 909
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6cb32d93272e5db60800000000000000
-      internalID: 7770365712321887174
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_31
-      rect:
-        serializedVersion: 2
-        x: 990
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 08b7cd1f238f39dc0800000000000000
-      internalID: -3633287576668046464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_32
-      rect:
-        serializedVersion: 2
-        x: 1070
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5145d39ead374e830800000000000000
-      internalID: 4099528944867169301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_33
-      rect:
-        serializedVersion: 2
-        x: 1146
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e319d92d6cb5475c0800000000000000
-      internalID: -4218646041444118210
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_34
-      rect:
-        serializedVersion: 2
-        x: 1223
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cbd9559357c6622a0800000000000000
-      internalID: -6762598539721335364
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_35
-      rect:
-        serializedVersion: 2
-        x: 1302
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e4ea56462680669e0800000000000000
-      internalID: -1628604996563653042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_36
-      rect:
-        serializedVersion: 2
-        x: 1382
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 98ff3bd328e761760800000000000000
-      internalID: 7428263733240266633
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_37
-      rect:
-        serializedVersion: 2
-        x: 1466
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed7754ad393dc02d0800000000000000
-      internalID: -3311038994048518178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_38
-      rect:
-        serializedVersion: 2
-        x: 1549
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 725eb56d2a17a9da0800000000000000
-      internalID: -5937308214539590361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_39
-      rect:
-        serializedVersion: 2
-        x: 1630
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f6300296ca72f7e50800000000000000
-      internalID: 6809204783059043183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_40
-      rect:
-        serializedVersion: 2
-        x: 1710
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 69716d6bed48f7620800000000000000
-      internalID: 2774081987568605078
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mushroom-AttackWithStun_41
-      rect:
-        serializedVersion: 2
-        x: 1864
-        y: 0
-        width: 32
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5c12a8efb2600e840800000000000000
-      internalID: 5251203951537824197
+      spriteID: 612dfd101378d624f8b3744e1c90ccd8
+      internalID: 512322237
       vertices: []
       indices: 
       edges: []
@@ -1150,7 +754,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cc5e217de4b40184e8f10c336bf0c841
     internalID: 0
     vertices: []
     indices: 
@@ -1158,7 +762,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":24.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Mushroom-AttackWithStun_0: -4191070857825413744
       Mushroom-AttackWithStun_1: 1681734116533123247
@@ -1173,30 +779,12 @@ TextureImporter:
       Mushroom-AttackWithStun_18: 8821172986450378394
       Mushroom-AttackWithStun_19: -1369991433851979880
       Mushroom-AttackWithStun_2: -7987500425088903183
-      Mushroom-AttackWithStun_20: 1458573622006430679
-      Mushroom-AttackWithStun_21: -3089611523389206511
-      Mushroom-AttackWithStun_22: 1391680026071204206
-      Mushroom-AttackWithStun_23: -5789220328210520580
-      Mushroom-AttackWithStun_24: 6490531321357198199
-      Mushroom-AttackWithStun_25: 3579112240225290584
-      Mushroom-AttackWithStun_26: 6393354138213514412
-      Mushroom-AttackWithStun_27: -8703602412594680296
-      Mushroom-AttackWithStun_28: -3086530509719154219
-      Mushroom-AttackWithStun_29: -5614380305457532092
+      Mushroom-AttackWithStun_20: 468723463
+      Mushroom-AttackWithStun_21: -242294761
+      Mushroom-AttackWithStun_22: -879568671
+      Mushroom-AttackWithStun_23: 512322237
       Mushroom-AttackWithStun_3: 5126777634838683126
-      Mushroom-AttackWithStun_30: 7770365712321887174
-      Mushroom-AttackWithStun_31: -3633287576668046464
-      Mushroom-AttackWithStun_32: 4099528944867169301
-      Mushroom-AttackWithStun_33: -4218646041444118210
-      Mushroom-AttackWithStun_34: -6762598539721335364
-      Mushroom-AttackWithStun_35: -1628604996563653042
-      Mushroom-AttackWithStun_36: 7428263733240266633
-      Mushroom-AttackWithStun_37: -3311038994048518178
-      Mushroom-AttackWithStun_38: -5937308214539590361
-      Mushroom-AttackWithStun_39: 6809204783059043183
       Mushroom-AttackWithStun_4: 8237386796742481718
-      Mushroom-AttackWithStun_40: 2774081987568605078
-      Mushroom-AttackWithStun_41: 5251203951537824197
       Mushroom-AttackWithStun_5: 7094764511624755392
       Mushroom-AttackWithStun_6: -3681996215672563236
       Mushroom-AttackWithStun_7: 8691348243322859941

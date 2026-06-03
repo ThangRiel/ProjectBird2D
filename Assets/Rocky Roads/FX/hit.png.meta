@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -130,12 +130,12 @@ TextureImporter:
       name: hit_0
       rect:
         serializedVersion: 2
-        x: 55
-        y: 8
-        width: 33
-        height: 34
+        x: 0
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -152,12 +152,12 @@ TextureImporter:
       name: hit_1
       rect:
         serializedVersion: 2
-        x: 103
-        y: 6
-        width: 34
-        height: 37
+        x: 48
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -174,12 +174,12 @@ TextureImporter:
       name: hit_2
       rect:
         serializedVersion: 2
-        x: 150
-        y: 31
-        width: 14
-        height: 15
+        x: 96
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -196,12 +196,12 @@ TextureImporter:
       name: hit_3
       rect:
         serializedVersion: 2
-        x: 173
-        y: 27
-        width: 19
-        height: 19
+        x: 144
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: hit_4
       rect:
         serializedVersion: 2
-        x: 204
-        y: 34
-        width: 36
-        height: 12
+        x: 192
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,121 +236,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: hit_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 18
-        width: 16
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0718e3aebabb02110800000000000000
-      internalID: 1234192644943282544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hit_6
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 2
-        width: 17
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dd5a49a007ddcbd00800000000000000
-      internalID: 989909491398256093
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hit_7
-      rect:
-        serializedVersion: 2
-        x: 171
-        y: 1
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1a793dbc36530cda0800000000000000
-      internalID: -5926678406881896543
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hit_8
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 6
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: affb6b3a741d77f90800000000000000
-      internalID: -6955860993830895622
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hit_9
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a2dc07f8becca070800000000000000
-      internalID: 8119091522056278693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5b7ffb095ce538d4891953e912b5778f
     internalID: 0
     vertices: []
     indices: 
@@ -358,18 +248,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":7.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       hit_0: -59066101396820148
       hit_1: -9037724387597929990
       hit_2: 8501104746477335304
       hit_3: 7761068069398732630
       hit_4: 1856308522752041849
-      hit_5: 1234192644943282544
-      hit_6: 989909491398256093
-      hit_7: -5926678406881896543
-      hit_8: -6955860993830895622
-      hit_9: 8119091522056278693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

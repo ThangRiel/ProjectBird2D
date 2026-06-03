@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -145,12 +145,12 @@ TextureImporter:
       name: Mushroom-Die_0
       rect:
         serializedVersion: 2
-        x: 24
+        x: 0
         y: 0
-        width: 32
-        height: 33
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -167,12 +167,12 @@ TextureImporter:
       name: Mushroom-Die_1
       rect:
         serializedVersion: 2
-        x: 106
+        x: 85
         y: 0
-        width: 32
-        height: 35
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: Mushroom-Die_2
       rect:
         serializedVersion: 2
-        x: 192
+        x: 170
         y: 0
-        width: 30
-        height: 38
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -211,12 +211,12 @@ TextureImporter:
       name: Mushroom-Die_3
       rect:
         serializedVersion: 2
-        x: 281
+        x: 255
         y: 0
-        width: 31
-        height: 33
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -233,12 +233,12 @@ TextureImporter:
       name: Mushroom-Die_4
       rect:
         serializedVersion: 2
-        x: 350
+        x: 340
         y: 0
-        width: 32
-        height: 35
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -255,12 +255,12 @@ TextureImporter:
       name: Mushroom-Die_5
       rect:
         serializedVersion: 2
-        x: 426
+        x: 425
         y: 0
-        width: 32
-        height: 31
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -277,12 +277,12 @@ TextureImporter:
       name: Mushroom-Die_6
       rect:
         serializedVersion: 2
-        x: 499
+        x: 510
         y: 0
-        width: 30
-        height: 28
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -299,12 +299,12 @@ TextureImporter:
       name: Mushroom-Die_7
       rect:
         serializedVersion: 2
-        x: 569
+        x: 595
         y: 0
-        width: 38
-        height: 16
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -321,12 +321,12 @@ TextureImporter:
       name: Mushroom-Die_8
       rect:
         serializedVersion: 2
-        x: 647
+        x: 680
         y: 0
-        width: 38
-        height: 14
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -343,12 +343,12 @@ TextureImporter:
       name: Mushroom-Die_9
       rect:
         serializedVersion: 2
-        x: 726
+        x: 765
         y: 0
-        width: 36
-        height: 17
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -365,12 +365,12 @@ TextureImporter:
       name: Mushroom-Die_10
       rect:
         serializedVersion: 2
-        x: 805
+        x: 850
         y: 0
-        width: 36
-        height: 17
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -387,12 +387,12 @@ TextureImporter:
       name: Mushroom-Die_11
       rect:
         serializedVersion: 2
-        x: 885
+        x: 935
         y: 0
-        width: 36
-        height: 17
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -409,12 +409,12 @@ TextureImporter:
       name: Mushroom-Die_12
       rect:
         serializedVersion: 2
-        x: 965
+        x: 1020
         y: 0
-        width: 36
-        height: 17
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -431,12 +431,12 @@ TextureImporter:
       name: Mushroom-Die_13
       rect:
         serializedVersion: 2
-        x: 1045
+        x: 1105
         y: 0
-        width: 36
-        height: 17
+        width: 85
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -449,33 +449,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Mushroom-Die_14
-      rect:
-        serializedVersion: 2
-        x: 1125
-        y: 0
-        width: 36
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 97798be1dc98e0180800000000000000
-      internalID: -9147222279066183815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 93aaef8b6bea4814f8d5b56e511dfd04
     internalID: 0
     vertices: []
     indices: 
@@ -483,7 +461,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":14.0,"y":1.0},"gridSpriteSize":{"x":85.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Mushroom-Die_0: 4880523274685937445
       Mushroom-Die_1: 6497299558051612606
@@ -491,7 +471,6 @@ TextureImporter:
       Mushroom-Die_11: -6670348678217829923
       Mushroom-Die_12: -1953191800096732447
       Mushroom-Die_13: -5784191093614676159
-      Mushroom-Die_14: -9147222279066183815
       Mushroom-Die_2: 1640459993709404721
       Mushroom-Die_3: 1620020546130643878
       Mushroom-Die_4: -2032438291353025295
