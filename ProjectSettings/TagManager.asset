@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Background
+  - Coin
+  - Gem
   layers:
   - Default
   - TransparentFX
@@ -48,8 +50,17 @@ TagManager:
   - name: tile
     uniqueID: 4137362369
     locked: 0
+  - name: deco
+    uniqueID: 2503051883
+    locked: 0
   - name: Player
     uniqueID: 3432876249
+    locked: 0
+  - name: something
+    uniqueID: 497607471
+    locked: 0
+  - name: ui
+    uniqueID: 1653777789
     locked: 0
   m_RenderingLayers:
   - Default
