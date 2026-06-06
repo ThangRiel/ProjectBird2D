@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 108038338}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.36, y: 4.45, z: 0}
+  m_LocalPosition: {x: -0.36, y: -2.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381643d193a0f1c449697dc505d30f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cloud
-  speed: 0.5
+  speed: 0.4
 --- !u!1 &149897050
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,7 +3131,7 @@ Transform:
   m_GameObject: {fileID: 307083299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.85, y: 4.49, z: 0}
+  m_LocalPosition: {x: 18.85, y: -2.0900002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3208,7 +3208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381643d193a0f1c449697dc505d30f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cloud
-  speed: 0.5
+  speed: 0.4
 --- !u!1 &586950457
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3420,8 @@ MonoBehaviour:
     m_Bits: 64
   groundCheck: {fileID: 776893893}
   groundCheck1: {fileID: 1498129829}
+  groundCheckRadius: 0.1
+  facingRightScale: {x: 1.80351, y: 1.80351, z: 1.80351}
 --- !u!1 &776893892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3676,6 +3678,7 @@ MonoBehaviour:
   mainCam: {fileID: 586950462}
   midBackGround: {fileID: 1481922134}
   sideBackground: {fileID: 245670506}
+  mapController: {fileID: 0}
   length: 18.751
   speed: -1
 --- !u!114 &1253446630
@@ -3693,8 +3696,9 @@ MonoBehaviour:
   mainCam: {fileID: 1078532554}
   midBackGround: {fileID: 1505051294}
   sideBackground: {fileID: 1357207236}
+  mapController: {fileID: 0}
   length: 25
-  speed: 0.3
+  speed: 0
 --- !u!114 &1253446631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3710,6 +3714,7 @@ MonoBehaviour:
   mainCam: {fileID: 1078532554}
   midBackGround: {fileID: 108038339}
   sideBackground: {fileID: 307083300}
+  mapController: {fileID: 0}
   length: 19.2
   speed: 0
 --- !u!1 &1357207235
