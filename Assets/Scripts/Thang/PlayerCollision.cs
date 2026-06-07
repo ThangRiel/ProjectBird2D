@@ -1,24 +1,34 @@
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class PlayerCollision : MonoBehaviour
 {
     private GameManager gameManager;
-    [SerializeField] private Tag[] tags;
-    
+    //[SerializeField] private Tag[] tags;
+    private OpenChest openChest;
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        openChest = FindObjectOfType<OpenChest>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        bool isTargeted = tags.Any(t => collision.CompareTag(t.tagName));
-        if (isTargeted)
+        //bool isTargeted = tags.Any(t => collision.CompareTag(t.tagName));
+        if (collision.CompareTag("Chest"))
         {
-            Tag matchedTag = tags.First(t => collision.CompareTag(t.tagName));
+                openChest.touchChest();
+                Debug.Log("Touch chest");
+        }else 
+        //if (isTargeted)
+        {
+            //Tag matchedTag = tags.First(t => collision.CompareTag(t.tagName));
+            Tag tag = gameManager.tags.FirstOrDefault(t => collision.CompareTag(t.tagName));
             Destroy(collision.gameObject);
-            gameManager.addScoreByTag(matchedTag.tagName, matchedTag.scoreValue);
+            gameManager.addScoreByTag(tag.tagName);
+            Debug.Log("Collided with " + tag.tagName + ", score: " + tag.scoreValue);
         }
+        
         //else if (collision.CompareTag("Trap") || collision.CompareTag("Enemy"))
         //{
         //    gameManager.GameOver();

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text scoreText;
     //[SerializeField] private GameObject gameOverUI;
     private bool isGameOver = false;
-    [SerializeField] private Tag[] tags;
+    [SerializeField] public Tag[] tags;
 
 
     void Start()
@@ -16,24 +16,24 @@ public class GameManager : MonoBehaviour
         //gameOverUI.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
 
     }
-    //public void AddScore(int point)
-    //{
-    //    if (!isGameOver)
-    //    {
-    //        score += point;
-    //        UpdateScoreText();
-    //    }
+   
 
-    //}
-
-    public void addScoreByTag(string itemTag, int scoreValue)
+    public void addScoreByTag(string itemTag)
     {
-        print(itemTag);
+        Debug.Log(itemTag);
+        int scoreValue = 0;
+        foreach (var tag in tags)
+        {
+            if (tag.tagName == itemTag)
+            {
+                scoreValue = tag.scoreValue;
+                break;
+            }
+        }
         score += scoreValue;
         UpdateScoreText();
         return;
