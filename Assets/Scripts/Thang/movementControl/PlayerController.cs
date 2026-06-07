@@ -35,11 +35,11 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         if (moveInput > 0)
         {
-            transform.localScale = new Vector3(1.80351f, 1.80351f, 1.80351f);
+            transform.localScale = new Vector3(5f, 5f, 5f);
         }
         else if (moveInput < 0)
         {
-            transform.localScale = new Vector3(-1.80351f, 1.80351f, 1.80351f);
+            transform.localScale = new Vector3(-5f, 5f, 5f);
         }
     }
     private void HandleJump()
