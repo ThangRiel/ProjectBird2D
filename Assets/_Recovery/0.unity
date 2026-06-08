@@ -148,14 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b51232ce5ef904f914cafa2331c9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapSpawner
-  obstaclePrefabs:
-  - {fileID: 8859522918343593249, guid: b6081a6ed1a44db4fa0f2d8bb67c65bf, type: 3}
-  - {fileID: 8532186746117096421, guid: 17b4892ac12ea57438a2f520e24c1bfa, type: 3}
-  - {fileID: 4980090538233470332, guid: 15f9de0ea2bd4d14395d424bad01333f, type: 3}
-  - {fileID: 852017568188078481, guid: 04f469492d41eeb41b93a5314d34618a, type: 3}
-  - {fileID: 3477549040962963890, guid: a0dcb3b8e02fbbe479a9f9c556c6cb59, type: 3}
-  - {fileID: 1663415540991838127, guid: 2ac5c181f504f1d43b32f70812cac0b5, type: 3}
-  - {fileID: 3538893624469207612, guid: f2d738a3469434242920bc2e4c3d0f9d, type: 3}
+  mapTags:
+  - Dirt
+  - ice
   spawnRate: 2
 --- !u!4 &848549
 Transform:
@@ -650,6 +645,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381056534}
   m_CullTransparentMesh: 1
+--- !u!1 &566028131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566028133}
+  - component: {fileID: 566028132}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!156049354 &566028132
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566028131}
+  m_Enabled: 1
+  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
+--- !u!4 &566028133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566028131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &586950457
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,13 +874,14 @@ Transform:
   m_GameObject: {fileID: 586950457}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.01, y: 2.49, z: 0}
+  m_LocalPosition: {x: 0, y: 3.88, z: 0}
   m_LocalScale: {x: 1.57, y: 1.57, z: 1.57}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1170729149}
   - {fileID: 776893893}
   - {fileID: 1498129829}
+  - {fileID: 1078532554}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &586950463
@@ -994,11 +1034,11 @@ Transform:
   m_GameObject: {fileID: 1078532551}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.71, z: -34.248714}
-  m_LocalScale: {x: 1, y: 1, z: 1.27}
+  m_LocalPosition: {x: 0, y: -0.7452229, z: -21.814466}
+  m_LocalScale: {x: 0.6369426, y: 0.6369426, z: 0.8089171}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 586950462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.2}
 --- !u!114 &1078532555
 MonoBehaviour:
@@ -1103,15 +1143,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84658cb5dfc301344ac25e65d7bc426c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPooler
-  prefab:
-  - {fileID: 8859522918343593249, guid: b6081a6ed1a44db4fa0f2d8bb67c65bf, type: 3}
-  - {fileID: 8532186746117096421, guid: 17b4892ac12ea57438a2f520e24c1bfa, type: 3}
-  - {fileID: 4980090538233470332, guid: 15f9de0ea2bd4d14395d424bad01333f, type: 3}
-  - {fileID: 852017568188078481, guid: 04f469492d41eeb41b93a5314d34618a, type: 3}
-  - {fileID: 3477549040962963890, guid: a0dcb3b8e02fbbe479a9f9c556c6cb59, type: 3}
-  - {fileID: 1663415540991838127, guid: 2ac5c181f504f1d43b32f70812cac0b5, type: 3}
-  - {fileID: 3538893624469207612, guid: f2d738a3469434242920bc2e4c3d0f9d, type: 3}
-  poolSize: 7
+  pools:
+  - tag: Dirt
+    prefab: {fileID: 5324618359480537273, guid: efd9f6e56fecfac4c8cfe855f7feadcd, type: 3}
+    size: 3
+  - tag: ice
+    prefab: {fileID: 8781090449707291653, guid: 1b1ea9de9cd9e024ead8ff7be98f9b7c, type: 3}
+    size: 4
+  - tag: Dirt1
+    prefab: {fileID: 1733801441537718152, guid: 81e266db77ac7ed4a846cad34602a210, type: 3}
+    size: 5
 --- !u!1 &1170729148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,7 +1908,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1078532554}
   - {fileID: 586950462}
   - {fileID: 1253446628}
   - {fileID: 1237809300}
@@ -1875,3 +1915,4 @@ SceneRoots:
   - {fileID: 1254651327}
   - {fileID: 1080844202}
   - {fileID: 848549}
+  - {fileID: 566028133}
