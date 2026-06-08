@@ -7,20 +7,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform groundCheck1;
+    private float Scale;
     private bool isGrounded;
     private Animator animator;
     private Rigidbody2D rb;
+    private Transform tf;
 
     private void Awake()
     {
 
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        tf = GetComponent<Transform>();
+        Scale = tf.localScale.x;
     }
 
     void Start()
     {
-
+        
     }
     void Update()
     {
@@ -35,11 +39,11 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         if (moveInput > 0)
         {
-            transform.localScale = new Vector3(5f, 5f, 5f);
+            transform.localScale = new Vector3(Scale, Scale, Scale);
         }
         else if (moveInput < 0)
         {
-            transform.localScale = new Vector3(-5f, 5f, 5f);
+            transform.localScale = new Vector3(-Scale, Scale, Scale);
         }
     }
     private void HandleJump()
