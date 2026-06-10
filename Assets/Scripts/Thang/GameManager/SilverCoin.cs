@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Coin : MonoBehaviour
+public class SilverCoin : MonoBehaviour
 {
     private Transform playerTransform; // Tham chiếu đến Transform của nhân vật
     public float attractDelay = 1.0f; // Thời gian trễ trước khi bị hút
