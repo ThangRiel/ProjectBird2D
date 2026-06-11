@@ -16,8 +16,7 @@ Hiện tại game chưa có bản build để tải về. Để chơi hoặc tes
 4. Mở scene chính và bấm nút **Play**.
 
 ## Tác giả & Đóng góp
-- **Nhà phát triển chính:** [thangriel](https://github.com/thangriel)
-- **Cộng tác viên:**
-  - [dothanhloi0902](https://github.com/dothanhloi0902)
-  - [Ho Ngoc Bao Tran (hngbtran)](https://github.com/hngbtran)
-  - [mhuy605-max](https://github.com/mhuy605-max)
+-  [thangriel](https://github.com/thangriel)
+- [dothanhloi0902](https://github.com/dothanhloi0902)
+- [Ho Ngoc Bao Tran (hngbtran)](https://github.com/hngbtran)
+- [mhuy605-max](https://github.com/mhuy605-max)
