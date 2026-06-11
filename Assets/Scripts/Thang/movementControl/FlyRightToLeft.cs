@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class cloud : MonoBehaviour
+public class FlyRightToLeft : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -12,6 +12,6 @@ public class cloud : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * Time.deltaTime * speed);
+        transform.Translate(Vector3.left * Time.deltaTime * speed);
     }
 }

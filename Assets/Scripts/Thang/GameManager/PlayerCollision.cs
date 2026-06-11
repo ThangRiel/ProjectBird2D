@@ -7,6 +7,8 @@ public class PlayerCollision : MonoBehaviour
     private GameManager gameManager;
     //[SerializeField] private Tag[] tags;
     private OpenChest openChest;
+
+    [Obsolete]
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -17,18 +19,24 @@ public class PlayerCollision : MonoBehaviour
         //bool isTargeted = tags.Any(t => collision.CompareTag(t.tagName));
         if (collision.CompareTag("Chest"))
         {
-                openChest.touchChest();
-                Debug.Log("Touch chest");
-        }else 
+            openChest.touchChest();
+            Debug.Log("Touch chest");
+        }
+        else if (collision.CompareTag("Bullet"))
+        {
+            Debug.Log("Hit by bullet");
+        }
+        else
         //if (isTargeted)
         {
             //Tag matchedTag = tags.First(t => collision.CompareTag(t.tagName));
             Tag tag = gameManager.tags.FirstOrDefault(t => collision.CompareTag(t.tagName));
+            Debug.Log("Collided with " + tag.tagName + ", score: " + tag.scoreValue);
             Destroy(collision.gameObject);
             gameManager.addScoreByTag(tag.tagName);
-            Debug.Log("Collided with " + tag.tagName + ", score: " + tag.scoreValue);
+            
         }
-        
+
         //else if (collision.CompareTag("Trap") || collision.CompareTag("Enemy"))
         //{
         //    gameManager.GameOver();

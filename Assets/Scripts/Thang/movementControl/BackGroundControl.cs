@@ -10,7 +10,7 @@ public class BackGroundControl : MonoBehaviour
     public Transform sideBackground;
     public float length;
     public float speed;
-    private MapController mapController;
+    private PlayerController playerController;
     private Vector3 right = Vector3.right;
     private Vector3 left = Vector3.left;
 
@@ -18,7 +18,7 @@ public class BackGroundControl : MonoBehaviour
 
     private void Awake()
     {
-        mapController = FindObjectOfType<MapController>();
+        playerController = FindObjectOfType<PlayerController>();
     }
     void Update()
     {
@@ -37,7 +37,7 @@ public class BackGroundControl : MonoBehaviour
         Vector3 direction;
         Vector2 movement;
 
-        movement = mapController.HandleMovement();
+        movement = playerController.HandleMovement();
         if (movement.x > 0)
         {
             direction = left;

@@ -52,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -118,12 +118,12 @@ TextureImporter:
       name: Woodcutter_walk_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 0
-        width: 19
-        height: 33
+        width: 32
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -140,12 +140,12 @@ TextureImporter:
       name: Woodcutter_walk_1
       rect:
         serializedVersion: 2
-        x: 55
+        x: 46
         y: 0
-        width: 17
+        width: 32
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: Woodcutter_walk_2
       rect:
         serializedVersion: 2
-        x: 106
+        x: 96
         y: 0
-        width: 16
-        height: 35
+        width: 32
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,37 +181,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_walk_3
+      name: Woodcutter_walk_4
       rect:
         serializedVersion: 2
         x: 144
         y: 0
-        width: 28
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6683c14167cb02520800000000000000
-      internalID: 2675345393987631206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Woodcutter_walk_4
-      rect:
-        serializedVersion: 2
-        x: 199
-        y: 0
-        width: 18
+        width: 32
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,23 +203,45 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_walk_5
+      name: Woodcutter_walk_6
       rect:
         serializedVersion: 2
-        x: 250
+        x: 193
         y: 0
-        width: 15
-        height: 35
+        width: 32
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8ccb30d5dda29fd80800000000000000
-      internalID: -8216488914924094264
+      spriteID: 0dd0eae4629dcdf488766c9d354ae9c8
+      internalID: -62282387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Woodcutter_walk_8
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 859deb53536d5b3488413495d62e314e
+      internalID: 1721668736
       vertices: []
       indices: 
       edges: []
@@ -250,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ea21efab06fd1124fa1edac8405a2fb8
     internalID: 0
     vertices: []
     indices: 
@@ -258,7 +258,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":34.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Woodcutter_walk_0: 1726379479680692150
       Woodcutter_walk_1: -3717269026472878262
@@ -266,6 +268,9 @@ TextureImporter:
       Woodcutter_walk_3: 2675345393987631206
       Woodcutter_walk_4: -629997865642183735
       Woodcutter_walk_5: -8216488914924094264
+      Woodcutter_walk_6: -62282387
+      Woodcutter_walk_7: -327531476
+      Woodcutter_walk_8: 1721668736
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
