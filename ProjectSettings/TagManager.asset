@@ -11,6 +11,7 @@ TagManager:
   - SilverCoin
   - Bullet
   - Box
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -68,6 +69,8 @@ TagManager:
     locked: 0
   - name: weapons
     uniqueID: 2464034171
+  - name: enemy
+    uniqueID: 217535103
     locked: 0
   m_RenderingLayers:
   - Default
