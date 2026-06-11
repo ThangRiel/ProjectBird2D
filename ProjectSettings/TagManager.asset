@@ -9,6 +9,8 @@ TagManager:
   - Gem
   - Chest
   - SilverCoin
+  - Bullet
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - UI
   - ground
   - Coin
-  - 
+  - BulletFromPlayer
   - 
   - 
   - 
@@ -63,6 +65,9 @@ TagManager:
     locked: 0
   - name: ui
     uniqueID: 1653777789
+    locked: 0
+  - name: weapons
+    uniqueID: 2464034171
     locked: 0
   m_RenderingLayers:
   - Default
