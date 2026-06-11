@@ -9,6 +9,7 @@ TagManager:
   - Gem
   - Chest
   - SilverCoin
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -63,6 +64,9 @@ TagManager:
     locked: 0
   - name: ui
     uniqueID: 1653777789
+    locked: 0
+  - name: enemy
+    uniqueID: 217535103
     locked: 0
   m_RenderingLayers:
   - Default
