@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 86316974}
   - component: {fileID: 86316976}
   - component: {fileID: 86316978}
-  - component: {fileID: 86316979}
+  - component: {fileID: 86316981}
   - component: {fileID: 86316980}
   m_Layer: 0
   m_Name: Player
@@ -380,25 +380,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.22, y: 0.37}
   m_EdgeRadius: 0
---- !u!114 &86316979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86316973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae59f0ec9e84c0a469531542d56047da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 6
-  jumpForce: 10
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  groundCheck: {fileID: 1145950111}
-  groundCheck1: {fileID: 102961476}
 --- !u!95 &86316980
 Animator:
   serializedVersion: 7
@@ -421,6 +402,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &86316981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86316973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3f3dfaf0999e941a9b8631f73de7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Loi
+  worldRoot: {fileID: 420090130}
+  moveSpeed: 5
+  jumpForce: 10
+  attackDuration: 0.4
+  bulletPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
+  isAttacking: 0
 --- !u!1 &102961475
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,7 +3787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c3629386b158244b98493df0e1b244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapController
-  moveSpeed: 5
 --- !u!1 &1145950110
 GameObject:
   m_ObjectHideFlags: 0
