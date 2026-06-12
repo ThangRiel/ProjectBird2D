@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4478569087532898173}
   - component: {fileID: 4926285877674636627}
   - component: {fileID: 4532478682508045190}
-  - component: {fileID: 6300404119297561849}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -207,25 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a136d0902fd5e4bb7f7407daad21da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollection
---- !u!114 &6300404119297561849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2150872320065774309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae59f0ec9e84c0a469531542d56047da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  worldRoot: {fileID: 0}
-  moveSpeed: 5
-  jumpForce: 14.57
-  attackDuration: 0.4
-  isAttacking: 0
-  bulletPrefab: {fileID: 4509485644659625411, guid: ad3010d51dd7259409c772b9ce7ff2e3, type: 3}
-  firePoint: {fileID: 7458209980330982428}
 --- !u!1 &5170499096220924930
 GameObject:
   m_ObjectHideFlags: 0

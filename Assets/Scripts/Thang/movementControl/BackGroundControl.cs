@@ -34,24 +34,24 @@ public class BackGroundControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 direction;
-        Vector2 movement;
-
-        movement = playerController.HandleMovement();
-        if (movement.x > 0)
-        {
-            direction = left;
-        }
-        else if (movement.x < 0)
-        {
-            direction = right;
-        }
-        else
-        {
-            direction = Vector3.zero;
-        }
-        midBackGround.position += direction * speed * Time.fixedDeltaTime;
-        sideBackground.position += direction * speed * Time.fixedDeltaTime;
+        // Vector3 direction;
+        // Vector2 movement;
+        // 
+        // movement = playerController.HandleMovement();
+        // if (movement.x > 0)
+        // {
+        //     direction = left;
+        // }
+        // else if (movement.x < 0)
+        // {
+        //     direction = right;
+        // }
+        // else
+        // {
+        //     direction = Vector3.zero;
+        // }
+        // midBackGround.position += direction * speed * Time.fixedDeltaTime;
+        // sideBackground.position += direction * speed * Time.fixedDeltaTime;
     }
 
     void updateBackGroundPosition(Vector3 direction)
