@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Tuần tra")]
+    [Header("Patrol")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float patrolDistance = 3f;
     [SerializeField] private bool spriteFacesRight = false;
 
-    [Header("Tấn công")]
+    [Header("Attack")]
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float attackCooldown = 1.5f;
     [SerializeField] private float damageToPlayer = 10f;
@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Transform playerTransform;
 
+    // Giới hạn tuần tra (theo localPosition)
     private float leftLimit;
     private float rightLimit;
     private bool movingRight = true;
@@ -23,14 +24,17 @@ public class Enemy : MonoBehaviour
     private float nextAttackTime;
     private bool isAttacking = false;
 
-    void Start()
+    void Awake()
     {
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
-        // Giới hạn tuần tra
-        leftLimit = transform.position.x - patrolDistance;
-        rightLimit = transform.position.x + patrolDistance;
+    void Start()
+    {
+        // Lưu vị trí tuần tra ban đầu
+        leftLimit = transform.localPosition.x - patrolDistance;
+        rightLimit = transform.localPosition.x + patrolDistance;
 
         // Tìm Player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -48,51 +52,60 @@ public class Enemy : MonoBehaviour
             return;
         }
 
+        // Tính khoảng cách thật giữa Enemy và Player
         float distanceToPlayer = Vector2.Distance(
             transform.position,
             playerTransform.position
         );
 
-        // Player trong tầm đánh
         if (distanceToPlayer <= attackRange)
         {
             Attack();
         }
         else
         {
-            // Player ra ngoài tầm -> quay lại tuần tra
             isAttacking = false;
             Patrol();
         }
     }
 
-    void Patrol()
+    private void Patrol()
     {
-        if (isAttacking) return;
+        if (isAttacking)
+            return;
 
         if (anim != null)
             anim.SetBool("isRunning", true);
 
-        Vector3 pos = transform.position;
+        Vector3 localPos = transform.localPosition;
 
         if (movingRight)
         {
-            pos.x += moveSpeed * Time.deltaTime;
-            if (pos.x >= rightLimit)
+            localPos.x += moveSpeed * Time.deltaTime;
+
+            if (localPos.x >= rightLimit)
+            {
+                localPos.x = rightLimit;
                 movingRight = false;
+            }
         }
         else
         {
-            pos.x -= moveSpeed * Time.deltaTime;
-            if (pos.x <= leftLimit)
+            localPos.x -= moveSpeed * Time.deltaTime;
+
+            if (localPos.x <= leftLimit)
+            {
+                localPos.x = leftLimit;
                 movingRight = true;
+            }
         }
 
-        transform.position = pos;
+        transform.localPosition = localPos;
+
         UpdateFacing(movingRight);
     }
 
-    void Attack()
+    private void Attack()
     {
         isAttacking = true;
 
@@ -100,38 +113,48 @@ public class Enemy : MonoBehaviour
             anim.SetBool("isRunning", false);
 
         // Quay mặt về phía Player
-        bool playerIsRight = playerTransform.position.x > transform.position.x;
+        bool playerIsRight =
+            playerTransform.position.x > transform.position.x;
+
         UpdateFacing(playerIsRight);
 
         // Đánh theo cooldown
         if (Time.time >= nextAttackTime)
         {
             if (anim != null)
+            {
                 anim.SetTrigger("Attack");
+            }
 
-            Debug.Log("Enemy đánh Player, gây " + damageToPlayer + " sát thương.");
+            Debug.Log(
+                "Enemy đánh Player, gây " +
+                damageToPlayer +
+                " sát thương."
+            );
+
+            // Sau này có thể gọi hàm trừ máu Player ở đây
+            // playerTransform.GetComponent<PlayerHealth>()?.TakeDamage(damageToPlayer);
 
             nextAttackTime = Time.time + attackCooldown;
         }
     }
 
-    void UpdateFacing(bool isFacingRight)
+    private void UpdateFacing(bool facingRight)
     {
         if (spriteRenderer != null)
         {
             spriteRenderer.flipX = spriteFacesRight
-                ? !isFacingRight
-                : isFacingRight;
+                ? !facingRight
+                : facingRight;
         }
         else
         {
             Vector3 scale = transform.localScale;
-            scale.x = isFacingRight
-                ? Mathf.Abs(scale.x)
-                : -Mathf.Abs(scale.x);
+            float sign = spriteFacesRight ? 1f : -1f;
 
-            if (!spriteFacesRight)
-                scale.x *= -1;
+            scale.x = (facingRight
+                ? Mathf.Abs(scale.x)
+                : -Mathf.Abs(scale.x)) * sign;
 
             transform.localScale = scale;
         }
@@ -140,6 +163,9 @@ public class Enemy : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(
+            transform.position,
+            attackRange
+        );
     }
 }
