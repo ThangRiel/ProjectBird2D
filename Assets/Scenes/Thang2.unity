@@ -217,7 +217,7 @@ MonoBehaviour:
   - {fileID: 5400537250915305975, guid: 3d18479d86acd494bb7279ff667222d6, type: 3}
   prewarmCount: 8
   spawnAhead: 0
-  lockY: -3.57
+  lockY: 0.98
   despawnMargin: 3.23
   gapX: 0.13
 --- !u!1 &1579867109
