@@ -241,7 +241,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 106
+      x: 105
       y: 254
       width: 30
       height: 24
@@ -367,7 +367,7 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 57
+      x: 54
       y: 55
       width: 30
       height: 24
