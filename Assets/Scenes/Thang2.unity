@@ -1688,6 +1688,52 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &388132541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 388132543}
+  - component: {fileID: 388132542}
+  m_Layer: 0
+  m_Name: ParticleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &388132542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388132541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f2aa2b31e7df14885138873f409721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleObjectPooler
+  dustPrefab: {fileID: 3833620773209862673, guid: 679199e5ae4e9934994fb13fbb7c47ef, type: 3}
+  poolSize: 2
+--- !u!4 &388132543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388132541}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.40581, y: 2.2957, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556426152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,6 +1941,7 @@ GameObject:
   - component: {fileID: 800363747}
   - component: {fileID: 800363749}
   - component: {fileID: 800363748}
+  - component: {fileID: 800363750}
   m_Layer: 0
   m_Name: VitTroi_0
   m_TagString: Untagged
@@ -1970,7 +2017,7 @@ Transform:
   m_GameObject: {fileID: 800363744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.474, y: 1.923, z: 0}
+  m_LocalPosition: {x: 4, y: 8.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1989,7 +2036,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BirdControl
   jumpForce: 10
-  moveSpeed: 0.42
+  moveSpeed: 4.81
+  isGround: 1
+  fallThresholdAngle: 10
+  uprightSpeed: 30
+  SpeedMultiplier: 0.5
+  dustPooler: {fileID: 0}
+  dustCreationRate: 0.61
+  test: 0
 --- !u!61 &800363748
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2063,6 +2117,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!95 &800363750
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800363744}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6a5678bf4450324093c1637b2dff0d0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &970522763
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,7 +4352,7 @@ Transform:
   m_GameObject: {fileID: 1579867109}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.474, y: 1.923, z: -10}
+  m_LocalPosition: {x: 7.59, y: 8.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4335,12 +4411,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1579867109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02553839b2abde4fa43b7f72b16b840, type: 3}
+  m_Script: {fileID: 11500000, guid: 116a48170c9015644b6c75f11a602994, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraFollowH
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 800363746}
-  offset: {x: 0, y: 1.5, z: -10}
-  smoothTime: 0.18
+  offset: {x: 3.5, y: 1.5, z: -10}
+  smoothTime: 0.15
+  groundOffsetY: 2.06
+  airOffsetY: -0.32
+  maxGroundCheckDist: 5
+  maxGroundOffset: 2
+  transitionSpeed: 5
+  birdControl: {fileID: 800363747}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1897824333
 GameObject:
   m_ObjectHideFlags: 0
@@ -4500,3 +4585,4 @@ SceneRoots:
   - {fileID: 800363746}
   - {fileID: 556426156}
   - {fileID: 1299743811}
+  - {fileID: 388132543}
