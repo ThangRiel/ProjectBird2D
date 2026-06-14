@@ -2038,7 +2038,7 @@ MonoBehaviour:
   jumpForce: 10
   moveSpeed: 4.81
   isGround: 1
-  fallThresholdAngle: 10
+  fallThresholdAngle: 45
   uprightSpeed: 30
   SpeedMultiplier: 0.5
   dustPooler: {fileID: 0}
