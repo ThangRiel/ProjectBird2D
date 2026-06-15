@@ -45,8 +45,22 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    // ! Đã chỉnh sửa
     void GameOver()
     {
-        Debug.Log("Hết máu! Thua cuộc.");
+        // 1. Dừng Bird
+        RunAndFly player = GetComponent<RunAndFly>();
+        if (player != null) player.Die();
+
+        // 2. Delay 1 giây rồi hiện Game Over UI
+        StartCoroutine(ShowGameOverAfterDelay(1f));
     }
+
+    System.Collections.IEnumerator ShowGameOverAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameManager gm = FindObjectOfType<GameManager>();
+        if (gm != null) gm.GameOver();
+    }
+
 }

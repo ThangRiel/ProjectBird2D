@@ -70,4 +70,13 @@ public class ObstacleHandler : MonoBehaviour
         isInvincible = true;
         invincibleTimer = invincibleDuration;
     }
+
+    void GameOver()
+    {
+        Debug.Log("Hết máu! Thua cuộc.");
+        // Dừng game tạm thời
+        Time.timeScale = 0f;
+        // TODO: hiện UI Game Over sau
+    }
+
 }

@@ -152,7 +152,7 @@ public class RunAndFly : MonoBehaviour
     {
         isGrounded = false;
     }
-    void Die()
+    public void Die() // ! Chỉnh lại chỗ này thành public để gọi bên HealthManager
     {
         if (isDead) return;
         isDead = true;

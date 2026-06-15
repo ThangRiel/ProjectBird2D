@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     private int score = 0;
     [SerializeField] private Text scoreText;
-    //[SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject gameOverUI; // ! Đã bỏ comment
     private bool isGameOver = false;
     [SerializeField] public Tag[] tags;
 
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateScoreText();
-        //gameOverUI.SetActive(false);
+        gameOverUI.SetActive(false); // ! Đã bỏ comment
     }
 
     void Update()
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         if (!isGameOver)
         {
             isGameOver = true;
-            //gameOverUI.SetActive(true);
+            gameOverUI.SetActive(true); // ! Đã bỏ comment
             Time.timeScale = 0f;
         }
     }
