@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         isGameOver = false;
-        UpdateScoreText();
+        // UpdateScoreText();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Game");
     }
