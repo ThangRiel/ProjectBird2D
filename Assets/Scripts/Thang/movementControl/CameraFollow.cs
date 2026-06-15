@@ -54,7 +54,7 @@ public class CameraFollow : MonoBehaviour
                 targetPosition.y -= influenceFactor * maxGroundOffset;
             }
             
-            targetOffsetY = birdControl.isGround ? groundOffsetY : targetOffsetY;
+            targetOffsetY = birdControl.isGrounded ? groundOffsetY : targetOffsetY;
         }
 
         // 2. Chuyển đổi mượt mà giữa độ cao cũ và độ cao mới
