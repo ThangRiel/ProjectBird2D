@@ -1,7 +1,15 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
 {
+    [Header("Stats")]
+    [SerializeField] private int maxHealth = 3;
+
+    [Header("Stomp")]
+    [SerializeField] private float bounceForce = 8f;
+
     [Header("Patrol")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float patrolDistance = 3f;
@@ -10,33 +18,42 @@ public class Enemy : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float attackCooldown = 1.5f;
-    [SerializeField] private float damageToPlayer = 10f;
+    [SerializeField] private int damageToPlayer = 10;
+
+    [Header("Death")]
+    [SerializeField] private float destroyDelay = 1f;
+
+    private int currentHealth;
 
     private Animator anim;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    private Collider2D enemyCollider;
+
     private Transform playerTransform;
 
-    // Giới hạn tuần tra (theo localPosition)
     private float leftLimit;
     private float rightLimit;
     private bool movingRight = true;
 
     private float nextAttackTime;
-    private bool isAttacking = false;
+    private bool isDead = false;
 
-    void Awake()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        enemyCollider = GetComponent<Collider2D>();
+
+        currentHealth = maxHealth;
     }
 
-    void Start()
+    private void Start()
     {
-        // Lưu vị trí tuần tra ban đầu
-        leftLimit = transform.localPosition.x - patrolDistance;
-        rightLimit = transform.localPosition.x + patrolDistance;
+        leftLimit = transform.position.x - patrolDistance;
+        rightLimit = transform.position.x + patrolDistance;
 
-        // Tìm Player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
@@ -44,128 +61,262 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
+        if (isDead)
+            return;
+
         if (playerTransform == null)
         {
             Patrol();
             return;
         }
 
-        // Tính khoảng cách thật giữa Enemy và Player
-        float distanceToPlayer = Vector2.Distance(
+        float distance = Vector2.Distance(
             transform.position,
             playerTransform.position
         );
 
-        if (distanceToPlayer <= attackRange)
+        if (distance <= attackRange)
         {
-            Attack();
+            AttackPlayer();
         }
         else
         {
-            isAttacking = false;
             Patrol();
         }
     }
 
+    //=================================
+    // TUẦN TRA
+    //=================================
     private void Patrol()
     {
-        if (isAttacking)
-            return;
+        anim.SetBool("isRunning", true);
 
-        if (anim != null)
-            anim.SetBool("isRunning", true);
-
-        Vector3 localPos = transform.localPosition;
+        Vector3 pos = transform.position;
 
         if (movingRight)
         {
-            localPos.x += moveSpeed * Time.deltaTime;
+            pos.x += moveSpeed * Time.deltaTime;
 
-            if (localPos.x >= rightLimit)
+            if (pos.x >= rightLimit)
             {
-                localPos.x = rightLimit;
+                pos.x = rightLimit;
                 movingRight = false;
             }
         }
         else
         {
-            localPos.x -= moveSpeed * Time.deltaTime;
+            pos.x -= moveSpeed * Time.deltaTime;
 
-            if (localPos.x <= leftLimit)
+            if (pos.x <= leftLimit)
             {
-                localPos.x = leftLimit;
+                pos.x = leftLimit;
                 movingRight = true;
             }
         }
 
-        transform.localPosition = localPos;
+        transform.position = pos;
 
         UpdateFacing(movingRight);
     }
 
-    private void Attack()
+    //=================================
+    // TẤN CÔNG PLAYER
+    //=================================
+    private void AttackPlayer()
     {
-        isAttacking = true;
+        anim.SetBool("isRunning", false);
 
-        if (anim != null)
-            anim.SetBool("isRunning", false);
-
-        // Quay mặt về phía Player
         bool playerIsRight =
-            playerTransform.position.x > transform.position.x;
+            playerTransform.position.x >
+            transform.position.x;
 
         UpdateFacing(playerIsRight);
 
-        // Đánh theo cooldown
         if (Time.time >= nextAttackTime)
         {
-            if (anim != null)
-            {
-                anim.SetTrigger("Attack");
-            }
+            anim.SetTrigger("Attack");
 
             Debug.Log(
-                "Enemy đánh Player, gây " +
-                damageToPlayer +
+                "Enemy đánh Player, gây "
+                + damageToPlayer +
                 " sát thương."
             );
 
-            // Sau này có thể gọi hàm trừ máu Player ở đây
-            // playerTransform.GetComponent<PlayerHealth>()?.TakeDamage(damageToPlayer);
+            // Sau này:
+            // playerTransform.GetComponent<PlayerHealth>()
+            // ?.TakeDamage(damageToPlayer);
 
-            nextAttackTime = Time.time + attackCooldown;
+            nextAttackTime =
+                Time.time + attackCooldown;
         }
     }
 
+    //=================================
+    // NHẬN SÁT THƯƠNG
+    //=================================
+    public void TakeDamage(int damage)
+    {
+        if (isDead)
+            return;
+
+        currentHealth -= damage;
+
+        Debug.Log(
+            gameObject.name +
+            " nhận " +
+            damage +
+            " sát thương. Máu còn: " +
+            currentHealth
+        );
+
+        if (currentHealth > 0)
+        {
+            anim.SetTrigger("Hit");
+        }
+        else
+        {
+            Die();
+        }
+    }
+
+    //=================================
+    // CHẾT
+    //=================================
+    private void Die()
+    {
+        if (isDead)
+            return;
+
+        isDead = true;
+
+        Debug.Log("Enemy chết!");
+
+        anim.ResetTrigger("Hit");
+        anim.ResetTrigger("Attack");
+
+        anim.SetBool("isRunning", false);
+        anim.SetTrigger("Die");
+
+        // Tắt tất cả Collider
+        foreach (Collider2D col in GetComponents<Collider2D>())
+        {
+            col.enabled = false;
+        }
+
+        // Dừng Rigidbody
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = false;
+        }
+
+        Destroy(gameObject, destroyDelay);
+    }
+
+    //=================================
+    // PLAYER DẪM ĐẦU ENEMY
+    //=================================
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isDead)
+            return;
+
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
+
+        Rigidbody2D playerRb =
+            collision.gameObject.GetComponent<Rigidbody2D>();
+
+        if (playerRb == null)
+            return;
+
+        // Player phải đang rơi xuống
+        if (playerRb.linearVelocity.y >= -0.1f)
+            return;
+
+        float playerBottom =
+            collision.collider.bounds.min.y;
+
+        float enemyTop =
+            enemyCollider.bounds.max.y;
+
+        if (playerBottom >= enemyTop - 0.1f)
+        {
+            Debug.Log("Enemy bị dẫm!");
+
+            // Player nảy lên
+            playerRb.linearVelocity =
+                new Vector2(
+                    playerRb.linearVelocity.x,
+                    bounceForce
+                );
+
+            // Enemy chết ngay
+            Die();
+        }
+    }
+
+    //=================================
+    // ĐỔI HƯỚNG
+    //=================================
     private void UpdateFacing(bool facingRight)
     {
         if (spriteRenderer != null)
         {
-            spriteRenderer.flipX = spriteFacesRight
+            spriteRenderer.flipX =
+                spriteFacesRight
                 ? !facingRight
                 : facingRight;
         }
         else
         {
-            Vector3 scale = transform.localScale;
-            float sign = spriteFacesRight ? 1f : -1f;
+            Vector3 scale =
+                transform.localScale;
 
-            scale.x = (facingRight
-                ? Mathf.Abs(scale.x)
-                : -Mathf.Abs(scale.x)) * sign;
+            float sign =
+                spriteFacesRight ? 1f : -1f;
 
-            transform.localScale = scale;
+            scale.x =
+                (facingRight
+                    ? Mathf.Abs(scale.x)
+                    : -Mathf.Abs(scale.x))
+                * sign;
+
+            transform.localScale =
+                scale;
         }
     }
 
+    //=================================
+    // GIZMOS
+    //=================================
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
+
         Gizmos.DrawWireSphere(
             transform.position,
             attackRange
         );
+
+        if (enemyCollider != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawLine(
+                new Vector3(
+                    enemyCollider.bounds.min.x,
+                    enemyCollider.bounds.max.y,
+                    0
+                ),
+                new Vector3(
+                    enemyCollider.bounds.max.x,
+                    enemyCollider.bounds.max.y,
+                    0
+                )
+            );
+        }
     }
 }
