@@ -1,160 +1,140 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class LoiPlayer : MonoBehaviour
 {
-    [Header("References")]
-    public Transform worldRoot;
-
-    [Header("Movement Settings")]
+    [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 10f;
+
+    [Header("Ground Check")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+
+    [Header("Attack")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRadius = 0.6f;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackDuration = 0.4f;
 
-    [Header("Shooting")]
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-
-    private Animator animator;
     private Rigidbody2D rb;
-
-    private bool isGrounded;
-    public bool isAttacking;
+    private Animator animator;
 
     private float moveInput;
-    private float scaleX;
+    private bool isGrounded;
+    private bool isAttacking;
 
-    void Awake()
+    private float originalScaleX;
+
+    private void Awake()
     {
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
-        scaleX = Mathf.Abs(transform.localScale.x);
+        originalScaleX = Mathf.Abs(transform.localScale.x);
     }
 
-    void Update()
+    private void Update()
     {
         if (!isAttacking)
-        {
             moveInput = Input.GetAxisRaw("Horizontal");
-
-            // Đổi hướng nhân vật
-            if (moveInput > 0)
-            {
-                transform.localScale = new Vector3(
-                    scaleX,
-                    transform.localScale.y,
-                    transform.localScale.z
-                );
-            }
-            else if (moveInput < 0)
-            {
-                transform.localScale = new Vector3(
-                    -scaleX,
-                    transform.localScale.y,
-                    transform.localScale.z
-                );
-            }
-
-            HandleJump();
-        }
         else
-        {
             moveInput = 0f;
-        }
 
-        HandleAttack();
-        UpdateAnimator();
-    }
+        // Lật nhân vật
+        if (moveInput > 0)
+            transform.localScale = new Vector3(originalScaleX, transform.localScale.y, transform.localScale.z);
+        else if (moveInput < 0)
+            transform.localScale = new Vector3(-originalScaleX, transform.localScale.y, transform.localScale.z);
 
-    void FixedUpdate()
-    {
-        // Player KHÔNG di chuyển ngang
-        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        // Ground Check
+        isGrounded = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundCheckRadius,
+            groundLayer
+        );
 
-        // Chỉ map di chuyển
-        if (!isAttacking && worldRoot != null)
+        // Jump
+        if (Input.GetButtonDown("Jump") && isGrounded && !isAttacking)
         {
-            worldRoot.position += new Vector3(
-                -moveInput * moveSpeed * Time.fixedDeltaTime,
-                0f,
-                0f
-            );
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-    }
 
-    private void HandleJump()
-    {
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            isGrounded = false;
-
-            rb.linearVelocity = new Vector2(
-                0f,
-                0f
-            );
-
-            rb.AddForce(
-                Vector2.up * jumpForce,
-                ForceMode2D.Impulse
-            );
-        }
-    }
-
-    private void HandleAttack()
-    {
-        if (Input.GetButtonDown("Fire1") && !isAttacking)
+        // Attack
+        if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
             StartCoroutine(AttackCoroutine());
         }
+
+        animator.SetBool("isRunning", Mathf.Abs(moveInput) > 0.1f);
+        animator.SetBool("isJumping", !isGrounded);
+        animator.SetBool("isAttacking", isAttacking);
     }
 
-    IEnumerator AttackCoroutine()
+    private void FixedUpdate()
+    {
+        rb.linearVelocity = new Vector2(
+            moveInput * moveSpeed,
+            rb.linearVelocity.y
+        );
+    }
+
+    private IEnumerator AttackCoroutine()
     {
         isAttacking = true;
 
-        if (bulletPrefab != null && firePoint != null)
-        {
-            Quaternion bulletRotation = firePoint.rotation;
+        yield return new WaitForSeconds(0.1f);
 
-            if (transform.localScale.x < 0)
-            {
-                bulletRotation *= Quaternion.Euler(0f, 180f, 0f);
-            }
+        Attack();
 
-            Instantiate(
-                bulletPrefab,
-                firePoint.position,
-                bulletRotation
-            );
-        }
-
-        yield return new WaitForSeconds(attackDuration);
+        yield return new WaitForSeconds(
+            attackDuration - 0.1f
+        );
 
         isAttacking = false;
     }
 
-    private void OnCollisionStay2D(Collision2D col)
+    private void Attack()
     {
-        for (int i = 0; i < col.contactCount; i++)
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(
+            attackPoint.position,
+            attackRadius,
+            enemyLayer
+        );
+
+        foreach (Collider2D enemy in enemies)
         {
-            if (col.GetContact(i).normal.y > 0.5f)
-            {
-                isGrounded = true;
-                return;
-            }
+            enemy.SendMessage(
+                "TakeDamage",
+                attackDamage,
+                SendMessageOptions.DontRequireReceiver
+            );
         }
     }
 
-    private void OnCollisionExit2D(Collision2D col)
+    private void OnDrawGizmosSelected()
     {
-        isGrounded = false;
-    }
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(
+                groundCheck.position,
+                groundCheckRadius
+            );
+        }
 
-    private void UpdateAnimator()
-    {
-        animator.SetBool("isRunning", Mathf.Abs(moveInput) > 0.1f);
-        animator.SetBool("isJumping", !isGrounded);
-        animator.SetBool("isAttacking", isAttacking);
+        if (attackPoint != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(
+                attackPoint.position,
+                attackRadius
+            );
+        }
     }
 }
