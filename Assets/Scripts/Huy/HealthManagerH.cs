@@ -1,0 +1,73 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HealthManagerH : MonoBehaviour
+{
+    public int maxHealth = 5;
+    private int currentHealth;
+
+    public Image[] hearts; // Mảng chứa các UI Image trái tim
+    public Sprite fullHeart;  // Kéo hình trái tim đầy vào đây
+    public Sprite bigerHeart;
+    public Sprite emptyHeart; // Kéo hình trái tim rỗng vào đây
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        UpdateHeartsUI();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (currentHealth <= 0) return;
+
+        currentHealth -= damage;
+        UpdateHeartsUI();
+
+        if (currentHealth <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    void UpdateHeartsUI()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < currentHealth)
+            {
+                hearts[i].sprite = fullHeart; // Hiện tim đầy
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart; // Đổi thành tim rỗng
+            }
+        }
+    }
+
+    // ! Đã chỉnh sửa
+    void GameOver()
+    {
+        // 1. Dừng Bird
+        RunAndFly player = GetComponent<RunAndFly>();
+        if (player != null)
+        {
+            player.Die();
+            
+        }
+
+        RunAndFlyH huyPlayer = GetComponent<RunAndFlyH>();
+        if (huyPlayer != null) huyPlayer.Die();
+
+        // 2. Delay 1 giây rồi hiện Game Over UI
+        StartCoroutine(ShowGameOverAfterDelay(1f));
+    }
+
+    System.Collections.IEnumerator ShowGameOverAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameManager gm = FindObjectOfType<GameManager>();
+        if (gm != null) gm.GameOver();
+    }
+
+}
