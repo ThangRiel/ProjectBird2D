@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         Debug.Log("Trúng: " + hitInfo.name);
 
         // Nếu trúng tường hoặc kẻ địch thì hủy viên đạn ngay
-        if (!hitInfo.CompareTag("decor") && !hitInfo.CompareTag("Bullet"))
+        if (!hitInfo.CompareTag("deco") && !hitInfo.CompareTag("Bullet"))
         {
             Destroy(gameObject);
         }
