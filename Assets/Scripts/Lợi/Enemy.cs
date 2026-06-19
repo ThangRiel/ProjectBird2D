@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
 
     [Header("Stomp")]
+    [SerializeField] private Transform stompPoint;
     [SerializeField] private float bounceForce = 8f;
 
     [Header("Patrol")]
@@ -28,7 +29,6 @@ public class Enemy : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
-    private Collider2D enemyCollider;
 
     private Transform playerTransform;
 
@@ -44,7 +44,6 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        enemyCollider = GetComponent<Collider2D>();
 
         currentHealth = maxHealth;
     }
@@ -55,6 +54,7 @@ public class Enemy : MonoBehaviour
         rightLimit = transform.position.x + patrolDistance;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
         if (player != null)
         {
             playerTransform = player.transform;
@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
     }
 
     //=================================
-    // TẤN CÔNG PLAYER
+    // TẤN CÔNG
     //=================================
     private void AttackPlayer()
     {
@@ -140,14 +140,15 @@ public class Enemy : MonoBehaviour
             anim.SetTrigger("Attack");
 
             Debug.Log(
-                "Enemy đánh Player, gây "
-                + damageToPlayer +
+                gameObject.name +
+                " đánh Player, gây " +
+                damageToPlayer +
                 " sát thương."
             );
 
-            // Sau này:
+            // Sau này thêm:
             // playerTransform.GetComponent<PlayerHealth>()
-            // ?.TakeDamage(damageToPlayer);
+            //     ?.TakeDamage(damageToPlayer);
 
             nextAttackTime =
                 Time.time + attackCooldown;
@@ -192,7 +193,7 @@ public class Enemy : MonoBehaviour
 
         isDead = true;
 
-        Debug.Log("Enemy chết!");
+        Debug.Log(gameObject.name + " chết!");
 
         anim.ResetTrigger("Hit");
         anim.ResetTrigger("Attack");
@@ -200,13 +201,13 @@ public class Enemy : MonoBehaviour
         anim.SetBool("isRunning", false);
         anim.SetTrigger("Die");
 
-        // Tắt tất cả Collider
+        // Tắt toàn bộ collider
         foreach (Collider2D col in GetComponents<Collider2D>())
         {
             col.enabled = false;
         }
 
-        // Dừng Rigidbody
+        // Dừng vật lý
         if (rb != null)
         {
             rb.linearVelocity = Vector2.zero;
@@ -234,20 +235,16 @@ public class Enemy : MonoBehaviour
             return;
 
         // Player phải đang rơi xuống
-        if (playerRb.linearVelocity.y >= -0.1f)
+        if (playerRb.linearVelocity.y >= 0f)
             return;
 
-        float playerBottom =
-            collision.collider.bounds.min.y;
-
-        float enemyTop =
-            enemyCollider.bounds.max.y;
-
-        if (playerBottom >= enemyTop - 0.1f)
+        // Kiểm tra Player có ở trên StompPoint không
+        if (stompPoint != null &&
+            playerRb.position.y >= stompPoint.position.y)
         {
-            Debug.Log("Enemy bị dẫm!");
+            Debug.Log(gameObject.name + " bị dẫm!");
 
-            // Player nảy lên
+            // Cho Player nảy lên
             playerRb.linearVelocity =
                 new Vector2(
                     playerRb.linearVelocity.x,
@@ -296,26 +293,17 @@ public class Enemy : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-
         Gizmos.DrawWireSphere(
             transform.position,
             attackRange
         );
 
-        if (enemyCollider != null)
+        if (stompPoint != null)
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(
-                new Vector3(
-                    enemyCollider.bounds.min.x,
-                    enemyCollider.bounds.max.y,
-                    0
-                ),
-                new Vector3(
-                    enemyCollider.bounds.max.x,
-                    enemyCollider.bounds.max.y,
-                    0
-                )
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(
+                stompPoint.position,
+                0.15f
             );
         }
     }
