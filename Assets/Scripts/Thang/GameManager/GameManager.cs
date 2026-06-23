@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using UnityEngine.Assertions.Must;
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
@@ -20,7 +22,12 @@ public class GameManager : MonoBehaviour
     {
 
     }
-   
+    //* thêm hàm để mở scene từ game StartUi
+    public void StartGame()
+    {
+        Debug.Log("game started");
+        SceneManager.LoadScene("Game");
+    }
 
     public void addScoreByTag(string itemTag)
     {
@@ -40,7 +47,11 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateScoreText()
     {
-        scoreText.text = score.ToString();
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString();
+        }
+
     }
     public void GameOver()
     {
