@@ -9,7 +9,7 @@ using TMPro;
 public class LeaderboardManager : MonoBehaviour
 {
     private bool isReady = false;
-    public string leaderboardId = "HighscoreBoard"; //! Nhớ check lại đúng ID nha
+    public string leaderboardId = "HighscoreBoardBirt2D"; //! Nhớ check lại đúng ID nha
     public TMP_InputField inputScore;
     public TMP_InputField inputName;
     async void Start()

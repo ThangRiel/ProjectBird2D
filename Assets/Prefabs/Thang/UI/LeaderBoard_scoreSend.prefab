@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5678645733322980562}
   - component: {fileID: 8526534660870423460}
   m_Layer: 5
-  m_Name: LeaderBoard
+  m_Name: LeaderBoard_scoreSend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4056238537454569545}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
