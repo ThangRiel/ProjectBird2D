@@ -1,4 +1,4 @@
-using Mono.Cecil.Cil;
+// using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class BirdControl : MonoBehaviour
@@ -15,7 +15,7 @@ public class BirdControl : MonoBehaviour
     public float uprightSpeed = 5f;
 
     public float SpeedMultiplier = 0.5f; // Hệ số dùng để tăng/giảm tốc độ animation theo ý muốn
-    [Header ("Dust when running")]
+    [Header("Dust when running")]
     public SimpleObjectPooler dustPooler;
     public float dustCreationRate = 0.2f;
     public float test;
@@ -53,7 +53,7 @@ public class BirdControl : MonoBehaviour
             // 1. Lấy một hiệu ứng bụi từ pool
             GameObject dustEffect = dustPooler.GetPooledDustEffect();
 
-            // 2. Đặt vị trí bụi về vị trí chân nhân vật. 
+            // 2. Đặt vị trí bụi về vị trí chân nhân vật.
             // Cần điều chỉnh Vector2.down * height để phù hợp với chân nhân vật của bạn.
             Vector3 footPosition = new Vector3(transform.position.x, transform.position.y - 0.66f, 0);
             dustEffect.transform.position = footPosition;

@@ -1,49 +1,64 @@
-// using UnityEngine;
-// using UnityEngine.UI;
+using System.Xml.Serialization;
+using UnityEngine;
+using UnityEngine.UI;
 
-// public class MinitSettings : MonoBehaviour
-// {
-//     public Slider volumeSlider;
-//     public Toggle fullscreenToggle;
+public class MinitSettings : MonoBehaviour
+{
+    public Slider volumeSlider;
+    public Toggle fullscreenToggle;
+    public GameObject gameObject;
+    private void Start()
+    {
+        // Load lại cấu hình cũ khi mở menu
+        LoadSettings();
+        gameObject.SetActive(false);
+        // Lắng nghe sự kiện đổi giá trị trên UI
+        volumeSlider.onValueChanged.AddListener(SetVolume);
+        fullscreenToggle.onValueChanged.AddListener(SetFullscreen);
+    }
 
-//     private void Start()
-//     {
-//         // Load lại cấu hình cũ khi mở menu
-//         LoadSettings();
+    public void SetVolume(float volume)
+    {
+        AudioListener.volume = volume;
+        PlayerPrefs.SetFloat("MasterVolume", volume);
+    }
 
-//         // Lắng nghe sự kiện đổi giá trị trên UI
-//         volumeSlider.onValueChanged.AddListener(SetVolume);
-//         fullscreenToggle.onValueChanged.AddListener(SetFullscreen);
-//     }
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+        PlayerPrefs.SetInt("Fullscreen", isFullscreen ? 1 : 0);
+    }
 
-//     public void SetVolume(float volume)
-//     {
-//         AudioListener.volume = volume;
-//         PlayerPrefs.SetFloat("MasterVolume", volume);
-//     }
+    public void SaveAndClose()
+    {
+        PlayerPrefs.Save(); // Lưu cứng vào máy
+        gameObject.SetActive(false); // Ẩn menu đi
+    }
 
-//     public void SetFullscreen(bool isFullscreen)
-//     {
-//         Screen.fullScreen = isFullscreen;
-//         PlayerPrefs.SetInt("Fullscreen", isFullscreen ? 1 : 0);
-//     }
+    public void JustClose()
+    {
+        LoadSettings();
+        gameObject.SetActive(false); // Ẩn menu đi
+    }
 
-//     public void SaveAndClose()
-//     {
-//         PlayerPrefs.Save(); // Lưu cứng vào máy
-//         gameObject.SetActive(false); // Ẩn menu đi
-//     }
+    public void OpenSetting()
+    {
+        LoadSettings();
+        Debug.Log("load");
+        gameObject.SetActive(true);
+        Debug.Log("da bam");
+    }
 
-//     private void LoadSettings()
-//     {
-//         // Load âm lượng (mặc định là 100%)
-//         float savedVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
-//         volumeSlider.value = savedVolume;
-//         AudioListener.volume = savedVolume;
+    private void LoadSettings()
+    {
+        // Load âm lượng (mặc định là 100%)
+        float savedVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        volumeSlider.value = savedVolume;
+        AudioListener.volume = savedVolume;
 
-//         // Load chế độ màn hình (mặc định theo hệ thống)
-//         int savedFullscreen = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0);
-//         fullscreenToggle.isOn = (savedFullscreen == 1);
-//         Screen.fullScreen = (savedFullscreen == 1);
-//     }
-// }
+        // Load chế độ màn hình (mặc định theo hệ thống)
+        int savedFullscreen = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0);
+        fullscreenToggle.isOn = (savedFullscreen == 1);
+        Screen.fullScreen = (savedFullscreen == 1);
+    }
+}
