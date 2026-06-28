@@ -76,5 +76,11 @@ TagManager:
   - name: enemy
     uniqueID: 217535103
     locked: 0
+  - name: effect
+    uniqueID: 3022731267
+    locked: 0
+  - name: skill
+    uniqueID: 813015021
+    locked: 0
   m_RenderingLayers:
   - Default
