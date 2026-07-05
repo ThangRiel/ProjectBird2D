@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -14,100 +15,130 @@ public class LoiPlayer : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
 
-    [Header("Attack (Normal)")]
+    [Header("Attack")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRadius = 0.6f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackDuration = 0.4f;
 
-    [Header("Skill Dash")]
-    public bool hasDashSkill = false;
-    [SerializeField] private KeyCode skillKey = KeyCode.F;
+    [Header("Dash Skill")]
+    public bool hasDashSkill = true;
     [SerializeField] private float dashSpeed = 35f;
     [SerializeField] private float dashDuration = 0.3f;
     [SerializeField] private int skillDamage = 5;
     [SerializeField] private float skillCooldown = 5f;
+
+    [Header("Health")]
+    [SerializeField] private int maxHealth = 100;
 
     [Header("UI")]
     [SerializeField] private SkillCooldown dashSkillUI;
 
     private Rigidbody2D rb;
     private Animator animator;
-    private Collider2D playerCollider; 
+    private Collider2D playerCollider;
 
-    private float moveInput;
+    private int currentHealth;
+    private bool isPlayerDead;
     private bool isGrounded;
     private bool isAttacking;
     private bool isDashing;
 
+    private float moveInput;
     private float originalScaleX;
     private float originalGravity;
 
-    private Transform bossTransform;
     private int facingDir = 1;
-    private Vector2 lockedDashDir; 
+    private Vector2 lockedDashDir;
+    private Transform bossTransform;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        playerCollider = GetComponent<Collider2D>(); 
+        playerCollider = GetComponent<Collider2D>();
+
         originalScaleX = Mathf.Abs(transform.localScale.x);
+        originalGravity = rb.gravityScale;
     }
 
     private void Start()
     {
-        FindBoss();
+        currentHealth = maxHealth;
 
-        if (hasDashSkill && dashSkillUI != null)
+        if (dashSkillUI != null)
             dashSkillUI.SetupUIOnUnlock();
     }
 
     private void Update()
     {
-        if (isDashing) return;
+        if (Keyboard.current == null || Mouse.current == null)
+            return;
 
-        if (!isAttacking)
-            moveInput = Input.GetAxisRaw("Horizontal");
-        else
-            moveInput = 0f;
+        if (isPlayerDead)
+            return;
 
-        if (moveInput > 0)
+        moveInput = 0f;
+
+        if (Keyboard.current.aKey.isPressed)
+            moveInput = -1f;
+
+        if (Keyboard.current.dKey.isPressed)
+            moveInput = 1f;
+
+        if (!isDashing)
         {
-            facingDir = 1;
-            transform.localScale = new Vector3(originalScaleX, transform.localScale.y, transform.localScale.z);
+            if (moveInput > 0f)
+            {
+                facingDir = 1;
+                transform.localScale = new Vector3(
+                    originalScaleX,
+                    transform.localScale.y,
+                    transform.localScale.z);
+            }
+            else if (moveInput < 0f)
+            {
+                facingDir = -1;
+                transform.localScale = new Vector3(
+                    -originalScaleX,
+                    transform.localScale.y,
+                    transform.localScale.z);
+            }
         }
-        else if (moveInput < 0)
+
+        if (groundCheck != null)
         {
-            facingDir = -1;
-            transform.localScale = new Vector3(-originalScaleX, transform.localScale.y, transform.localScale.z);
+            isGrounded = Physics2D.OverlapCircle(
+                groundCheck.position,
+                groundCheckRadius,
+                groundLayer);
         }
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
-        if (Input.GetButtonDown("Jump") && isGrounded && !isAttacking && !isDashing)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame &&
+            isGrounded &&
+            !isDashing)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
-        if (Input.GetMouseButtonDown(0) && !isAttacking)
-            StartCoroutine(AttackCoroutine());
-
-        bool isCooldown = (dashSkillUI != null) ? dashSkillUI.IsCooldown : false;
-
-        if (Input.GetKeyDown(skillKey) && hasDashSkill && !isCooldown && !isAttacking && !isDashing)
+        if (Mouse.current.leftButton.wasPressedThisFrame &&
+            !isAttacking &&
+            !isDashing)
         {
-            isDashing = true;
-            moveInput = 0f; 
+            StartCoroutine(AttackCoroutine());
+        }
 
-            // Khóa hướng lao theo hướng mặt nhìn
-            lockedDashDir = (facingDir == 1) ? Vector2.right : Vector2.left;
+        bool isCooldown =
+            dashSkillUI != null &&
+            dashSkillUI.IsCooldown;
 
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
-
+        if (Keyboard.current.fKey.wasPressedThisFrame &&
+            hasDashSkill &&
+            !isCooldown &&
+            !isDashing)
+        {
             StartCoroutine(DashSkillCoroutine());
         }
 
@@ -118,100 +149,150 @@ public class LoiPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDashing) return;
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-    }
+        if (isPlayerDead || isDashing)
+            return;
 
-    private IEnumerator DashSkillCoroutine()
+        rb.linearVelocity = new Vector2(
+            moveInput * moveSpeed,
+            rb.linearVelocity.y);
+    }
+        private IEnumerator DashSkillCoroutine()
     {
-        // GIỮ NGUYÊN COLLIDER RẮN, KHÔNG BẬT TRIGGER (Chống xuyên thấu bậy bạ)
-        if (playerCollider != null) playerCollider.isTrigger = false;
+        isDashing = true;
 
         if (dashSkillUI != null)
             dashSkillUI.StartCooldown(skillCooldown);
 
-        originalGravity = rb.gravityScale;
+        FindBoss();
+
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+
+        lockedDashDir = facingDir == 1 ? Vector2.right : Vector2.left;
 
         float elapsed = 0f;
         bool hit = false;
+        GameObject hitObject = null;
 
-        // Mảng lưu kết quả quét va chạm vật lý trước mặt
         RaycastHit2D[] hits = new RaycastHit2D[5];
 
         while (elapsed < dashDuration)
         {
-            // Liên tục ép vận tốc lao thẳng băng theo hướng mặt
             rb.linearVelocity = lockedDashDir * dashSpeed;
 
-            // 🔥 CƠ CHẾ QUÉT VẬT LÝ AN TOÀN CAO: Quét trước mũi Player 0.4 đơn vị xem có chạm trúng Layer Enemy không
             if (playerCollider != null)
             {
-                int hitCount = playerCollider.Cast(lockedDashDir, hits, 0.4f);
+                int hitCount = playerCollider.Cast(
+                    lockedDashDir,
+                    hits,
+                    0.4f);
+
                 for (int i = 0; i < hitCount; i++)
                 {
-                    // Nếu phát hiện vật cản có Tag Enemy hoặc thuộc Layer quái vật
-                    if (hits[i].collider.CompareTag("Enemy") || ((1 << hits[i].collider.gameObject.layer) & enemyLayer) != 0)
+                    Collider2D col = hits[i].collider;
+
+                    if (col.CompareTag("Enemy") ||
+                        col.CompareTag("Boss") ||
+                        ((1 << col.gameObject.layer) & enemyLayer) != 0)
                     {
                         hit = true;
+                        hitObject = col.gameObject;
                         break;
                     }
                 }
             }
 
-            if (hit) break; // Khóa phanh khẩn cấp, dừng lướt ngay lập tức!
+            if (hit)
+                break;
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Dừng xe, triệt tiêu lực lao, trả lại trọng lực
-        rb.linearVelocity = Vector2.zero;
         rb.gravityScale = originalGravity;
+        rb.linearVelocity = Vector2.zero;
 
-        // Nếu tia quét báo trúng Boss, hoặc khoảng cách toán học đủ gần
-        if (!hit && bossTransform != null && Vector2.Distance(transform.position, bossTransform.position) < 1.6f)
+        if (!hit &&
+            bossTransform != null &&
+            Vector2.Distance(transform.position, bossTransform.position) < 1.6f)
         {
             hit = true;
+            hitObject = bossTransform.gameObject;
         }
 
-        if (hit && bossTransform != null)
+        if (hit && hitObject != null)
         {
-            bossTransform.SendMessage("TakeDamage", skillDamage, SendMessageOptions.DontRequireReceiver);
-            
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
+            hitObject.SendMessage(
+                "TakeDamage",
+                skillDamage,
+                SendMessageOptions.DontRequireReceiver);
 
-            // Hướng bật ngược (knockback)
-            Vector2 knockbackDir = -lockedDashDir; 
-            
-            // Hất văng cầu vồng dội ngược chuẩn xác ra phía sau
-            rb.AddForce(new Vector2(knockbackDir.x * 14f, 8.5f), ForceMode2D.Impulse);
-            Debug.Log("💥 CHẠM RÌA VẬT LÝ BOSS! ĐÃ NẨY VỀ HƯỚNG: " + knockbackDir);
+            rb.linearVelocity = Vector2.zero;
+
+            Vector2 knockbackDir = -lockedDashDir;
+
+            rb.AddForce(
+                new Vector2(
+                    knockbackDir.x * 14f,
+                    8.5f),
+                ForceMode2D.Impulse);
 
             yield return new WaitForSeconds(0.35f);
         }
         else
         {
-            // Nếu lướt hụt
             yield return new WaitForSeconds(0.1f);
         }
 
         rb.linearVelocity = Vector2.zero;
-        rb.WakeUp();
-        isDashing = false; // Mở khóa hoàn toàn
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+    }
+        public void TakeDamage(int damage)
+    {
+        if (isPlayerDead)
+            return;
+
+        currentHealth = Mathf.Clamp(
+            currentHealth - damage,
+            0,
+            maxHealth);
+
+        if (currentHealth == 0)
+            PlayerDie();
+    }
+
+    private void PlayerDie()
+    {
+        isPlayerDead = true;
+
+        StopAllCoroutines();
+
+        if (animator != null)
+            animator.SetTrigger("die");
+
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Static;
+
+        enabled = false;
     }
 
     private void FindBoss()
     {
-        GameObject boss = GameObject.FindGameObjectWithTag("Enemy");
-        if (boss != null) bossTransform = boss.transform;
+        if (bossTransform != null)
+            return;
+
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+
+        if (boss != null)
+            bossTransform = boss.transform;
     }
 
     public void UnlockSkill()
     {
         hasDashSkill = true;
+
         if (dashSkillUI != null)
             dashSkillUI.SetupUIOnUnlock();
     }
@@ -219,27 +300,51 @@ public class LoiPlayer : MonoBehaviour
     private IEnumerator AttackCoroutine()
     {
         isAttacking = true;
+
         yield return new WaitForSeconds(0.1f);
+
         Attack();
+
         yield return new WaitForSeconds(attackDuration - 0.1f);
+
         isAttacking = false;
     }
 
     private void Attack()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyLayer);
-        foreach (var enemy in enemies)
+        if (attackPoint == null)
+            return;
+
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(
+            attackPoint.position,
+            attackRadius,
+            enemyLayer);
+
+        foreach (Collider2D enemy in enemies)
         {
-            enemy.SendMessage("TakeDamage", attackDamage, SendMessageOptions.DontRequireReceiver);
+            enemy.SendMessage(
+                "TakeDamage",
+                attackDamage,
+                SendMessageOptions.DontRequireReceiver);
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
-            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(
+                groundCheck.position,
+                groundCheckRadius);
+        }
 
         if (attackPoint != null)
-            Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(
+                attackPoint.position,
+                attackRadius);
+        }
     }
 }
