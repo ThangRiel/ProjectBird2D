@@ -16,14 +16,18 @@ public class BossAI : MonoBehaviour
     [SerializeField] private float laserDuration = 0.5f;  
     [SerializeField] private float laserMaxDistance = 30f; 
 
-    [Header("Skill: Fire Rain (New)")]
-    [SerializeField] private GameObject fireBallPrefab; // Kéo Prefab quả cầu lửa vào đây
-    [SerializeField] private float spawnHeight = 8f;     // Độ cao xuất phát của quả cầu lửa so với Boss
-    [SerializeField] private float spawnRangeX = 10f;    // Phạm vi chiều ngang quanh Boss mà cầu lửa có thể rơi
-    [SerializeField] private float delayBetweenBalls = 0.4f; // Độ trễ giữa mỗi quả cầu lửa rơi xuống
+    [Header("Skill: Fire Rain (Phase 2 Upgrade)")]
+    [SerializeField] private GameObject fireBallPrefab; 
+    [SerializeField] private float spawnHeight = 8f;     
+    [SerializeField] private float delayBetweenBalls = 0.4f; 
+
+    [Header("Skill: Summon Enemy (Phase 2 Only)")]
+    [SerializeField] private GameObject enemyPrefab; // Kéo Prefab quái Skeleton vào đây
+    [SerializeField] private Transform summonPoint;  // Vị trí quái xuất hiện (nếu không có sẽ tự lấy vị trí Boss)
+    private bool hasSummonedEnemy = false;           // Biến kiểm tra chỉ triệu hồi ĐÚNG 1 LẦN
 
     [Header("AI Loop Settings")]
-    [SerializeField] private float timeBetweenAttacks = 5f; // Độ trễ 5 giây giữa các lần dùng chiêu
+    [SerializeField] private float timeBetweenAttacks = 5f; 
 
     [Header("Animation Setup")]
     public Animator animator;        
@@ -34,7 +38,10 @@ public class BossAI : MonoBehaviour
     [SerializeField] private Slider hpSlider; 
     private int currentHP;
     private bool isDead = false;
-    private bool isAttacking = false; // Trạng thái đang thực hiện chiêu
+    private bool isAttacking = false; 
+
+    // Biến trạng thái Phase 2
+    private bool isPhase2 = false; 
 
     private void Start()
     {
@@ -49,17 +56,13 @@ public class BossAI : MonoBehaviour
             hpSlider.value = currentHP;
         }
 
-        // Bắt đầu vòng lặp tấn công tự động của Boss
         StartCoroutine(AILoopRoutine());
     }
 
-    // 🔥 VÒNG LẶP ĐIỀU KHIỂN AI CHIÊU THỨC XEN KẼ ĐỘ TRỄ 5 GIÂY
     private IEnumerator AILoopRoutine()
     {
-        // Chờ 3 giây đầu game rồi mới bắt đầu đánh đợt 1
         yield return new WaitForSeconds(3f);
-
-        int attackIndex = 0; // Dùng để hoán đổi chiêu thức tuần tự
+        int attackIndex = 0; 
 
         while (!isDead)
         {
@@ -67,20 +70,26 @@ public class BossAI : MonoBehaviour
             {
                 isAttacking = true;
 
-                // Hoán đổi chiêu thức luân phiên
-                if (attackIndex % 2 == 0)
+                // 🔥 KIỂM TRA TRƯỚC: Nếu đang ở Phase 2 và CHƯA từng triệu hồi quái
+                if (isPhase2 && !hasSummonedEnemy)
                 {
-                    yield return StartCoroutine(LaserAttackRoutine());
+                    yield return StartCoroutine(SummonEnemyRoutine());
                 }
                 else
                 {
-                    yield return StartCoroutine(FireRainRoutine());
+                    // Vòng lặp đổi chiêu thức thông thường
+                    if (attackIndex % 2 == 0)
+                    {
+                        yield return StartCoroutine(LaserAttackRoutine());
+                    }
+                    else
+                    {
+                        yield return StartCoroutine(FireRainRoutine());
+                    }
+                    attackIndex++;
                 }
 
-                attackIndex++;
                 isAttacking = false;
-
-                // 🔥 KHÓA TRỄ ĐÚNG 5 GIÂY CHO PLAYER NÉ TRƯỚC KHI BẮT ĐẦU CHIÊU TIẾP THEO
                 yield return new WaitForSeconds(timeBetweenAttacks);
             }
             else
@@ -90,7 +99,7 @@ public class BossAI : MonoBehaviour
         }
     }
 
-    // CHIÊU 1: KHẠC LASER
+    // CHIÊU 1: KHẠC LASER (Giữ nguyên)
     IEnumerator LaserAttackRoutine()
     {
         Debug.Log("📢 BOSS: Chuẩn bị khạc LASER!");
@@ -98,28 +107,23 @@ public class BossAI : MonoBehaviour
 
         Vector3 startPos = firePoint != null ? firePoint.position : transform.position;
         Vector3 playerCurrentPos = player.position;
-        
         Vector3 direction = (playerCurrentPos - startPos).normalized;
         Vector3 finalTargetPosition = startPos + direction * laserMaxDistance; 
 
         previewLaser.enabled = true;
-
         float chargeElapsed = 0f;
         while (chargeElapsed < chargeDuration)
         {
             Vector3 currentStartPos = firePoint != null ? firePoint.position : transform.position;
             previewLaser.SetPosition(0, currentStartPos);
             previewLaser.SetPosition(1, finalTargetPosition);
-
             chargeElapsed += Time.deltaTime;
             yield return null;
         }
-
         previewLaser.enabled = false;
+
         mainLaser.enabled = true;
-
         bool damagedPlayer = false; 
-
         float laserElapsed = 0f;
         while (laserElapsed < laserDuration)
         {
@@ -134,58 +138,66 @@ public class BossAI : MonoBehaviour
                 {
                     hitInfo.collider.SendMessage("TakeDamage", 2, SendMessageOptions.DontRequireReceiver);
                     damagedPlayer = true; 
-                    Debug.Log("⚡ TIA LASER CỦA BOSS ĐÃ THIÊU ĐỐT PLAYER!");
                 }
             }
-
             laserElapsed += Time.deltaTime;
             yield return null;
         }
-
         mainLaser.enabled = false;
     }
 
-   // 🔥 CHIÊU 2: TRIỆU HỒI 3 QUẢ CẦU LỬA NHẮM VÀO VỊ TRÍ PLAYER
+    // 🔥 CHIÊU 2: NÂNG CẤP THẢ FIREBALL (Phase 1: 3 quả | Phase 2: 4 quả)
     IEnumerator FireRainRoutine()
     {
-        Debug.Log("📢 BOSS: Triệu hồi MƯA THIÊN THẠCH nhắm vào Player!");
-        
+        if (fireBallPrefab == null) yield break;
+
+        // Tự động điều chỉnh số lượng dựa theo Phase
+        int ballCount = isPhase2 ? 4 : 3;
+        Debug.Log($"📢 BOSS: Triệu hồi MƯA THIÊN THẠCH! (Số lượng: {ballCount} quả)");
+
         if (animator != null) animator.SetTrigger(attackTriggerName);
 
-        if (fireBallPrefab == null)
-        {
-            Debug.LogWarning("❌ Chưa kéo Prefab quả cầu lửa vào Boss!");
-            yield break;
-        }
+        float targetPlayerX = player != null ? player.position.x : transform.position.x;
 
-        // 🎯 KHÓA VỊ TRÍ: Lấy chính xác tọa độ X của Player ngay tại khung hình này
-        float targetPlayerX = transform.position.x; // Phòng hờ nếu Player biến mất
-        if (player != null)
+        for (int i = 0; i < ballCount; i++)
         {
-            targetPlayerX = player.position.x;
-        }
-
-        // Gọi đúng 3 quả cầu lửa dội xuống vị trí vừa khóa
-        for (int i = 0; i < 3; i++)
-        {
-            // Quả 1 rơi trúng tim, quả 2 và 3 lệch nhẹ sang trái/phải một chút để tạo vùng nổ lan rộng
             float offsetX = 0f;
-            if (i == 1) offsetX = -1.5f; // Quả thứ 2 lệch sang trái 1.5 mét
-            if (i == 2) offsetX = 1.5f;  // Quả thứ 3 lệch sang phải 1.5 mét
+            // Cấu hình vị trí rơi lệch nhẹ cho các quả cầu nối đuôi nhau
+            if (i == 1) offsetX = -1.5f;
+            if (i == 2) offsetX = 1.5f;
+            if (i == 3) offsetX = -3.0f; // Quả thứ 4 (Phase 2) dội rộng hơn sang trái
 
             float finalSpawnX = targetPlayerX + offsetX;
-            
-            // Tọa độ xuất phát từ trên trời (Y cao hơn vị trí Boss 8 mét) dọc theo trục X của Player
             Vector3 spawnPosition = new Vector3(finalSpawnX, transform.position.y + spawnHeight, 0f);
 
-            // Sinh ra quả cầu lửa
-            GameObject fireBall = Instantiate(fireBallPrefab, spawnPosition, Quaternion.identity);
-            
-            Debug.Log($"☄️ Quả cầu lửa thứ {i + 1} đang dội xuống vị trí cũ của Player (X: {finalSpawnX})");
-
-            // Chờ 0.4 giây trước khi thả quả tiếp theo
+            Instantiate(fireBallPrefab, spawnPosition, Quaternion.identity);
             yield return new WaitForSeconds(delayBetweenBalls);
         }
+    }
+
+    // 🔥 CHIÊU 3: TRIỆU HỒI ĐÚNG 1 ENEMY (Chỉ chạy 1 lần duy nhất khi lên Phase 2)
+    IEnumerator SummonEnemyRoutine()
+    {
+        hasSummonedEnemy = true; // Khóa ngay lập tức, không bao giờ dùng lại hàm này nữa
+        Debug.Log("🔥 BOSS BẬT PHASE 2: Triệu hồi đệ tử Skeleton trợ chiến!");
+
+        if (animator != null) animator.SetTrigger(attackTriggerName);
+
+        if (enemyPrefab != null)
+        {
+            // Xác định điểm sinh quái (nếu chưa gán transform thì sinh ngay cạnh Boss)
+            Vector3 spawnPos = summonPoint != null ? summonPoint.position : transform.position + new Vector3(-2f, 0f, 0f);
+            
+            // Tiến hành tạo ra 1 quái vật độc lập
+            GameObject summonedEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            summonedEnemy.name = "Summoned_Skeleton"; 
+        }
+        else
+        {
+            Debug.LogWarning("❌ Chưa kéo Prefab Enemy (Skeleton) vào bảng quản lý của Boss!");
+        }
+
+        yield return new WaitForSeconds(1f); // Khựng nhẹ hành động tung chiêu gọi đệ
     }
 
     public void TakeDamage(int damage)
@@ -195,12 +207,17 @@ public class BossAI : MonoBehaviour
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP); 
 
-        if (hpSlider != null)
-        {
-            hpSlider.value = currentHP;
-        }
+        if (hpSlider != null) hpSlider.value = currentHP;
 
         Debug.Log($"😱 Boss trúng đòn! Mất {damage} HP. Máu còn lại: {currentHP}/{maxHP}");
+
+        // 🔥 LOGIC KIỂM TRA CHUYỂN PHASE 2 (Khi máu dưới hoặc bằng 30%)
+        if (currentHP <= 30 && !isPhase2)
+        {
+            isPhase2 = true;
+            Debug.LogWarning("⚠️⚠️⚠️ CẢNH BÁO: BOSS ĐÃ BƯỚC SANG PHASE 2! SỨC MẠNH TĂNG CAO!");
+            // Tại đây bạn có thể đổi màu Boss hoặc bật hiệu ứng nổ phẫn nộ nếu có
+        }
 
         if (currentHP <= 0)
         {
@@ -212,13 +229,10 @@ public class BossAI : MonoBehaviour
     {
         isDead = true;
         Debug.Log("💀 BOSS ĐÃ BỊ TIÊU DIỆT!");
-        
         StopAllCoroutines();
         if (mainLaser != null) mainLaser.enabled = false;
         if (previewLaser != null) previewLaser.enabled = false;
-
         if (animator != null) animator.SetTrigger("die");
-
         Destroy(gameObject, 1.5f);
     }
 }

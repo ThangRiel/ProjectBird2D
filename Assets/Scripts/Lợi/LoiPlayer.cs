@@ -156,7 +156,7 @@ public class LoiPlayer : MonoBehaviour
             moveInput * moveSpeed,
             rb.linearVelocity.y);
     }
-        private IEnumerator DashSkillCoroutine()
+    private IEnumerator DashSkillCoroutine()
     {
         isDashing = true;
 
@@ -249,7 +249,7 @@ public class LoiPlayer : MonoBehaviour
         rb.gravityScale = originalGravity;
         isDashing = false;
     }
-        public void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if (isPlayerDead)
             return;
@@ -310,22 +310,17 @@ public class LoiPlayer : MonoBehaviour
         isAttacking = false;
     }
 
+    // Thay vì dùng biến đơn, bạn dùng hàm này để đảm bảo quét trúng cả Boss dù Layer thế nào
     private void Attack()
     {
-        if (attackPoint == null)
-            return;
+        // Tạo mask quét: Lấy Layer Enemy hiện tại CỘNG THÊM Layer Boss
+        int combinedLayer = enemyLayer | LayerMask.GetMask("Boss");
 
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(
-            attackPoint.position,
-            attackRadius,
-            enemyLayer);
+        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, combinedLayer);
 
-        foreach (Collider2D enemy in enemies)
+        foreach (var obj in hitObjects)
         {
-            enemy.SendMessage(
-                "TakeDamage",
-                attackDamage,
-                SendMessageOptions.DontRequireReceiver);
+            obj.SendMessage("TakeDamage", attackDamage, SendMessageOptions.DontRequireReceiver);
         }
     }
 
