@@ -237,16 +237,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e6208312353d45aad04cfa62320ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  maxHealth: 3
-  stompPoint: {fileID: 3849405733712657657}
-  bounceForce: 8
+  maxHealth: 50
   moveSpeed: 2
-  patrolDistance: 3
-  spriteFacesRight: 1
-  attackRange: 1.5
+  patrolDistance: 8
+  detectRange: 6
+  attackRange: 1
   attackCooldown: 1.5
-  damageToPlayer: 10
-  destroyDelay: 1
+  damage: 10
+  spriteFacesRight: 1
 --- !u!95 &2559975880566740090
 Animator:
   serializedVersion: 7

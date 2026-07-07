@@ -1,43 +1,51 @@
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
 {
-    [Header("Stats")]
+    [Header("Health")]
     [SerializeField] private int maxHealth = 3;
 
-    [Header("Stomp")]
-    [SerializeField] private Transform stompPoint;
-    [SerializeField] private float bounceForce = 8f;
-
-    [Header("Patrol")]
+    [Header("Movement")]
     [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float patrolDistance = 3f;
-    [SerializeField] private bool spriteFacesRight = false;
+    [SerializeField] private float patrolDistance = 4f;
+
+    [Header("Detection")]
+    [SerializeField] private float detectRange = 6f;
+    [SerializeField] private float attackRange = 1.2f;
 
     [Header("Attack")]
-    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private int damage = 10;
     [SerializeField] private float attackCooldown = 1.5f;
-    [SerializeField] private int damageToPlayer = 10;
+    [SerializeField] private float attackDuration = 0.6f;
 
-    [Header("Death")]
-    [SerializeField] private float destroyDelay = 1f;
-
-    private int currentHealth;
+    [Header("Sprite")]
+    [SerializeField] private bool spriteFacesRight = false;
 
     private Animator anim;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+    private Transform player;
 
-    private Transform playerTransform;
+    private int currentHealth;
 
     private float leftLimit;
     private float rightLimit;
     private bool movingRight = true;
 
+    private bool isDead;
+    private bool isAttacking;
     private float nextAttackTime;
-    private bool isDead = false;
+
+    private enum State
+    {
+        Patrol,
+        Chase,
+        Attack
+    }
+
+    private State state;
 
     private void Awake()
     {
@@ -53,12 +61,10 @@ public class Enemy : MonoBehaviour
         leftLimit = transform.position.x - patrolDistance;
         rightLimit = transform.position.x + patrolDistance;
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject obj = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
-        {
-            playerTransform = player.transform;
-        }
+        if (obj != null)
+            player = obj.transform;
     }
 
     private void Update()
@@ -66,30 +72,43 @@ public class Enemy : MonoBehaviour
         if (isDead)
             return;
 
-        if (playerTransform == null)
+        if (isAttacking)
+            return;
+
+        if (player == null)
         {
             Patrol();
             return;
         }
 
-        float distance = Vector2.Distance(
-            transform.position,
-            playerTransform.position
-        );
+        float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance <= attackRange)
-        {
-            AttackPlayer();
-        }
+            state = State.Attack;
+        else if (distance <= detectRange)
+            state = State.Chase;
         else
+            state = State.Patrol;
+
+        switch (state)
         {
-            Patrol();
+            case State.Patrol:
+                Patrol();
+                break;
+
+            case State.Chase:
+                ChasePlayer();
+                break;
+
+            case State.Attack:
+                AttackPlayer();
+                break;
         }
     }
 
-    //=================================
-    // TUẦN TRA
-    //=================================
+    //========================
+    // Patrol
+    //========================
     private void Patrol()
     {
         anim.SetBool("isRunning", true);
@@ -122,56 +141,83 @@ public class Enemy : MonoBehaviour
         UpdateFacing(movingRight);
     }
 
-    //=================================
-    // TẤN CÔNG
-    //=================================
-    private void AttackPlayer()
+    //========================
+    // Chase
+    //========================
+    private void ChasePlayer()
     {
-        anim.SetBool("isRunning", false);
+        anim.SetBool("isRunning", true);
 
-        bool playerIsRight =
-            playerTransform.position.x >
-            transform.position.x;
+        bool faceRight = player.position.x > transform.position.x;
 
-        UpdateFacing(playerIsRight);
+        UpdateFacing(faceRight);
 
-        if (Time.time >= nextAttackTime)
-        {
-            anim.SetTrigger("Attack");
+        Vector3 target = player.position;
+        target.y = transform.position.y;
 
-            Debug.Log(
-                gameObject.name +
-                " đánh Player, gây " +
-                damageToPlayer +
-                " sát thương."
-            );
-
-            // Sau này thêm:
-            // playerTransform.GetComponent<PlayerHealth>()
-            //     ?.TakeDamage(damageToPlayer);
-
-            nextAttackTime =
-                Time.time + attackCooldown;
-        }
+        transform.position = Vector2.MoveTowards(
+            transform.position,
+            target,
+            moveSpeed * Time.deltaTime);
     }
 
-    //=================================
-    // NHẬN SÁT THƯƠNG
-    //=================================
+    //========================
+    // Attack
+    //========================
+    private void AttackPlayer()
+    {
+        if (Time.time < nextAttackTime)
+            return;
+
+        StartCoroutine(AttackRoutine());
+    }
+
+    private IEnumerator AttackRoutine()
+    {
+        isAttacking = true;
+
+        anim.SetBool("isRunning", false);
+
+        bool faceRight = player.position.x > transform.position.x;
+        UpdateFacing(faceRight);
+
+        rb.linearVelocity = Vector2.zero;
+
+        anim.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(attackDuration * 0.5f);
+
+        if (player != null)
+        {
+            float distance = Vector2.Distance(
+                transform.position,
+                player.position);
+
+            if (distance <= attackRange + 0.2f)
+            {
+                player.SendMessage(
+                    "TakeDamage",
+                    damage,
+                    SendMessageOptions.DontRequireReceiver);
+            }
+        }
+
+        yield return new WaitForSeconds(attackDuration * 0.5f);
+
+        nextAttackTime = Time.time + attackCooldown;
+
+        isAttacking = false;
+    }
+
+    //========================
+    // Take Damage
+    //========================
     public void TakeDamage(int damage)
     {
         if (isDead)
             return;
 
         currentHealth -= damage;
-
-        Debug.Log(
-            gameObject.name +
-            " nhận " +
-            damage +
-            " sát thương. Máu còn: " +
-            currentHealth
-        );
 
         if (currentHealth > 0)
         {
@@ -183,82 +229,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //=================================
-    // CHẾT
-    //=================================
+    //========================
+    // Die
+    //========================
     private void Die()
     {
-        if (isDead)
-            return;
-
         isDead = true;
 
-        Debug.Log(gameObject.name + " chết!");
-
-        anim.ResetTrigger("Hit");
-        anim.ResetTrigger("Attack");
+        StopAllCoroutines();
 
         anim.SetBool("isRunning", false);
         anim.SetTrigger("Die");
 
-        // Tắt toàn bộ collider
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
+
         foreach (Collider2D col in GetComponents<Collider2D>())
-        {
             col.enabled = false;
-        }
 
-        // Dừng vật lý
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.simulated = false;
-        }
-
-        Destroy(gameObject, destroyDelay);
+        Destroy(gameObject, 1f);
     }
 
-    //=================================
-    // PLAYER DẪM ĐẦU ENEMY
-    //=================================
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (isDead)
-            return;
-
-        if (!collision.gameObject.CompareTag("Player"))
-            return;
-
-        Rigidbody2D playerRb =
-            collision.gameObject.GetComponent<Rigidbody2D>();
-
-        if (playerRb == null)
-            return;
-
-        // Player phải đang rơi xuống
-        if (playerRb.linearVelocity.y >= 0f)
-            return;
-
-        // Kiểm tra Player có ở trên StompPoint không
-        if (stompPoint != null &&
-            playerRb.position.y >= stompPoint.position.y)
-        {
-            Debug.Log(gameObject.name + " bị dẫm!");
-
-            // Cho Player nảy lên
-            playerRb.linearVelocity =
-                new Vector2(
-                    playerRb.linearVelocity.x,
-                    bounceForce
-                );
-
-            // Enemy chết ngay
-            Die();
-        }
-    }
-
-    //=================================
-    // ĐỔI HƯỚNG
-    //=================================
+    //========================
+    // Flip
+    //========================
     private void UpdateFacing(bool facingRight)
     {
         if (spriteRenderer != null)
@@ -268,43 +262,23 @@ public class Enemy : MonoBehaviour
                 ? !facingRight
                 : facingRight;
         }
-        else
-        {
-            Vector3 scale =
-                transform.localScale;
-
-            float sign =
-                spriteFacesRight ? 1f : -1f;
-
-            scale.x =
-                (facingRight
-                    ? Mathf.Abs(scale.x)
-                    : -Mathf.Abs(scale.x))
-                * sign;
-
-            transform.localScale =
-                scale;
-        }
     }
 
-    //=================================
-    // GIZMOS
-    //=================================
+    //========================
+    // Gizmos
+    //========================
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(
-            transform.position,
-            attackRange
-        );
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectRange);
 
-        if (stompPoint != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(
-                stompPoint.position,
-                0.15f
-            );
-        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.cyan;
+
+        Gizmos.DrawLine(
+            new Vector3(transform.position.x - patrolDistance, transform.position.y),
+            new Vector3(transform.position.x + patrolDistance, transform.position.y));
     }
 }
