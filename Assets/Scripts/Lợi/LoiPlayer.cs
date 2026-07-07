@@ -142,9 +142,14 @@ public class LoiPlayer : MonoBehaviour
             StartCoroutine(DashSkillCoroutine());
         }
 
-        animator.SetBool("isRunning", Mathf.Abs(moveInput) > 0.1f);
-        animator.SetBool("isJumping", !isGrounded);
-        animator.SetBool("isAttacking", isAttacking);
+        // tốc độ rơi / bay
+        animator.SetFloat("verticalSp", rb.linearVelocity.y);
+
+        // trạng thái bay
+        animator.SetBool("isFlying", !isGrounded);
+
+        // trạng thái đánh
+        animator.SetBool("IsAttacking", isAttacking);
     }
 
     private void FixedUpdate()
