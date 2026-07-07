@@ -5,12 +5,13 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System;
 using TMPro;
+using UnityEngine.UI;
 
 public class LeaderboardManager : MonoBehaviour
 {
     private bool isReady = false;
     public string leaderboardId = "HighscoreBoardBirt2D"; //! Nhớ check lại đúng ID nha
-    public TMP_InputField inputScore;
+    public TMP_Text inputScore;
     public TMP_InputField inputName;
     async void Start()
     {
@@ -29,20 +30,51 @@ public class LeaderboardManager : MonoBehaviour
     public void Run()
     {
         string playername = inputName.text;
+        if (string.IsNullOrWhiteSpace(playername))
+        {
+            playername = "NoName";
+        }
+        else
+        {
+            playername = SanitizePlayerName(playername);
+        }
+
+        Debug.Log("Tên người chơi: " + playername);
+        if (inputScore == null || string.IsNullOrWhiteSpace(inputScore.text))
+        {
+            Debug.LogWarning("0");
+            return;
+        }
         // Ép kiểu chữ từ InputField thành số nguyên (int)
         if (int.TryParse(inputScore.text, out int score))
         {
-            DatTenVaGuiDiem(playername, score);
+            Debug.Log("Điểm: " + score);
+            SendScore(playername, score);
         }
         else
         {
             Debug.LogWarning("Mày nhập điểm bị sai, phải nhập số nguyên!");
         }
-        
+
     }
-    public async void DatTenVaGuiDiem(string tenNguoiChoi, int diemSo)
+
+    private string SanitizePlayerName(string input) //* Chuẩn hóa tên người chơi, loại bỏ ký tự đặc biệt và khoảng trắng
     {
-        var response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, diemSo);
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            return "NoName";
+        }
+
+        string sanitized = input.Trim();
+        sanitized = System.Text.RegularExpressions.Regex.Replace(sanitized, @"\s+", "");
+        sanitized = System.Text.RegularExpressions.Regex.Replace(sanitized, @"[^a-zA-Z0-9]", "");
+
+        return string.IsNullOrWhiteSpace(sanitized) ? "NoName" : sanitized;
+    }
+
+    public async void SendScore(string name, int score)
+    {
+
         if (!isReady)
         {
             Debug.LogWarning("UGS chưa sẵn sàng!");
@@ -51,24 +83,14 @@ public class LeaderboardManager : MonoBehaviour
 
         try
         {
-            if (string.IsNullOrWhiteSpace(tenNguoiChoi))
-            {
-                tenNguoiChoi = "No Name";
-            }
-            if (tenNguoiChoi.Equals("ThangDepTrai"))
-            {
-                tenNguoiChoi = "ThangDepTrai";
-                response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, float.MaxValue);
-                return;
-            }
-            await AuthenticationService.Instance.UpdatePlayerNameAsync(tenNguoiChoi);
-            Debug.Log("Đã set tên thành: " + tenNguoiChoi);
+
+            await AuthenticationService.Instance.UpdatePlayerNameAsync(name);
+            Debug.Log("Đã set tên thành: " + name);
 
             // 2. Gửi điểm lên Leaderboard
-
-            response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, diemSo);
-            Debug.Log($"Đã gửi điểm! Tên: {tenNguoiChoi} - Điểm: {response.Score}");
-            Debug.Log(diemSo);
+            var response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, score);
+            Debug.Log($"Đã gửi điểm! Tên: {name} - Điểm: {response.Score}");
+            Debug.Log(score);
         }
         catch (System.Exception e)
         {

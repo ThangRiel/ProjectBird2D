@@ -66,7 +66,7 @@ public class HealthManager : MonoBehaviour
     System.Collections.IEnumerator ShowGameOverAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        GameManager gm = FindObjectOfType<GameManager>();
+        GameManager gm = FindAnyObjectByType<GameManager>();
         if (gm != null) gm.GameOver();
     }
 
