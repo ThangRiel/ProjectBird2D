@@ -60,7 +60,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &7064962521198415018
 MonoBehaviour:
@@ -136,8 +136,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -12.6, y: -5.9}
+  m_SizeDelta: {x: 32.6556, y: 33.2412}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128500926651275933
 MonoBehaviour:
@@ -186,7 +186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 33.6976}
+  m_AnchoredPosition: {x: -2.7, y: 2.6}
   m_SizeDelta: {x: 29.6976, y: 29.6976}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3860675601996655229
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b3335f2182e30cd4a8d212a0e4f21227, type: 3}
+  m_Sprite: {fileID: -3973867170597721767, guid: 3e1d35277bbc4994b80d0127adeedf0b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

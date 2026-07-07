@@ -65,7 +65,7 @@ public class ObstacleHandler : MonoBehaviour
         HealthManager health = GetComponent<HealthManager>();
         if (health != null)
             health.TakeDamage(1);
-
+        
         // Bất tử tạm thời
         isInvincible = true;
         invincibleTimer = invincibleDuration;

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     [SerializeField] private Text scoreText;
     [SerializeField] private GameObject gameOverUI; // ! Đã bỏ comment
+    [SerializeField] public string gameSceneName = "Game1";
+    [SerializeField] public string MenuName = "UI";
     private bool isGameOver = false;
     [SerializeField] public Tag[] tags;
 
@@ -26,7 +28,14 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("game started");
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(gameSceneName);
+        Time.timeScale = 1f;
+    }
+    public void BackToMenu()
+    {
+        Debug.Log("back to menu");
+        SceneManager.LoadScene(MenuName);
+        Time.timeScale = 1f;
     }
 
     public void addScoreByTag(string itemTag)
@@ -58,7 +67,7 @@ public class GameManager : MonoBehaviour
         if (!isGameOver)
         {
             isGameOver = true;
-            gameOverUI.SetActive(true); // ! Đã bỏ comment
+            gameOverUI.SetActive(true);
             Time.timeScale = 0f;
         }
     }
@@ -67,7 +76,7 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         // UpdateScoreText();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(gameSceneName);
     }
     public bool IsGameOver()
     {

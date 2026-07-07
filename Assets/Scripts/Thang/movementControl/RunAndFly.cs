@@ -31,12 +31,13 @@ public class RunAndFly : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private float moveInput;
-
+    private GameManager gameManager;
     void Awake()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         dustPooler = FindAnyObjectByType<SimpleObjectPooler>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     void Update()
@@ -157,10 +158,15 @@ public class RunAndFly : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
-        rb.linearVelocity = Vector2.zero; // Dừng mọi di chuyển
+        // rb.linearVelocity = Vector2.zero; // Dừng mọi di chuyển
+        // Time.timeScale = 0f; //* Dừng thời gian
         Debug.LogError("Hết máu! Mày đã thua!");
 
         // Thêm logic kích hoạt Anim chết hoặc hiện bảng Game Over ở đây
+        if (gameManager != null)
+        {
+            gameManager.GameOver();
+        }
     }
 
     // Khi va chạm với chướng ngại vật (Obstacle)

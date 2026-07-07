@@ -40,7 +40,7 @@ public class LeaderBoardDisplay : MonoBehaviour
                 if (texts.Length >= 3)
                 {
                     texts[0].text = "#" + (entry.Rank + 1); // Rank bắt đầu từ 0
-                    texts[1].text = string.IsNullOrWhiteSpace(entry.PlayerName) ? "Ẩn danh" : entry.PlayerName;
+                    texts[1].text = string.IsNullOrWhiteSpace(entry.PlayerName) ? "No Name" : entry.PlayerName;
                     texts[2].text = entry.Score.ToString();
                 }
             }
