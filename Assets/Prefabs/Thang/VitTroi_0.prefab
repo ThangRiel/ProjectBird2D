@@ -11,8 +11,11 @@ GameObject:
   - component: {fileID: 2228451349860666743}
   - component: {fileID: 1404964544439458433}
   - component: {fileID: 8529576819308345780}
+  - component: {fileID: 6821180073918134601}
   - component: {fileID: 8122079171781422524}
   - component: {fileID: 5788914289185051463}
+  - component: {fileID: 6200370493973746979}
+  - component: {fileID: 1350462548458765095}
   m_Layer: 0
   m_Name: VitTroi_0
   m_TagString: Untagged
@@ -121,6 +124,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &6821180073918134601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194613383886184398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3ccfff9c53129449d44b0bea13a96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Run
+  moveSpeed: 5
+  speedAdjust: 4
+  jumpForce: 12
+  anchorTransform: {fileID: 0}
+  maxForwardOffset: 11
+  maxBackwardOffset: 11
+  outOfBoundsTimeLimit: 2
+  fallThresholdAngle: 10
+  uprightSpeed: 5
+  SpeedMultiplier: 0.5
+  dustPooler: {fileID: 0}
+  dustCreationRate: 0.2
+  test: 0
 --- !u!61 &8122079171781422524
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,3 +217,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6200370493973746979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194613383886184398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279cb6bcceb569f46beeee1c7c403d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleHandler
+  knockbackForce: 5
+  invincibleDuration: 1
+  logHits: 1
+--- !u!114 &1350462548458765095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194613383886184398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633bf4dfcef357348900e05994f6dd16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  maxHealth: 4
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 5726080727020278575, guid: 9340b31c00db1984ba5e5397e95e706a, type: 3}
+  bigerHeart: {fileID: 0}
+  emptyHeart: {fileID: 7885684081779559860, guid: 9340b31c00db1984ba5e5397e95e706a, type: 3}
