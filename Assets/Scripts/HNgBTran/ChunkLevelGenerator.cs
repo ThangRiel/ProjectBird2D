@@ -1,39 +1,44 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+//! đã sửa để có thể thêm nhiều zone, mỗi zone có thể có nhiều chunk prefab khác nhau. Khi player đi qua mốc startX của zone tiếp theo, sẽ chuyển sang zone đó và sinh chunk từ mảng prefabs của zone mới
+// Khai báo class này để hiển thị được trong Inspector
+[System.Serializable]
+public class MapZone
+{
+    public string zoneName;
+    public float startX; //! Tọa độ X mà mốc này bắt đầu được sinh ra
+    public GameObject[] chunkPrefabs;
+}
 
 public class ChunkLevelGenerator : MonoBehaviour
 {
     [Header("References")]
-    public Transform player;               // kéo Bird vào
-    public Camera cam;                     // để trống = Camera.main
+    public Transform player;
+    public Camera cam;
 
-    [Header("Chunk Prefabs")]
-    public GameObject[] chunkPrefabs;      // kéo các chunk prefab vào
+    [Header("Zones Setup")]
+    public MapZone[] zones; // Kéo các mảng map vào đây
+    private int currentZoneIndex = 0;
 
     [Header("Spawn")]
-    public int prewarmCount = 5;           // sinh sẵn lúc đầu
-    public float spawnAhead = 20f;         // spawn thêm khi player cách end chunk cuối < 20u
+    public int prewarmCount = 5;
+    public float spawnAhead = 20f;
 
     [Header("Align")]
-    public float lockY = 0f;              // ép tất cả chunk cùng cao độ
+    public float lockY = 0f;
 
     [Header("Despawn")]
-    public float despawnMargin = 2f;       // xóa khi chunk ra khỏi màn hình bên trái 2 units
+    public float despawnMargin = 2f;
 
     [Header("Spacing")]
-    public float gapX = 0f;               // khoảng cách giữa các chunk
+    public float gapX = 0f;
 
-    // ── Internal ──────────────────────────────────────────────
-    private float lastEndX;               // X của EndPoint chunk cuối cùng
-    private readonly Queue<(GameObject go, float endX)> spawned
-        = new Queue<(GameObject go, float endX)>();
+    private float lastEndX;
+    private readonly Queue<(GameObject go, float endX)> spawned = new Queue<(GameObject go, float endX)>();
 
-    // ── Lifecycle ──────────────────────────────────────────────
     void Start()
     {
         if (cam == null) cam = Camera.main;
-
-        // Spawn từ vị trí player trở đi
         lastEndX = player != null ? player.position.x : 0f;
 
         for (int i = 0; i < prewarmCount; i++)
@@ -45,25 +50,28 @@ public class ChunkLevelGenerator : MonoBehaviour
         if (player == null) return;
         if (cam == null) cam = Camera.main;
 
-        // Spawn thêm khi player gần tới cuối chunk cuối
         if (player.position.x > lastEndX - spawnAhead)
             SpawnNext();
 
         DespawnOffscreen();
     }
 
-    // ── Spawn ──────────────────────────────────────────────────
     void SpawnNext()
     {
-        if (chunkPrefabs == null || chunkPrefabs.Length == 0)
+        if (zones == null || zones.Length == 0) return;
+
+        // Check xem lastEndX đã vượt ngưỡng của Zone tiếp theo chưa
+        if (currentZoneIndex < zones.Length - 1 && lastEndX >= zones[currentZoneIndex + 1].startX)
         {
-            Debug.LogError("[ChunkGen] chunkPrefabs rỗng!");
-            return;
+            currentZoneIndex++;
+            Debug.Log($"[ChunkGen] Chuyển sang zone: {zones[currentZoneIndex].zoneName}");
         }
 
-        GameObject prefab = chunkPrefabs[Random.Range(0, chunkPrefabs.Length)];
+        // Sinh map từ mảng prefabs của Zone hiện tại
+        GameObject[] currentPrefabs = zones[currentZoneIndex].chunkPrefabs;
+        if (currentPrefabs == null || currentPrefabs.Length == 0) return;
 
-        // Spawn tại gốc tọa độ world (không parented)
+        GameObject prefab = currentPrefabs[Random.Range(0, currentPrefabs.Length)];
         GameObject go = Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
         Transform sp = go.transform.Find("StartPoint");
@@ -76,22 +84,13 @@ public class ChunkLevelGenerator : MonoBehaviour
             return;
         }
 
-        // Tính offset để StartPoint của chunk mới khớp với lastEndX
         float offsetX = lastEndX + gapX - sp.position.x;
-        go.transform.position = new Vector3(
-            go.transform.position.x + offsetX,
-            lockY,
-            0f
-        );
+        go.transform.position = new Vector3(go.transform.position.x + offsetX, lockY, 0f);
 
-        // Cập nhật lastEndX
         lastEndX = ep.position.x;
         spawned.Enqueue((go, lastEndX));
-
-        Debug.Log($"[ChunkGen] Spawned '{prefab.name}' | endX: {lastEndX:F1}");
     }
 
-    // ── Despawn ────────────────────────────────────────────────
     void DespawnOffscreen()
     {
         if (cam == null) return;
@@ -99,26 +98,21 @@ public class ChunkLevelGenerator : MonoBehaviour
         while (spawned.Count > 0)
         {
             var (go, endX) = spawned.Peek();
-
             if (go == null)
             {
                 spawned.Dequeue();
                 continue;
             }
 
-            // Chuyển endX sang viewport (0 = trái màn hình, 1 = phải)
             Vector3 viewportPos = cam.WorldToViewportPoint(new Vector3(endX, 0f, 0f));
-
-            // Xóa khi chunk hoàn toàn ra khỏi màn hình bên trái
             if (viewportPos.x < -despawnMargin)
             {
                 spawned.Dequeue();
                 Destroy(go);
-                Debug.Log($"[ChunkGen] Despawned chunk | endX: {endX:F1}");
             }
             else
             {
-                break; // Queue theo thứ tự, còn lại chưa cần xóa
+                break;
             }
         }
     }

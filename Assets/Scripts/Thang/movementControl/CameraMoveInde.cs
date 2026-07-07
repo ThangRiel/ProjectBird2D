@@ -3,9 +3,6 @@ using UnityEngine;
 public class CameraMoveIndependent : MonoBehaviour
 {
     public float speed = 5f;
-    public GameObject cantPassWall;
-    public GameObject LoseWall;
-    
 
     void Start()
     {
