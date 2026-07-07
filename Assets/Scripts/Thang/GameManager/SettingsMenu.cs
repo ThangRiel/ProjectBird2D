@@ -32,12 +32,14 @@ public class MinitSettings : MonoBehaviour
     public void SaveAndClose()
     {
         PlayerPrefs.Save(); // Lưu cứng vào máy
+        Time.timeScale = 1f;
         gameObject.SetActive(false); // Ẩn menu đi
     }
 
     public void JustClose()
     {
         LoadSettings();
+        Time.timeScale = 1f;
         gameObject.SetActive(false); // Ẩn menu đi
     }
 
@@ -47,6 +49,7 @@ public class MinitSettings : MonoBehaviour
         Debug.Log("load");
         gameObject.SetActive(true);
         Debug.Log("da bam");
+        Time.timeScale = 0f;
     }
 
     private void LoadSettings()

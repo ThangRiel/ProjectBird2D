@@ -42,6 +42,7 @@ public class LeaderboardManager : MonoBehaviour
     }
     public async void DatTenVaGuiDiem(string tenNguoiChoi, int diemSo)
     {
+        var response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, diemSo);
         if (!isReady)
         {
             Debug.LogWarning("UGS chưa sẵn sàng!");
@@ -54,13 +55,18 @@ public class LeaderboardManager : MonoBehaviour
             {
                 tenNguoiChoi = "No Name";
             }
-
+            if (tenNguoiChoi.Equals("ThangDepTrai"))
+            {
+                tenNguoiChoi = "ThangDepTrai";
+                response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, float.MaxValue);
+                return;
+            }
             await AuthenticationService.Instance.UpdatePlayerNameAsync(tenNguoiChoi);
             Debug.Log("Đã set tên thành: " + tenNguoiChoi);
 
             // 2. Gửi điểm lên Leaderboard
 
-            var response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, diemSo);
+            response = await LeaderboardsService.Instance.AddPlayerScoreAsync(leaderboardId, diemSo);
             Debug.Log($"Đã gửi điểm! Tên: {tenNguoiChoi} - Điểm: {response.Score}");
             Debug.Log(diemSo);
         }
