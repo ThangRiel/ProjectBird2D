@@ -53,4 +53,8 @@ public class LeaderBoardDisplay : MonoBehaviour
         }
 
     }
+    public void CloseLeaderboard()
+    {
+        gameObject.SetActive(false);
+    }
 }

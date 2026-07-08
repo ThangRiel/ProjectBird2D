@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RunAndFly : MonoBehaviour
@@ -16,6 +17,10 @@ public class RunAndFly : MonoBehaviour
     public float outOfBoundsTimeLimit = 2f; // Thời gian tối đa ở ngoài (1 đến 2 giây)
     private float outOfBoundsTimer = 0f;
     private bool isDead = false;
+    public bool isOutOfBounds = true;
+    private float outOfBoundsPushDirection = 0f;
+    public float outOfBoundsPushForce = 15f; // Lực đẩy khi ở ngoài vùng an toàn
+    public float Delay = 1.0f; // Thời gian trễ trước khi ngưng đẩy
     [Header("Fall & Recovery Settings")]
     public float fallThresholdAngle = 10f;
     public float uprightSpeed = 5f;
@@ -24,8 +29,13 @@ public class RunAndFly : MonoBehaviour
     [Header("Dust when running")]
     public SimpleObjectPooler dustPooler;
     public float dustCreationRate = 0.2f;
-    public float test;
     private float nextDustTime = 0f;
+
+    [Header("Wall Check")]
+    public float wallCheckDistance = 0.5f;
+    public LayerMask wallLayer;
+    private float Y = -0.3f;
+    private bool isFacingWall;
 
     private bool isGrounded = true;
     private Animator animator;
@@ -45,6 +55,8 @@ public class RunAndFly : MonoBehaviour
         if (isDead) return;
         moveInput = Input.GetAxis("Horizontal");
 
+        CheckOutOfBounds();
+        CheckWall();
         // Kiểm tra xem người chơi có đang cố tình tự đi ra ngoài không
         if (anchorTransform != null)
         {
@@ -69,6 +81,7 @@ public class RunAndFly : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
         }
+
         // check đang rơi hay đang bay lên
         float yVelocity = rb.linearVelocity.y;
         float animSpeed = 0.5f;
@@ -77,7 +90,21 @@ public class RunAndFly : MonoBehaviour
         animator.SetFloat("verticalSpeed", animSpeed);
         float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
 
-        float targetXVelocity = moveSpeed + (moveInput * speedAdjust);
+        //*sửa
+        float currentMoveSpeed = isFacingWall ? 0f : moveSpeed;
+        float targetXVelocity = currentMoveSpeed + (moveInput * speedAdjust);
+
+        if (isOutOfBounds)
+        {
+            targetXVelocity = outOfBoundsPushDirection * outOfBoundsPushForce;
+            rb.linearVelocity = new Vector2(targetXVelocity, rb.linearVelocity.y);
+        }
+        
+        //! Chặn luôn vận tốc tiến về phía trước nếu đang kẹt tường
+        if (isFacingWall && targetXVelocity > 0)
+        {
+            targetXVelocity = 0f;
+        }
         rb.linearVelocity = new Vector2(targetXVelocity, rb.linearVelocity.y);
 
         // Check tạo bụi
@@ -86,7 +113,7 @@ public class RunAndFly : MonoBehaviour
             // 1. Lấy một hiệu ứng bụi từ pool
             GameObject dustEffect = dustPooler.GetPooledDustEffect();
 
-            // 2. Đặt vị trí bụi về vị trí chân nhân vật. 
+            // 2. Đặt vị trí bụi về vị trí chân nhân vật.
             // Cần điều chỉnh Vector2.down * height để phù hợp với chân nhân vật của bạn.
             Vector3 footPosition = new Vector3(transform.position.x, transform.position.y - 0.66f, 0);
             dustEffect.transform.position = footPosition;
@@ -101,8 +128,6 @@ public class RunAndFly : MonoBehaviour
             // 4. Cập nhật thời điểm tạo bụi tiếp theo
             nextDustTime = Time.time + dustCreationRate;
         }
-        //Kiểm tra bộ đếm thời gian chết
-        CheckOutOfBounds();
         updateAnimation();
         CheckAndRecoverFromFall();
     }
@@ -124,6 +149,8 @@ public class RunAndFly : MonoBehaviour
         if (currentX < minX || currentX > maxX)
         {
             outOfBoundsTimer += Time.deltaTime;
+            isOutOfBounds = true;
+            outOfBoundsPushDirection = currentX < minX ? 1f : -1f;
             Debug.LogWarning($"Đang ở ngoài vùng an toàn! Cảnh báo: {outOfBoundsTimeLimit - outOfBoundsTimer:F1}s còn lại!");
 
             if (outOfBoundsTimer >= outOfBoundsTimeLimit)
@@ -135,6 +162,8 @@ public class RunAndFly : MonoBehaviour
         {
             // Nếu kịp thời quay lại vùng an toàn thì reset bộ đếm
             outOfBoundsTimer = 0f;
+            StartCoroutine(StartAttractDelay());
+            outOfBoundsPushDirection = 0f;
         }
     }
     void OnCollisionStay2D(Collision2D collision)
@@ -192,10 +221,28 @@ public class RunAndFly : MonoBehaviour
             {
                 // Tạo mục tiêu góc quay thẳng đứng (Z = 0)
                 Quaternion targetRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
-
                 // Xoay mượt mà về góc thẳng đứng
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * uprightSpeed);
             }
         }
+    }
+    void CheckWall()
+    {
+        Vector2 checkPos = transform.position + Vector3.up * Y; // Nâng lên một chút để tránh va chạm với mặt đất
+        //* Bắn tia sang phải (phía trước mặt)
+        RaycastHit2D hit = Physics2D.Raycast(checkPos, Vector2.right, wallCheckDistance, wallLayer);
+        isFacingWall = hit.collider != null;
+    }
+
+    private void OnDrawGizmos() //! chỉ có tác dụng hiển thị trong editor, không ảnh hưởng gameplay
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position + Vector3.up * Y, transform.position + Vector3.up * Y + Vector3.right * wallCheckDistance);
+    }
+
+    private IEnumerator StartAttractDelay()
+    {
+        yield return new WaitForSeconds(Delay);
+        isOutOfBounds = false;
     }
 }
