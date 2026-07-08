@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: c2c001f4dd2b8f740aa64d03980af935
   - enabled: 1
-    path: Assets/Scenes/BossScenes.unity
+    path: Assets/Scenes/BossFireScenes.unity
     guid: 05d9f5fa95772e0439bc0458a0aa8149
   - enabled: 1
     path: Assets/Scenes/Game1.unity
