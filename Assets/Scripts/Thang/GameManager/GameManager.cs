@@ -3,10 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using UnityEngine.Assertions.Must;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
     [SerializeField] private Text scoreText;
+    [SerializeField] private TMP_Text scoreTextTMP;
     [SerializeField] private GameObject gameOverUI; // ! Đã bỏ comment
     [SerializeField] public string gameSceneName = "Game1";
     [SerializeField] public string MenuName = "UI";
@@ -60,7 +62,10 @@ public class GameManager : MonoBehaviour
         {
             scoreText.text = score.ToString();
         }
-
+        if (scoreTextTMP != null)
+        {
+            scoreTextTMP.text = score.ToString();
+        }
     }
     public void GameOver()
     {

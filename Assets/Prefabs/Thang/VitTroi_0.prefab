@@ -149,7 +149,10 @@ MonoBehaviour:
   SpeedMultiplier: 0.5
   dustPooler: {fileID: 0}
   dustCreationRate: 0.2
-  test: 0
+  wallCheckDistance: 0.79
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!95 &5788914289185051463
 Animator:
   serializedVersion: 7
