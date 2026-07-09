@@ -9,17 +9,33 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     [SerializeField] private Text scoreText;
     [SerializeField] private TMP_Text scoreTextTMP;
+    [SerializeField] private GameUIH gameUI;
     [SerializeField] private GameObject gameOverUI; // ! Đã bỏ comment
+    [SerializeField] private GameObject winningUI;
     [SerializeField] public string gameSceneName = "Game1";
     [SerializeField] public string MenuName = "UI";
     private bool isGameOver = false;
+    private bool isGameWon = false;
     [SerializeField] public Tag[] tags;
 
 
     void Start()
     {
+        if (gameUI == null)
+        {
+            gameUI = FindAnyObjectByType<GameUIH>(FindObjectsInactive.Include);
+        }
+
         UpdateScoreText();
-        gameOverUI.SetActive(false); // ! Đã bỏ comment
+        if (gameUI != null)
+        {
+            gameUI.HideAllPanels();
+        }
+        else
+        {
+            if (gameOverUI != null) gameOverUI.SetActive(false); // ! Đã bỏ comment
+            if (winningUI != null) winningUI.SetActive(false);
+        }
     }
 
     void Update()
@@ -66,19 +82,47 @@ public class GameManager : MonoBehaviour
         {
             scoreTextTMP.text = score.ToString();
         }
+        if (gameUI != null)
+        {
+            gameUI.SetScore(score);
+        }
     }
     public void GameOver()
     {
-        if (!isGameOver)
+        if (!isGameOver && !isGameWon)
         {
             isGameOver = true;
-            gameOverUI.SetActive(true);
+            if (gameUI != null)
+            {
+                gameUI.ShowGameOver();
+            }
+            else if (gameOverUI != null)
+            {
+                gameOverUI.SetActive(true);
+            }
+            Time.timeScale = 0f;
+        }
+    }
+    public void WinGame()
+    {
+        if (!isGameOver && !isGameWon)
+        {
+            isGameWon = true;
+            if (gameUI != null)
+            {
+                gameUI.ShowWin();
+            }
+            else if (winningUI != null)
+            {
+                winningUI.SetActive(true);
+            }
             Time.timeScale = 0f;
         }
     }
     public void RestartGame()
     {
         isGameOver = false;
+        isGameWon = false;
         // UpdateScoreText();
         Time.timeScale = 1f;
         SceneManager.LoadScene(gameSceneName);
@@ -86,5 +130,9 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver()
     {
         return isGameOver;
+    }
+    public bool IsGameWon()
+    {
+        return isGameWon;
     }
 }
