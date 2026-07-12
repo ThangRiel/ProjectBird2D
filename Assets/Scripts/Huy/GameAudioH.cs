@@ -3,6 +3,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameAudioH : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class GameAudioH : MonoBehaviour
     [SerializeField] AudioClip jumpClip;
     [SerializeField] AudioClip hitClip;
     [SerializeField] AudioClip deathClip;
+    [SerializeField] AudioClip buttonClickClip;
     [SerializeField, Range(0f, 1f)] float sfxVolume = 0.85f;
 
     readonly Dictionary<Component, int> lastHealthByComponent = new Dictionary<Component, int>();
+    readonly HashSet<Button> wiredButtons = new HashSet<Button>();
 
     GameManager trackedGameManager;
     bool wasGameOver;
@@ -51,6 +54,12 @@ public class GameAudioH : MonoBehaviour
     {
         GameAudioH audio = EnsureInstance();
         audio.PlayOneShot(audio.deathClip);
+    }
+
+    public static void PlayButtonClick()
+    {
+        GameAudioH audio = EnsureInstance();
+        audio.PlayOneShot(audio.buttonClickClip);
     }
 
     static GameAudioH EnsureInstance()
@@ -104,6 +113,7 @@ public class GameAudioH : MonoBehaviour
 
         WatchHealthDamage();
         WatchGameOver();
+        WireButtonClickSounds();
     }
 
     void LoadClips()
@@ -117,6 +127,9 @@ public class GameAudioH : MonoBehaviour
         if (deathClip == null)
             deathClip = Resources.Load<AudioClip>(AudioPath + "Death");
 
+        if (buttonClickClip == null)
+            buttonClickClip = Resources.Load<AudioClip>(AudioPath + "ButonClick");
+
         if (gameplayMusic == null)
             gameplayMusic = Resources.Load<AudioClip>(AudioPath + "GamePlay_BG");
 
@@ -127,6 +140,7 @@ public class GameAudioH : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         lastHealthByComponent.Clear();
+        wiredButtons.Clear();
         trackedGameManager = null;
         wasGameOver = false;
         SetupSceneAudio(scene);
@@ -158,11 +172,16 @@ public class GameAudioH : MonoBehaviour
 
     void WatchGameOver()
     {
-        if (trackedGameManager == null)
-            trackedGameManager = FindAnyObjectByType<GameManager>();
+        GameManager currentGameManager = FindAnyObjectByType<GameManager>();
 
-        if (trackedGameManager == null)
+        if (currentGameManager == null)
             return;
+
+        if (currentGameManager != trackedGameManager)
+        {
+            trackedGameManager = currentGameManager;
+            wasGameOver = false;
+        }
 
         bool isGameOver = trackedGameManager.IsGameOver();
         if (isGameOver && !wasGameOver)
@@ -194,6 +213,20 @@ public class GameAudioH : MonoBehaviour
                 PlayOneShot(hitClip);
 
             lastHealthByComponent[behaviour] = currentHealth;
+        }
+    }
+
+    void WireButtonClickSounds()
+    {
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        foreach (Button button in buttons)
+        {
+            if (button == null || wiredButtons.Contains(button))
+                continue;
+
+            button.onClick.AddListener(PlayButtonClick);
+            wiredButtons.Add(button);
         }
     }
 

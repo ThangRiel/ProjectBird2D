@@ -1086,6 +1086,7 @@ MonoBehaviour:
   jumpClip: {fileID: 8300000, guid: 8717a3152184ac44ca102f4915a012f0, type: 3}
   hitClip: {fileID: 8300000, guid: dfbf8dc4095a3a44c8de0f2a7e46633a, type: 3}
   deathClip: {fileID: 8300000, guid: cb6a16962dabf4c49ba9dc05f21aacee, type: 3}
+  buttonClickClip: {fileID: 8300000, guid: 4eeb54c0848b69345913a712d3900e07, type: 3}
   sfxVolume: 0.663
 --- !u!4 &645881888
 Transform:
