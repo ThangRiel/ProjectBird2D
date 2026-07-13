@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 795b5333692804cd7bc8743de0586fef, type: 3}
-  m_Name: IceNoTrap02
+  m_Name: Chunk_IceSpikeTrap01
   m_EditorClassIdentifier: Assembly-CSharp::ChunkDataSO
   chunkId: 
   chunkPrefab: {fileID: 0}

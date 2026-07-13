@@ -11,6 +11,7 @@ public enum TrapType
     FixedSpike,        // Spike cố định
     MovingPillar,      // Cột thụt lên/xuống
     SlowIce,           // Băng làm chậm
+    IceLayerHit,       // Lớp băng bị vỡ khi chạm
     BreakingIceBridge, // Cầu băng vỡ
     Wind,              // Gió
     Snowfall           // Tuyết rơi
