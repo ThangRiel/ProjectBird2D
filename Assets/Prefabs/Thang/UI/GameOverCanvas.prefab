@@ -1703,7 +1703,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   scoreText: {fileID: 0}
   scoreTextTMP: {fileID: 2833324891688639525}
+  gameUI: {fileID: 0}
   gameOverUI: {fileID: 7526757675133199261}
+  winningUI: {fileID: 0}
   gameSceneName: Game1
   MenuName: UI
   tags: []

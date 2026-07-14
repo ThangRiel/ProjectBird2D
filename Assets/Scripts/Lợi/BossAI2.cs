@@ -44,15 +44,19 @@ public class BossAI2 : MonoBehaviour
     private bool isDead;
     private bool isAttacking;
     private bool isPhase2;
+    
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         if (mainLaser != null) mainLaser.enabled = false;
         if (previewLaser != null) previewLaser.enabled = false;
 
+
         if (animator == null)
             animator = GetComponent<Animator>();
-
+    
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHP = maxHP;
 
         if (hpSlider != null)
@@ -71,13 +75,19 @@ public class BossAI2 : MonoBehaviour
         // Chỉ lật mặt Boss khi đang KHÔNG thực hiện kỹ năng để cố định hướng bắn
         if (!isAttacking)
         {
-            Vector3 scale = transform.localScale;
-            if (player.position.x > transform.position.x)
-                scale.x = Mathf.Abs(scale.x);
-            else
-                scale.x = -Mathf.Abs(scale.x);
+            // Vector3 scale = transform.localScale;
+            // if (player.position.x > transform.position.x)
+            //     scale.x = Mathf.Abs(scale.x);
+            // else
+            //     scale.x = -Mathf.Abs(scale.x);
 
-            transform.localScale = scale;
+            // transform.localScale = scale;
+
+            // Hoặc sử dụng SpriteRenderer để lật mặt
+            if (player.position.x > transform.position.x)
+                spriteRenderer.flipX = false;
+            else
+                spriteRenderer.flipX = true;
         }
     }
 
