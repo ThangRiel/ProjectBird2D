@@ -7,6 +7,7 @@ public class RunAndFly : MonoBehaviour
     public float moveSpeed;
     public float speedAdjust;
     public float jumpForce;
+    public float speedMultiplier = 1f; // ! dùng cho trap ice, làm chậm, khác với SpeedMultiplier được tính bên dưới
 
     [Header("Giới hạn di chuyển")]
     public Transform anchorTransform;
@@ -92,14 +93,14 @@ public class RunAndFly : MonoBehaviour
 
         //*sửa
         float currentMoveSpeed = isFacingWall ? 0f : moveSpeed;
-        float targetXVelocity = currentMoveSpeed + (moveInput * speedAdjust);
+        float targetXVelocity = (currentMoveSpeed + (moveInput * speedAdjust)) * speedMultiplier;
 
         if (isOutOfBounds)
         {
             targetXVelocity = outOfBoundsPushDirection * outOfBoundsPushForce;
             rb.linearVelocity = new Vector2(targetXVelocity, rb.linearVelocity.y);
         }
-        
+
         //! Chặn luôn vận tốc tiến về phía trước nếu đang kẹt tường
         if (isFacingWall && targetXVelocity > 0)
         {
