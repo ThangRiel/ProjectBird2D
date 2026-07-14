@@ -32,6 +32,7 @@ public class HealthManager : MonoBehaviour
 
     void UpdateHeartsUI()
     {
+        
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < currentHealth)

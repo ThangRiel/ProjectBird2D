@@ -61,7 +61,7 @@ public class ObstacleHandler : MonoBehaviour
             rb.AddForce(new Vector2(-knockbackForce, knockbackForce * 0.8f), ForceMode2D.Impulse);
         }
 
-        // Trừ máu ← thêm đoạn này
+        // Trừ máu
         HealthManager health = GetComponent<HealthManager>();
         if (health != null)
             health.TakeDamage(1);
@@ -76,7 +76,6 @@ public class ObstacleHandler : MonoBehaviour
         Debug.Log("Hết máu! Thua cuộc.");
         // Dừng game tạm thời
         Time.timeScale = 0f;
-        // TODO: hiện UI Game Over sau
     }
 
 }

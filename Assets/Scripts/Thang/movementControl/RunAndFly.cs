@@ -99,7 +99,7 @@ public class RunAndFly : MonoBehaviour
             targetXVelocity = outOfBoundsPushDirection * outOfBoundsPushForce;
             rb.linearVelocity = new Vector2(targetXVelocity, rb.linearVelocity.y);
         }
-        
+
         //! Chặn luôn vận tốc tiến về phía trước nếu đang kẹt tường
         if (isFacingWall && targetXVelocity > 0)
         {
