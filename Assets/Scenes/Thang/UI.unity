@@ -227,6 +227,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5930582160490161871, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7774799195551150504, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -671,7 +675,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   scoreText: {fileID: 0}
   scoreTextTMP: {fileID: 0}
+  gameUI: {fileID: 0}
   gameOverUI: {fileID: 1690234386}
+  winningUI: {fileID: 0}
   gameSceneName: Game1
   MenuName: UI
   tags: []

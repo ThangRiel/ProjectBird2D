@@ -16,6 +16,7 @@ TagManager:
   - MoveLimit
   - Obstacle
   - Boss
+  - SlowZone
   layers:
   - Default
   - TransparentFX

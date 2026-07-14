@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795b5333692804cd7bc8743de0586fef, type: 3}
   m_Name: Chunk_IceNoTrap00
   m_EditorClassIdentifier: Assembly-CSharp::ChunkDataSO
-  chunkId: 
-  chunkPrefab: {fileID: 0}
+  chunkId: Chunk_IceNoTrap00
+  chunkPrefab: {fileID: 103179645824539472, guid: 0d68c68c2fb764ab3aa1c18820d3a398, type: 3}
   zone: 0
   difficultyRating: 1
-  chunkLength: 0
+  chunkLength: 5
   containedTraps: 
   enemySlotCount: 0
   designNotes: 

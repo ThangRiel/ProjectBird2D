@@ -11,6 +11,8 @@ public class HealthManager : MonoBehaviour
     public Sprite bigerHeart;
     public Sprite emptyHeart; // Kéo hình trái tim rỗng vào đây
 
+    public bool isImmortal = false; //* bất tử để test game, game khó với cả dev =))
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -19,7 +21,7 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (currentHealth <= 0) return;
+        if (currentHealth <= 0 || isImmortal) return;
 
         currentHealth -= damage;
         UpdateHeartsUI();
@@ -32,6 +34,7 @@ public class HealthManager : MonoBehaviour
 
     void UpdateHeartsUI()
     {
+        
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < currentHealth)
