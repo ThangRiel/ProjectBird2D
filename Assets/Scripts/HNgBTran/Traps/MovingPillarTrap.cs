@@ -3,7 +3,7 @@ using UnityEngine;
 public class MovingPillarTrap : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D hitbox;
-    [SerializeField] private float extendedDuration = 0.5f; // thời gian ở trạng thái nguy hiểm (đỉnh)
+    [SerializeField] private float extendedDuration = 1f; // thời gian ở trạng thái nguy hiểm (đỉnh)
     [SerializeField] private float cycleInterval = 1.5f;       // tổng thời gian 1 chu kỳ, khớp TrapConfigSO
 
     private void OnEnable()
