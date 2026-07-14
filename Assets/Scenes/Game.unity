@@ -5182,14 +5182,14 @@ MonoBehaviour:
   cam: {fileID: 0}
   zones:
   - zoneName: ice
-    startX: 18.8
+    startX: 30
     chunkPrefabs:
     - {fileID: 103179645824539472, guid: f876617d3e7b34132b2deb92181d62d9, type: 3}
     - {fileID: 103179645824539472, guid: 783ba84fd6419416d968feccab5e7f4d, type: 3}
     - {fileID: 103179645824539472, guid: 68aadd9e21dac4548a516e566c4d8229, type: 3}
     - {fileID: 103179645824539472, guid: fb4193b7490eb4551a16d455249dacf4, type: 3}
     - {fileID: 103179645824539472, guid: fcc93d22ba8c34dd0830ee45e7cb07f1, type: 3}
-  prewarmCount: 20
+  prewarmCount: 5
   spawnAhead: 122.3
   lockY: -2
   despawnMargin: 2
