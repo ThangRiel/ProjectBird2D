@@ -17,13 +17,16 @@ public class GameAudioH : MonoBehaviour
     [Header("Music")]
     [SerializeField] AudioClip gameplayMusic;
     [SerializeField] AudioClip mainMenuMusic;
-    [SerializeField, Range(0f, 1f)] float musicVolume = 0.45f;
+    [SerializeField] AudioClip bossSceneMusic;
+    [SerializeField, Range(0f, 1f)] float musicVolume = 0.1f;
 
     [Header("SFX")]
     [SerializeField] AudioClip jumpClip;
     [SerializeField] AudioClip hitClip;
     [SerializeField] AudioClip deathClip;
     [SerializeField] AudioClip buttonClickClip;
+    [SerializeField] AudioClip bossFireDeathClip;
+    [SerializeField] AudioClip skillDashClip;
     [SerializeField, Range(0f, 1f)] float sfxVolume = 0.85f;
 
     readonly Dictionary<Component, int> lastHealthByComponent = new Dictionary<Component, int>();
@@ -31,6 +34,8 @@ public class GameAudioH : MonoBehaviour
 
     GameManager trackedGameManager;
     bool wasGameOver;
+    bool hasSeenBossInBossFireScene;
+    bool bossFireDeathPlayed;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void Bootstrap()
@@ -60,6 +65,12 @@ public class GameAudioH : MonoBehaviour
     {
         GameAudioH audio = EnsureInstance();
         audio.PlayOneShot(audio.buttonClickClip);
+    }
+
+    public static void PlaySkillDash()
+    {
+        GameAudioH audio = EnsureInstance();
+        audio.PlayOneShot(audio.skillDashClip);
     }
 
     static GameAudioH EnsureInstance()
@@ -111,9 +122,13 @@ public class GameAudioH : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && IsGameplayScene(SceneManager.GetActiveScene()))
             PlayOneShot(jumpClip);
 
+        if (Keyboard.current != null && Keyboard.current.fKey.wasPressedThisFrame && IsGameplayScene(SceneManager.GetActiveScene()))
+            PlayOneShot(skillDashClip);
+
         WatchHealthDamage();
         WatchGameOver();
         WireButtonClickSounds();
+        WatchBossFireDeath();
     }
 
     void LoadClips()
@@ -130,11 +145,20 @@ public class GameAudioH : MonoBehaviour
         if (buttonClickClip == null)
             buttonClickClip = Resources.Load<AudioClip>(AudioPath + "ButonClick");
 
+        if (bossFireDeathClip == null)
+            bossFireDeathClip = Resources.Load<AudioClip>(AudioPath + "BossFireDeath");
+
+        if (skillDashClip == null)
+            skillDashClip = Resources.Load<AudioClip>(AudioPath + "SkillDash");
+
         if (gameplayMusic == null)
             gameplayMusic = Resources.Load<AudioClip>(AudioPath + "GamePlay_BG");
 
         if (mainMenuMusic == null)
             mainMenuMusic = Resources.Load<AudioClip>(AudioPath + "MainMenu_BG");
+
+        if (bossSceneMusic == null)
+            bossSceneMusic = Resources.Load<AudioClip>(AudioPath + "BossScene");
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -143,12 +167,14 @@ public class GameAudioH : MonoBehaviour
         wiredButtons.Clear();
         trackedGameManager = null;
         wasGameOver = false;
+        hasSeenBossInBossFireScene = false;
+        bossFireDeathPlayed = false;
         SetupSceneAudio(scene);
     }
 
     void SetupSceneAudio(Scene scene)
     {
-        AudioClip targetMusic = IsMenuScene(scene) ? mainMenuMusic : gameplayMusic;
+        AudioClip targetMusic = IsBossFireScene(scene) ? bossSceneMusic : IsMenuScene(scene) ? mainMenuMusic : gameplayMusic;
         PlayMusic(targetMusic);
     }
 
@@ -230,6 +256,57 @@ public class GameAudioH : MonoBehaviour
         }
     }
 
+    void WatchBossFireDeath()
+    {
+        if (!IsBossFireScene(SceneManager.GetActiveScene()))
+            return;
+
+        bool bossAlive = FindBossObject() != null;
+
+        if (bossAlive)
+        {
+            hasSeenBossInBossFireScene = true;
+            return;
+        }
+
+        if (hasSeenBossInBossFireScene && !bossFireDeathPlayed)
+        {
+            bossFireDeathPlayed = true;
+            PlayOneShot(bossFireDeathClip);
+        }
+    }
+
+    GameObject FindBossObject()
+    {
+        string[] bossTags = { "Boss", "Boss2" };
+
+        foreach (string bossTag in bossTags)
+        {
+            try
+            {
+                GameObject boss = GameObject.FindGameObjectWithTag(bossTag);
+                if (boss != null && boss.activeInHierarchy)
+                    return boss;
+            }
+            catch (UnityException)
+            {
+            }
+        }
+
+        MonoBehaviour[] behaviours = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (MonoBehaviour behaviour in behaviours)
+        {
+            if (behaviour == null)
+                continue;
+
+            string typeName = behaviour.GetType().Name;
+            if (typeName == "BossAI" || typeName == "BossAI2")
+                return behaviour.gameObject;
+        }
+
+        return null;
+    }
+
     bool TryGetCurrentHealth(MonoBehaviour behaviour, out int currentHealth)
     {
         currentHealth = 0;
@@ -251,5 +328,10 @@ public class GameAudioH : MonoBehaviour
     bool IsGameplayScene(Scene scene)
     {
         return !IsMenuScene(scene);
+    }
+
+    bool IsBossFireScene(Scene scene)
+    {
+        return scene.name == "BossFireScenes";
     }
 }
