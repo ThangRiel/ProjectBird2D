@@ -4,6 +4,13 @@ using UnityEngine.UI;
 
 public class BossAI : MonoBehaviour
 {
+
+    [Header("Melee")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float meleeRange = 3f;
+    [SerializeField] private int meleeDamage = 3;
+    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private float meleeHitDelay = 0.35f;
     public Transform player;
 
     [Header("Laser Component")]
@@ -20,7 +27,7 @@ public class BossAI : MonoBehaviour
     [SerializeField] private GameObject fireBallPrefab;
     [SerializeField] private float spawnHeight = 8f;
     [SerializeField] private float delayBetweenBalls = 0.4f;
-    [SerializeField] private float fireRainRange = 10f;
+    [SerializeField] private float fireRainRange = 7f;
 
     [Header("Summon Enemy")]
     [SerializeField] private GameObject enemyPrefab;
@@ -69,9 +76,7 @@ public class BossAI : MonoBehaviour
 
     IEnumerator AILoopRoutine()
     {
-        yield return new WaitForSeconds(3f);
-
-        int attackIndex = 0;
+        yield return new WaitForSeconds(2f);
 
         while (!isDead)
         {
@@ -89,35 +94,34 @@ public class BossAI : MonoBehaviour
 
             isAttacking = true;
 
+            // Phase 2 chỉ triệu hồi 1 lần
             if (isPhase2 && !hasSummonedEnemy)
             {
                 yield return StartCoroutine(SummonEnemyRoutine());
             }
             else
             {
-                if (attackIndex % 2 == 0)
+                float distance = Vector2.Distance(transform.position, player.position);
+
+                // Player đứng gần -> luôn đánh cận
+                if (distance <= meleeRange)
                 {
-                    yield return StartCoroutine(LaserAttackRoutine());
+                    yield return StartCoroutine(MeleeAttackRoutine());
                 }
                 else
                 {
-                    float distance =
-                        Vector2.Distance(
-                            transform.position,
-                            player.position);
+                    // Player ở xa -> ngẫu nhiên Laser hoặc Fire Rain
+                    int randomAttack = Random.Range(0, 2);
 
-                    if (distance <= fireRainRange)
+                    if (randomAttack == 0)
                     {
-                        yield return StartCoroutine(FireRainRoutine());
+                        yield return StartCoroutine(LaserAttackRoutine());
                     }
                     else
                     {
-                        // Nếu Player đứng quá xa thì Boss đổi sang Laser
-                        yield return StartCoroutine(LaserAttackRoutine());
+                        yield return StartCoroutine(FireRainRoutine());
                     }
                 }
-
-                attackIndex++;
             }
 
             isAttacking = false;
@@ -126,7 +130,7 @@ public class BossAI : MonoBehaviour
         }
     }
 
-        //====================================
+    //====================================
     // LASER ATTACK
     //====================================
     IEnumerator LaserAttackRoutine()
@@ -273,7 +277,7 @@ public class BossAI : MonoBehaviour
         }
     }
 
-        //====================================
+    //====================================
     // SUMMON ENEMY
     //====================================
     IEnumerator SummonEnemyRoutine()
@@ -302,6 +306,32 @@ public class BossAI : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
+    }
+
+    IEnumerator MeleeAttackRoutine()
+    {
+        Debug.Log("Boss Melee");
+
+        if (animator != null)
+            animator.SetTrigger(attackTriggerName);
+
+        yield return new WaitForSeconds(meleeHitDelay);
+
+        Collider2D[] hits =
+            Physics2D.OverlapCircleAll(
+                attackPoint.position,
+                meleeRange,
+                playerLayer);
+
+        foreach (Collider2D hit in hits)
+        {
+            hit.SendMessage(
+                "TakeDamage",
+                meleeDamage,
+                SendMessageOptions.DontRequireReceiver);
+        }
+
+        yield return new WaitForSeconds(0.5f);
     }
 
     //====================================
@@ -358,10 +388,21 @@ public class BossAI : MonoBehaviour
             previewLaser.enabled = false;
 
         if (animator != null)
-            animator.SetTrigger("die");
+            animator.SetTrigger("damage");
 
         Debug.Log("💀 Boss chết!");
 
         Destroy(gameObject, 1.5f);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(
+                attackPoint.position,
+                meleeRange);
+        }
     }
 }

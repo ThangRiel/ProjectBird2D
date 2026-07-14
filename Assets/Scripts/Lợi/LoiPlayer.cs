@@ -143,7 +143,7 @@ public class LoiPlayer : MonoBehaviour
         }
 
         // tốc độ rơi / bay
-        animator.SetFloat("verticalSp", rb.linearVelocity.y);
+        animator.SetFloat("verticalSpeed", rb.linearVelocity.y);
 
         // trạng thái bay
         animator.SetBool("isFlying", !isGrounded);
