@@ -9,11 +9,13 @@ Game thế giới mở platformer 2D với đồ họa pixel. Nhân vật của 
 - **W, A, S, D**: Di chuyển và thao tác cơ bản
 
 ## Cách chạy game
-Hiện tại game chưa có bản build để tải về. Để chơi hoặc test, mày cần chạy trực tiếp trong Unity Editor:
+Để chơi hoặc test, bạn cần chạy trực tiếp trong Unity Editor:
 1. Clone repository này về máy.
 2. Thêm folder project vào Unity Hub.
 3. Mở project bằng Unity Editor.
 4. Mở scene chính và bấm nút **Play**.
+
+**hoặc chơi trên web :** [unity web](https://play.unity.com/en/games/68269a24-826b-4938-ba9f-19c2f0f3d093/build)
 
 ## Tác giả & Đóng góp
 -  [thangriel](https://github.com/thangriel)
