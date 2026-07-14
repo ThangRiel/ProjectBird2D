@@ -18,7 +18,7 @@ public class GameAudioH : MonoBehaviour
     [SerializeField] AudioClip gameplayMusic;
     [SerializeField] AudioClip mainMenuMusic;
     [SerializeField] AudioClip bossSceneMusic;
-    [SerializeField, Range(0f, 1f)] float musicVolume = 0.45f;
+    [SerializeField, Range(0f, 1f)] float musicVolume = 0.1f;
 
     [Header("SFX")]
     [SerializeField] AudioClip jumpClip;
@@ -26,6 +26,7 @@ public class GameAudioH : MonoBehaviour
     [SerializeField] AudioClip deathClip;
     [SerializeField] AudioClip buttonClickClip;
     [SerializeField] AudioClip bossFireDeathClip;
+    [SerializeField] AudioClip skillDashClip;
     [SerializeField, Range(0f, 1f)] float sfxVolume = 0.85f;
 
     readonly Dictionary<Component, int> lastHealthByComponent = new Dictionary<Component, int>();
@@ -64,6 +65,12 @@ public class GameAudioH : MonoBehaviour
     {
         GameAudioH audio = EnsureInstance();
         audio.PlayOneShot(audio.buttonClickClip);
+    }
+
+    public static void PlaySkillDash()
+    {
+        GameAudioH audio = EnsureInstance();
+        audio.PlayOneShot(audio.skillDashClip);
     }
 
     static GameAudioH EnsureInstance()
@@ -115,6 +122,9 @@ public class GameAudioH : MonoBehaviour
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && IsGameplayScene(SceneManager.GetActiveScene()))
             PlayOneShot(jumpClip);
 
+        if (Keyboard.current != null && Keyboard.current.fKey.wasPressedThisFrame && IsGameplayScene(SceneManager.GetActiveScene()))
+            PlayOneShot(skillDashClip);
+
         WatchHealthDamage();
         WatchGameOver();
         WireButtonClickSounds();
@@ -137,6 +147,9 @@ public class GameAudioH : MonoBehaviour
 
         if (bossFireDeathClip == null)
             bossFireDeathClip = Resources.Load<AudioClip>(AudioPath + "BossFireDeath");
+
+        if (skillDashClip == null)
+            skillDashClip = Resources.Load<AudioClip>(AudioPath + "SkillDash");
 
         if (gameplayMusic == null)
             gameplayMusic = Resources.Load<AudioClip>(AudioPath + "GamePlay_BG");

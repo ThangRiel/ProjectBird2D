@@ -151,12 +151,13 @@ MonoBehaviour:
   gameplayMusic: {fileID: 8300000, guid: d40ed4d1ba242d54d9f00093547d5c10, type: 3}
   mainMenuMusic: {fileID: 8300000, guid: 6b86b153c9a38424c98abc98a3c6a1b2, type: 3}
   bossSceneMusic: {fileID: 8300000, guid: e740092f92dbf554ca2d24c3cece9d99, type: 3}
-  musicVolume: 0.203
+  musicVolume: 0.102
   jumpClip: {fileID: 8300000, guid: 8717a3152184ac44ca102f4915a012f0, type: 3}
   hitClip: {fileID: 8300000, guid: dfbf8dc4095a3a44c8de0f2a7e46633a, type: 3}
   deathClip: {fileID: 8300000, guid: cb6a16962dabf4c49ba9dc05f21aacee, type: 3}
   buttonClickClip: {fileID: 8300000, guid: 4eeb54c0848b69345913a712d3900e07, type: 3}
   bossFireDeathClip: {fileID: 8300000, guid: f99eecb6cefc7e54595e5b95033c55cd, type: 3}
+  skillDashClip: {fileID: 8300000, guid: d59e64d7be642de46a484039935ab36f, type: 3}
   sfxVolume: 0.412
 --- !u!4 &250186756
 Transform:
