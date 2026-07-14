@@ -15,7 +15,8 @@ public class ChunkLevelGenerator : MonoBehaviour
     [Header("References")]
     public Transform player;
     public Camera cam;
-
+    public float testGapX = 0f; // Khoảng cách giữa các chunk, dùng để test khi chuyển zone
+    public float zoom = 1f;
     [Header("Zones Setup")]
     public MapZone[] zones; // Kéo các mảng map vào đây
     private int currentZoneIndex = 0;
@@ -65,7 +66,15 @@ public class ChunkLevelGenerator : MonoBehaviour
         {
             currentZoneIndex++;
             Debug.Log($"[ChunkGen] Chuyển sang zone: {zones[currentZoneIndex].zoneName}");
+
+            if (lastEndX >= testGapX)
+            {
+                cam.orthographicSize += zoom;
+                Debug.Log($"[ChunkGen] Camera orthographicSize tăng lên: {cam.orthographicSize}");
+            }
         }
+
+
 
         // Sinh map từ mảng prefabs của Zone hiện tại
         GameObject[] currentPrefabs = zones[currentZoneIndex].chunkPrefabs;

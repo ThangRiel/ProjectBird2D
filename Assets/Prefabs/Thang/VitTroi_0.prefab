@@ -139,11 +139,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Run
   moveSpeed: 5
   speedAdjust: 4
-  jumpForce: 12
+  jumpForce: 5
   anchorTransform: {fileID: 0}
   maxForwardOffset: 11
   maxBackwardOffset: 11
-  outOfBoundsTimeLimit: 2
+  outOfBoundsTimeLimit: 5
+  isOutOfBounds: 1
+  outOfBoundsPushForce: 15
+  Delay: 1
   fallThresholdAngle: 10
   uprightSpeed: 5
   SpeedMultiplier: 0.5
@@ -211,6 +214,7 @@ MonoBehaviour:
   fullHeart: {fileID: 5726080727020278575, guid: 9340b31c00db1984ba5e5397e95e706a, type: 3}
   bigerHeart: {fileID: 0}
   emptyHeart: {fileID: 7885684081779559860, guid: 9340b31c00db1984ba5e5397e95e706a, type: 3}
+  isImmortal: 0
 --- !u!114 &674572383714868896
 MonoBehaviour:
   m_ObjectHideFlags: 0
