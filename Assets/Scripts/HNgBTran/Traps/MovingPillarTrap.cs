@@ -3,13 +3,14 @@ using UnityEngine;
 public class MovingPillarTrap : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D hitbox;
-    [SerializeField] private float extendedDuration = 1f; // thời gian ở trạng thái nguy hiểm (đỉnh)
-    [SerializeField] private float cycleInterval = 1.5f;       // tổng thời gian 1 chu kỳ, khớp TrapConfigSO
+    [SerializeField] private float extendDelay = 0.7f;       // (A) thời điểm trong 1 vòng lặp cột bắt đầu nguy hiểm
+    [SerializeField] private float extendedDuration = 0.6f; // (B - A) thời gian giữ trạng thái nguy hiểm
+    [SerializeField] private float cycleInterval = 1.5f;    // tổng độ dài 1 vòng lặp animation
 
     private void OnEnable()
     {
         hitbox.enabled = false;
-        InvokeRepeating(nameof(Extend), 0f, cycleInterval);
+        InvokeRepeating(nameof(Extend), extendDelay, cycleInterval);
     }
 
     private void Extend()
