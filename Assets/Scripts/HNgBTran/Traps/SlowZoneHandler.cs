@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class SlowZoneHandler : MonoBehaviour
 {
-    [SerializeField] private TrapConfigSO config; // kéo asset Trap_SlowIce (TrapConfigSO) vào đây
-    [SerializeField] private Color frozenTint = new Color(0.5f, 0.8f, 1f, 1f); // màu xanh dương khi bị đóng băng
+    [SerializeField] private TrapConfigSO config; // asset Trap_SlowIce
+    [SerializeField] private Color frozenTint = new Color(0.5f, 0.8f, 1f, 1f);
 
     private RunAndFly runAndFly;
     private SpriteRenderer sr;
@@ -20,28 +20,26 @@ public class SlowZoneHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"[SlowZoneHandler] OnTriggerEnter2D với tag: {other.tag}");
         if (!other.CompareTag("SlowZone")) return;
-
-        Debug.Log("[SlowZoneHandler] Chạm SlowZone, bắt đầu làm chậm");
-
-        if (activeSlowRoutine != null)
-            StopCoroutine(activeSlowRoutine);
-
-        activeSlowRoutine = StartCoroutine(ApplySlow());
+        ApplySlow(config.slowMultiplier, config.slowDuration);
     }
 
-    private IEnumerator ApplySlow()
+    public void ApplySlow(float multiplier, float duration)
     {
-        runAndFly.speedMultiplier = config.slowMultiplier;
-        if (sr != null) sr.color = frozenTint;
-        Debug.Log($"[SlowZoneHandler] Áp speedMultiplier = {config.slowMultiplier}, trong {config.slowDuration}s");
+        if (activeSlowRoutine != null)
+            StopCoroutine(activeSlowRoutine);
+        activeSlowRoutine = StartCoroutine(SlowRoutine(multiplier, duration));
+    }
 
-        yield return new WaitForSeconds(config.slowDuration);
+    private IEnumerator SlowRoutine(float multiplier, float duration)
+    {
+        runAndFly.speedMultiplier = multiplier;
+        if (sr != null) sr.color = frozenTint;
+
+        yield return new WaitForSeconds(duration);
 
         runAndFly.speedMultiplier = 1f;
         if (sr != null) sr.color = originalColor;
-        Debug.Log("[SlowZoneHandler] Hết hiệu ứng, trả lại tốc độ bình thường");
         activeSlowRoutine = null;
     }
 }

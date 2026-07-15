@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5094df623171441e6ade41c301d99060, type: 3}
+  m_Name: None
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneConfigSO
+  zoneType: 0
+  chunkPool:
+  - {fileID: 11400000, guid: 47436bf51e30a4c39845e907687604b6, type: 2}
+  difficultyOverDistance:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.012620691
+      value: 0.9394426
+      inSlope: 0.13919164
+      outSlope: 0.13919164
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.499634
+      value: 1.0072308
+      inSlope: -0.099270225
+      outSlope: -0.099270225
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.4177665
+    - serializedVersion: 3
+      time: 0.6625711
+      value: 1.0339239
+      inSlope: 0.15650895
+      outSlope: 0.15650895
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9909668
+      value: 1.0455017
+      inSlope: 0.27059913
+      outSlope: 0.27059913
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2287623
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  noRepeatWindow: 2
+  easyOnlyProgress: 0.2
+  peakStageProgress: 0.7
+  weatherEffectStartProgress: 0.7
+  windForceCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

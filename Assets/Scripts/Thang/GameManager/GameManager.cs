@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
+    private int scoreTickCounter = 0;
     [SerializeField] private Text scoreText;
     [SerializeField] private TMP_Text scoreTextTMP;
     [SerializeField] private GameUIH gameUI;
@@ -38,9 +39,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-
+        if (!isGameOver && !isGameWon)
+        {
+            scoreTickCounter++;
+            if (scoreTickCounter >= 10)
+            {
+                scoreTickCounter = 0;
+                score += 1;
+                UpdateScoreText();
+            }
+        }
     }
     //* thêm hàm để mở scene từ game StartUi
     public void StartGame()

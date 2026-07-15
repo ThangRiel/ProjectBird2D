@@ -15,7 +15,7 @@ MonoBehaviour:
   chunkId: Chunk_IceLayerHitsTrap02
   chunkPrefab: {fileID: 103179645824539472, guid: fbcb74ed8c58d4a83b9cc1b244aaf77e, type: 3}
   zone: 0
-  difficultyRating: 3
+  difficultyRating: 2
   chunkLength: 17
   containedTraps: 03000000
   enemySlotCount: 0
