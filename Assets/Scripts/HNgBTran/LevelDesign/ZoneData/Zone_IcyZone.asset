@@ -62,7 +62,7 @@ MonoBehaviour:
     m_PostInfinity: 0
     m_RotationOrder: 4
   noRepeatWindow: 2
-  easyOnlyProgress: 0.3
+  easyOnlyProgress: 0.2
   peakStageProgress: 0.6
   weatherEffectStartProgress: 0.7
   windForceCurve:
