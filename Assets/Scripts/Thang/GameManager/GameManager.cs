@@ -6,10 +6,10 @@ using UnityEngine.Assertions.Must;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
-    private int score = 0;
+    private int score = ScoreHolder.Instance != null ? ScoreHolder.Instance.score : 0;
     private int scoreTickCounter = 0;
     [SerializeField] private Text scoreText;
-    [SerializeField] private TMP_Text scoreTextTMP;
+    [SerializeField] private TMP_Text[] scoreTextTMP;
     [SerializeField] private GameUIH gameUI;
     [SerializeField] private GameObject gameOverUI; // ! Đã bỏ comment
     [SerializeField] private GameObject winningUI;
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     private bool isGameWon = false;
     [SerializeField] public Tag[] tags;
 
-
+    
     void Start()
     {
         if (gameUI == null)
@@ -47,7 +47,8 @@ public class GameManager : MonoBehaviour
             if (scoreTickCounter >= 10)
             {
                 scoreTickCounter = 0;
-                score += 1;
+                ScoreHolder.Instance.score += 1;
+                score = ScoreHolder.Instance.score;
                 UpdateScoreText();
             }
         }
@@ -56,14 +57,16 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("game started");
-        SceneManager.LoadScene(gameSceneName);
+        ResetScore();
         Time.timeScale = 1f;
+        SceneManager.LoadScene(gameSceneName);
+        
     }
     public void BackToMenu()
     {
         Debug.Log("back to menu");
-        SceneManager.LoadScene(MenuName);
         Time.timeScale = 1f;
+        SceneManager.LoadScene(MenuName);
     }
 
     public void addScoreByTag(string itemTag)
@@ -78,7 +81,8 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        score += scoreValue;
+        ScoreHolder.Instance.score += scoreValue;
+        score = ScoreHolder.Instance.score;
         UpdateScoreText();
         return;
     }
@@ -90,7 +94,10 @@ public class GameManager : MonoBehaviour
         }
         if (scoreTextTMP != null)
         {
-            scoreTextTMP.text = score.ToString();
+            foreach (var text in scoreTextTMP)
+            {
+                text.text = score.ToString();
+            }
         }
         if (gameUI != null)
         {
@@ -135,7 +142,13 @@ public class GameManager : MonoBehaviour
         isGameWon = false;
         // UpdateScoreText();
         Time.timeScale = 1f;
+        ResetScore();
         SceneManager.LoadScene(gameSceneName);
+    }
+    public void ResetScore()
+    {
+        ScoreHolder.Instance.score = 0;
+        score = 0;
     }
     public bool IsGameOver()
     {

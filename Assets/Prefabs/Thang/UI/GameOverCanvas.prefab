@@ -394,19 +394,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6208466875871540207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1385345404214473340
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +807,7 @@ GameObject:
   - component: {fileID: 305640416448688460}
   - component: {fileID: 1182452852971918134}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: 'Score : '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -956,7 +944,7 @@ GameObject:
   - component: {fileID: 2898626357888333509}
   - component: {fileID: 2833324891688639525}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: 'Score '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
