@@ -9,10 +9,16 @@ public class BossAI2 : MonoBehaviour
 
     [Header("Melee")]
     [SerializeField] private Transform attackPoint;
-    [SerializeField] private float meleeRange = 3f;
+    [SerializeField] private float meleeRange = 1.2f;
     [SerializeField] private int meleeDamage = 3;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float meleeHitDelay = 0.35f;
+
+    [Header("Dash Melee")]
+    [SerializeField] private float dashSpeed = 10f;
+    [SerializeField] private float returnSpeed = 8f;
+    [SerializeField] private float stopDistance = 1.3f;
+    private Vector3 startPosition;
 
     [Header("Laser")]
     public LineRenderer mainLaser;
@@ -22,6 +28,8 @@ public class BossAI2 : MonoBehaviour
     [SerializeField] private float chargeDuration = 0.8f;
     [SerializeField] private float laserDuration = 0.5f;
     [SerializeField] private float laserMaxDistance = 30f;
+
+
 
     [Header("Fire Rain")]
     [SerializeField] private GameObject fireBallPrefab;
@@ -55,6 +63,8 @@ public class BossAI2 : MonoBehaviour
 
     private void Start()
     {
+        startPosition = transform.position;
+
         if (mainLaser != null)
             mainLaser.enabled = false;
 
@@ -324,38 +334,91 @@ public class BossAI2 : MonoBehaviour
     //====================================
     // MELEE ATTACK
     //====================================
-    IEnumerator MeleeAttackRoutine()
+   IEnumerator MeleeAttackRoutine()
+{
+    Debug.Log("Boss Dash Melee");
+
+    // Lưu vị trí ban đầu
+    Vector3 startPosition = transform.position;
+
+    // Tính hướng tới Player
+    Vector3 dir = (player.position - transform.position).normalized;
+
+    // Điểm dừng trước mặt Player
+    Vector3 targetPosition = player.position - dir * stopDistance;
+
+    // Giữ nguyên trục Y để Boss chỉ lướt ngang
+    targetPosition.y = transform.position.y;
+
+    // Tắt collider khi lướt để không đẩy Player
+    Collider2D bossCollider = GetComponent<Collider2D>();
+
+    if (bossCollider != null)
+        bossCollider.enabled = false;
+
+    //========================
+    // Dash tới
+    //========================
+    while (Vector2.Distance(transform.position, targetPosition) > 0.05f)
     {
-        Debug.Log("Boss -> Melee");
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPosition,
+            dashSpeed * Time.deltaTime);
 
-        if (animator != null)
-            animator.SetTrigger("Melee");
-
-        // Chờ animation vung kiếm
-        yield return new WaitForSeconds(meleeHitDelay);
-
-        Collider2D[] hits =
-            Physics2D.OverlapCircleAll(
-                attackPoint.position,
-                meleeRange,
-                playerLayer);
-
-        foreach (Collider2D hit in hits)
-        {
-            if (hit.CompareTag("Player"))
-            {
-                hit.SendMessage(
-                    "TakeDamage",
-                    meleeDamage,
-                    SendMessageOptions.DontRequireReceiver);
-
-                Debug.Log("Boss đánh trúng Player");
-            }
-        }
-
-        // Chờ animation kết thúc
-        yield return new WaitForSeconds(0.4f);
+        yield return null;
     }
+
+    // Bật collider lại
+    if (bossCollider != null)
+        bossCollider.enabled = true;
+
+    //========================
+    // Animation đánh
+    //========================
+    animator.SetTrigger("Melee");
+
+    yield return new WaitForSeconds(meleeHitDelay);
+
+    //========================
+    // Gây sát thương
+    //========================
+    Collider2D[] hits = Physics2D.OverlapCircleAll(
+        attackPoint.position,
+        meleeRange,
+        playerLayer);
+
+    foreach (Collider2D hit in hits)
+    {
+        hit.SendMessage(
+            "TakeDamage",
+            meleeDamage,
+            SendMessageOptions.DontRequireReceiver);
+    }
+
+    yield return new WaitForSeconds(0.35f);
+
+    //========================
+    // Dash về vị trí cũ
+    //========================
+    if (bossCollider != null)
+        bossCollider.enabled = false;
+
+    while (Vector2.Distance(transform.position, startPosition) > 0.05f)
+    {
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            startPosition,
+            returnSpeed * Time.deltaTime);
+
+        yield return null;
+    }
+
+    transform.position = startPosition;
+
+    if (bossCollider != null)
+        bossCollider.enabled = true;
+}
     //====================================
     // SUMMON ENEMY
     //====================================
