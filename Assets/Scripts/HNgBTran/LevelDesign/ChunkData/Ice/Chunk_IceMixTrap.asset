@@ -15,7 +15,7 @@ MonoBehaviour:
   chunkId: Chunk_IceMixTrap
   chunkPrefab: {fileID: 103179645824539472, guid: 29fa3a9e771974412b1af8f79525743a, type: 3}
   zone: 0
-  difficultyRating: 4
+  difficultyRating: 3
   chunkLength: 12
   containedTraps: 0000000002000000
   enemySlotCount: 0

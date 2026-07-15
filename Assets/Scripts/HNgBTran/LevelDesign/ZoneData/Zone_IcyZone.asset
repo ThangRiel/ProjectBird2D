@@ -14,11 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZoneConfigSO
   zoneType: 0
   chunkPool:
-  - {fileID: 11400000, guid: cbfd10669ec71439c91921e3a75ada39, type: 2}
-  - {fileID: 11400000, guid: 32ff18a5b8ebc46e1b1d5cc8dab0180d, type: 2}
-  - {fileID: 11400000, guid: b652b85f4c69144adbc7b5bebb50e974, type: 2}
-  - {fileID: 11400000, guid: 9c1de6dfb76584767be9d3b1928daaa8, type: 2}
-  - {fileID: 11400000, guid: 3eee1f3688e8d4738981f81ad4c6fa16, type: 2}
+  - {fileID: 11400000, guid: 01c76733680d142e393ac38d6f6a1276, type: 2}
+  - {fileID: 11400000, guid: 3ec78400f61cf4c6fbb26670377a82c0, type: 2}
+  - {fileID: 11400000, guid: d7b61e6e0e1a048d2bc171244188aea7, type: 2}
+  - {fileID: 11400000, guid: 6dc040d6543bf48a5a9acc6ce4715f94, type: 2}
+  - {fileID: 11400000, guid: b0f2adf233a5548be9dd5f6f4e39b271, type: 2}
+  - {fileID: 11400000, guid: 6516571d7a1bd4970a341f8f56f3ed67, type: 2}
+  - {fileID: 11400000, guid: b79fa058b01584f4589fb6db6e3bd650, type: 2}
+  - {fileID: 11400000, guid: b64fa5e54b5ae42df861b1d2860e2dfe, type: 2}
+  - {fileID: 11400000, guid: d69c483dd57694127ad172101283cad4, type: 2}
+  - {fileID: 11400000, guid: 313d96b1aed274224804770ed44cf71c, type: 2}
+  - {fileID: 11400000, guid: bf6458da3e5f24a3ba72f0288a4e5d6b, type: 2}
+  - {fileID: 11400000, guid: 8bea6fc0e033543439f0858b66dcfdad, type: 2}
+  - {fileID: 11400000, guid: 8e7a263d332944770847993ff80023a2, type: 2}
+  - {fileID: 11400000, guid: 804e29d98b0ff450bab54d719025aa6c, type: 2}
   difficultyOverDistance:
     serializedVersion: 2
     m_Curve:
@@ -52,4 +61,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
-  noRepeatWindow: 3
+  noRepeatWindow: 2
+  easyOnlyProgress: 0.3
+  peakStageProgress: 0.6
+  weatherEffectStartProgress: 0.7
+  windForceCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -15,7 +15,7 @@ MonoBehaviour:
   chunkId: Chunk_IceMovingPillarTrap01
   chunkPrefab: {fileID: 103179645824539472, guid: 783ba84fd6419416d968feccab5e7f4d, type: 3}
   zone: 0
-  difficultyRating: 2
+  difficultyRating: 3
   chunkLength: 9
   containedTraps: 01000000
   enemySlotCount: 0

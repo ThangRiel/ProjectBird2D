@@ -15,7 +15,7 @@ MonoBehaviour:
   chunkId: Chunk_IceSlowIceTrap02
   chunkPrefab: {fileID: 103179645824539472, guid: fcc93d22ba8c34dd0830ee45e7cb07f1, type: 3}
   zone: 0
-  difficultyRating: 2
+  difficultyRating: 1
   chunkLength: 16
   containedTraps: 02000000
   enemySlotCount: 0
