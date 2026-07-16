@@ -1968,9 +1968,13 @@ MonoBehaviour:
     zoneLength: 400
     startX: 0
     zoneConfig: {fileID: 11400000, guid: 410e63c2f36464d8e925cf3268c70b99, type: 2}
+  - zoneName: Lava Portal
+    zoneLength: 0
+    startX: 401
+    zoneConfig: {fileID: 11400000, guid: b2874d6c7f3d5421581db00b22acc6cb, type: 2}
   - zoneName: none
-    zoneLength: 400
-    startX: 400.4
+    zoneLength: -0.03
+    startX: 401.4
     zoneConfig: {fileID: 11400000, guid: 05f3a9f0829b141a7a80100ede1c33f6, type: 2}
   peakTrapBiasChance: 0.7
   chunkOverlapChance: 0.25

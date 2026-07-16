@@ -27,7 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7bf8b634a4ea94b4b986ee32e9596c9d, type: 2}
   - {fileID: 11400000, guid: 2f79bfae8b3d747e7bb0258499f3dbff, type: 2}
   - {fileID: 11400000, guid: a634789e00585422c9cfc11901a18093, type: 2}
-  - {fileID: 11400000, guid: c3ee48813f88f4626b83045d281ff5b6, type: 2}
+  - {fileID: 11400000, guid: fe37ddb2884d241c1a95b368163f818b, type: 2}
   noRepeatWindow: 2
   easyOnlyProgress: 0.2
   peakStageProgress: 0.5
