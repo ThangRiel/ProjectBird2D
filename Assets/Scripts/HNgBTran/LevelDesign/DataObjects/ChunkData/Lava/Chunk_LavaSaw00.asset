@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 795b5333692804cd7bc8743de0586fef, type: 3}
   m_Name: Chunk_LavaSaw00
   m_EditorClassIdentifier: Assembly-CSharp::ChunkDataSO
-  chunkId: LavaMovingPillar00
-  chunkPrefab: {fileID: 103179645824539472, guid: 67d5c925489c94b579a476fafbe5ae84, type: 3}
+  chunkId: LavaSaw00
+  chunkPrefab: {fileID: 103179645824539472, guid: 96050437e2e2747fb9a8516c42f64443, type: 3}
   zone: 2
-  difficultyRating: 1
+  difficultyRating: 3
   chunkLength: 14
-  containedTraps: 
+  containedTraps: 0a000000
   enemySlotCount: 0
   designNotes: 

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7473096874647916064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8560940550915701493}
+  - component: {fileID: 710857608968929199}
+  m_Layer: 0
+  m_Name: GameAudioH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8560940550915701493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473096874647916064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 254.61977, y: 181.85248, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &710857608968929199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473096874647916064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92be123a3035d664ba21c1570d935cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameAudioH
+  gameplayMusic: {fileID: 8300000, guid: d40ed4d1ba242d54d9f00093547d5c10, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 6b86b153c9a38424c98abc98a3c6a1b2, type: 3}
+  bossSceneMusic: {fileID: 8300000, guid: e740092f92dbf554ca2d24c3cece9d99, type: 3}
+  musicVolume: 0.1
+  jumpClip: {fileID: 8300000, guid: 8717a3152184ac44ca102f4915a012f0, type: 3}
+  hitClip: {fileID: 8300000, guid: dfbf8dc4095a3a44c8de0f2a7e46633a, type: 3}
+  deathClip: {fileID: 8300000, guid: cb6a16962dabf4c49ba9dc05f21aacee, type: 3}
+  buttonClickClip: {fileID: 8300000, guid: 4eeb54c0848b69345913a712d3900e07, type: 3}
+  bossFireDeathClip: {fileID: 8300000, guid: cb6a16962dabf4c49ba9dc05f21aacee, type: 3}
+  skillDashClip: {fileID: 8300000, guid: 2b8d137112c170f4fb7a0fe5148bdb54, type: 3}
+  sceneMoveClip: {fileID: 8300000, guid: dcce67ffecdde3f4294154386ceedcc3, type: 3}
+  sfxVolume: 0.4

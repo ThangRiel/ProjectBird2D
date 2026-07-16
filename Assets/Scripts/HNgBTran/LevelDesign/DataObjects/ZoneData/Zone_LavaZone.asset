@@ -13,13 +13,21 @@ MonoBehaviour:
   m_Name: Zone_LavaZone
   m_EditorClassIdentifier: Assembly-CSharp::ZoneConfigSO
   zoneType: 0
-  chunkPool: []
-  difficultyOverDistance:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  chunkPool:
+  - {fileID: 11400000, guid: e9a9ed6b32d924681b0a2d7e53c424fc, type: 2}
+  - {fileID: 11400000, guid: 72cffb4332dc84e9fa50705520822a36, type: 2}
+  - {fileID: 11400000, guid: 5a5602af94e25466a9a0a1318276d06e, type: 2}
+  - {fileID: 11400000, guid: 1f3eafe12c6cd4aefa5a52ec9d424dd3, type: 2}
+  - {fileID: 11400000, guid: 6c7c175722d004783abb3dde6d6b1381, type: 2}
+  - {fileID: 11400000, guid: 2cf97d1b7c8ca4e0da8035d583030c48, type: 2}
+  - {fileID: 11400000, guid: 6959e39f36d6745a1830b21ff4cea4a2, type: 2}
+  - {fileID: 11400000, guid: e1ccd21930fea48cd953f50d571dd690, type: 2}
+  - {fileID: 11400000, guid: 877c1fc465af6436aa9a8c8af5ed16de, type: 2}
+  - {fileID: 11400000, guid: b431cfe58263f43cc945351dff6b1864, type: 2}
+  - {fileID: 11400000, guid: 7bf8b634a4ea94b4b986ee32e9596c9d, type: 2}
+  - {fileID: 11400000, guid: 2f79bfae8b3d747e7bb0258499f3dbff, type: 2}
+  - {fileID: 11400000, guid: a634789e00585422c9cfc11901a18093, type: 2}
+  - {fileID: 11400000, guid: c3ee48813f88f4626b83045d281ff5b6, type: 2}
   noRepeatWindow: 2
   easyOnlyProgress: 0.2
   peakStageProgress: 0.5
