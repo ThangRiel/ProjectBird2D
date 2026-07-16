@@ -229,7 +229,7 @@ public class LoiPlayer : MonoBehaviour
 
         if (hit && hitObject != null)
         {
-            BossAI boss = hitObject.GetComponent<BossAI>();
+            BossBase boss = hitObject.GetComponentInParent<BossBase>();
 
             if (boss != null)
             {
@@ -329,21 +329,27 @@ public class LoiPlayer : MonoBehaviour
     // Thay vì dùng biến đơn, bạn dùng hàm này để đảm bảo quét trúng cả Boss dù Layer thế nào
     private void Attack()
     {
-        // Tạo mask quét: Lấy Layer Enemy hiện tại CỘNG THÊM Layer Boss
         int combinedLayer = enemyLayer | LayerMask.GetMask("Boss");
 
-        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, combinedLayer);
+        Collider2D[] hitObjects =
+            Physics2D.OverlapCircleAll(
+                attackPoint.position,
+                attackRadius,
+                combinedLayer);
 
-        foreach (var obj in hitObjects)
+        foreach (Collider2D obj in hitObjects)
         {
-            BossAI boss = obj.GetComponent<BossAI>();
+            BossBase boss =
+                obj.GetComponentInParent<BossBase>();
 
             if (boss != null)
             {
                 boss.TakeDamage(attackDamage);
+                continue;
             }
 
-            Enemy enemy = obj.GetComponent<Enemy>();
+            Enemy enemy =
+                obj.GetComponentInParent<Enemy>();
 
             if (enemy != null)
             {

@@ -5,46 +5,62 @@ using System.Collections;
 public class Door : MonoBehaviour
 {
     [SerializeField] private string nextScene;
+
     private bool isLoading;
-    public bool alredyOpen = false;
 
+    private SpriteRenderer sr;
+    private Collider2D col;
 
-    void OnEnable()
+    private void Awake()
     {
-        // Đăng ký nghe thông báo
+        sr = GetComponent<SpriteRenderer>();
+        col = GetComponent<Collider2D>();
+    }
+
+    private void OnEnable()
+    {
         GameManager.OnAnyBossDied += OpenDoor;
     }
 
-
-    void Start()
+    private void OnDisable()
     {
-        gameObject.SetActive(alredyOpen);
+        GameManager.OnAnyBossDied -= OpenDoor;
     }
+
+    private void Start()
+    {
+        // Ban đầu cửa bị khóa
+        sr.enabled = false;
+        col.enabled = false;
+    }
+
+    private void OpenDoor()
+    {
+        Debug.Log("Boss chết -> Mở cửa");
+
+        sr.enabled = true;
+        col.enabled = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isLoading || !other.CompareTag("Player"))
+        if (isLoading)
+            return;
+
+        if (!other.CompareTag("Player"))
             return;
 
         StartCoroutine(LoadSceneAfterSound());
     }
 
-    private IEnumerator LoadSceneAfterSound()
+    IEnumerator LoadSceneAfterSound()
     {
         isLoading = true;
 
         GameAudioH.PlaySceneMove();
 
-        float soundDelay = GameAudioH.GetSceneMoveDuration();
-        if (soundDelay > 0f)
-        {
-            yield return new WaitForSecondsRealtime(soundDelay);
-        }
+        yield return new WaitForSecondsRealtime(GameAudioH.GetSceneMoveDuration());
 
         SceneManager.LoadScene(nextScene);
-    }
-    
-    private void OpenDoor()
-    {
-        gameObject.SetActive(!alredyOpen);
     }
 }

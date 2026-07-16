@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossAI2 : MonoBehaviour
+public class BossAI2 : BossBase
 {
     [Header("Target")]
     public Transform player;
@@ -496,7 +496,7 @@ public class BossAI2 : MonoBehaviour
     //====================================
     // TAKE DAMAGE
     //====================================
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (isDead)
             return;

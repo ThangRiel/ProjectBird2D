@@ -11719,7 +11719,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
   nextScene: Map Lava
-  alredyOpen: 0
 --- !u!61 &569378793
 BoxCollider2D:
   m_ObjectHideFlags: 0

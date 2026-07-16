@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossAI : MonoBehaviour
+public class BossAI : BossBase
 {
 
     [Header("Melee")]
@@ -356,7 +356,7 @@ public class BossAI : MonoBehaviour
     //====================================
     // TAKE DAMAGE
     //====================================
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (isDead)
             return;
