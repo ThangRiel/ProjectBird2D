@@ -292,7 +292,7 @@ public class BossAI2 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         int ballCount =
-            isPhase2 ? 4 : 3;
+            isPhase2 ? 12 : 5;
 
         float targetX =
             player.position.x;
@@ -300,21 +300,7 @@ public class BossAI2 : MonoBehaviour
         for (int i = 0; i < ballCount; i++)
         {
             float offset = 0f;
-
-            switch (i)
-            {
-                case 1:
-                    offset = -1.5f;
-                    break;
-
-                case 2:
-                    offset = 1.5f;
-                    break;
-
-                case 3:
-                    offset = -3f;
-                    break;
-            }
+            offset = Random.Range(-2f, 2f);
 
             Vector3 spawnPos =
                 new Vector3(
