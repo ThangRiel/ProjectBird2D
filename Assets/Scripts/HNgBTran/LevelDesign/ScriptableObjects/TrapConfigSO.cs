@@ -9,5 +9,5 @@ public class TrapConfigSO : ScriptableObject
     public float slowDuration; // cho bẫy làm chậm, ví dụ 1.5 (giây)
     public float cycleInterval;   // cho cột thụt lên/xuống, ví dụ 1.5 (giây/chu kỳ)
     public int iceLayerHits;      // cho cầu băng vỡ, ví dụ 2 (số lần đi qua trước khi vỡ)
-    public float windForce; // cho bẫy gió, ví dụ 5 (lực đẩy)
+    public float knockbackForce; // cho bẫy gió, ví dụ 5 (lực đẩy)
 }

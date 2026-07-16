@@ -14,10 +14,10 @@ public class EnemyDamage : MonoBehaviour
             )
         )
         {
-            HealthManagerH hp =
+            HealthManager hp =
                 collision
                 .gameObject
-                .GetComponent<HealthManagerH>();
+                .GetComponent<HealthManager>();
 
             if (hp != null)
             {

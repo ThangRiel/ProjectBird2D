@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 795b5333692804cd7bc8743de0586fef, type: 3}
-  m_Name: Chunk_IceSlowIceTrap01
+  m_Name: Chunk_LavaNoTrap02
   m_EditorClassIdentifier: Assembly-CSharp::ChunkDataSO
-  chunkId: Chunk_IceSlowIceTrap01
-  chunkPrefab: {fileID: 103179645824539472, guid: fb4193b7490eb4551a16d455249dacf4, type: 3}
-  zone: 0
-  difficultyRating: 1
-  chunkLength: 16
-  containedTraps: 02000000
+  chunkId: LavaMovingPillar00
+  chunkPrefab: {fileID: 103179645824539472, guid: 67d5c925489c94b579a476fafbe5ae84, type: 3}
+  zone: 2
+  difficultyRating: 0
+  chunkLength: 14
+  containedTraps: 
   enemySlotCount: 0
   designNotes: 

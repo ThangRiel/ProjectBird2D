@@ -14,5 +14,9 @@ public enum TrapType
     IceLayerHit,       // Lớp băng bị vỡ khi chạm
     BreakingIceBridge, // Cầu băng vỡ
     Wind,              // Gió
-    Snowfall           // Tuyết rơi
+    Snowfall,           // Tuyết rơi
+    Cannon,
+    Bomb,
+    Fire,
+    Saw,
 }
