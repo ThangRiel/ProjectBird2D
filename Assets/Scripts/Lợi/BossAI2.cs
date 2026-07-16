@@ -28,6 +28,7 @@ public class BossAI2 : MonoBehaviour
     [SerializeField] private float chargeDuration = 0.8f;
     [SerializeField] private float laserDuration = 0.5f;
     [SerializeField] private float laserMaxDistance = 30f;
+    [SerializeField] private int laserDamage = 10;
 
 
 
@@ -35,6 +36,7 @@ public class BossAI2 : MonoBehaviour
     [SerializeField] private GameObject fireBallPrefab;
     [SerializeField] private float spawnHeight = 8f;
     [SerializeField] private float delayBetweenBalls = 0.4f;
+    [SerializeField] private int fireRainDamage = 5;
 
     [Header("Summon")]
     [SerializeField] private GameObject enemyPrefab;
@@ -63,6 +65,15 @@ public class BossAI2 : MonoBehaviour
 
     private void Start()
     {
+        // Tự tìm Player nếu chưa kéo trong Inspector
+        if (player == null)
+        {
+            GameObject obj = GameObject.FindGameObjectWithTag("Player");
+
+            if (obj != null)
+                player = obj.transform;
+        }
+
         startPosition = transform.position;
 
         if (mainLaser != null)
@@ -194,75 +205,108 @@ public class BossAI2 : MonoBehaviour
     {
         Debug.Log("Boss -> Laser");
 
+        if (player == null)
+            yield break;
+
         if (animator != null)
             animator.SetTrigger("Laser");
 
-        Vector3 startPos =
-            firePoint != null
+        Vector3 startPos = firePoint != null
             ? firePoint.position
             : transform.position;
 
-        // Khóa hướng bắn ngay khi bắt đầu
-        Vector3 targetPos =
-            player.position + Vector3.up * 0.5f;
+        // Khóa vị trí Player khi bắt đầu charge
+        Vector3 targetPos = player.position + Vector3.up * 0.5f;
 
-        Vector3 direction =
-            (targetPos - startPos).normalized;
+        Vector3 direction = (targetPos - startPos).normalized;
+        Vector3 laserEnd = startPos + direction * laserMaxDistance;
 
-        Vector3 laserEnd =
-            startPos + direction * laserMaxDistance;
-
-        previewLaser.enabled = true;
+        //========================
+        // Preview Laser
+        //========================
+        if (previewLaser != null)
+            previewLaser.enabled = true;
 
         float timer = 0f;
 
         while (timer < chargeDuration)
         {
-            Vector3 currentStart =
-                firePoint != null
+            startPos = firePoint != null
                 ? firePoint.position
                 : transform.position;
 
-            previewLaser.SetPosition(0, currentStart);
-            previewLaser.SetPosition(1, laserEnd);
+            if (previewLaser != null)
+            {
+                previewLaser.SetPosition(0, startPos);
+                previewLaser.SetPosition(1, laserEnd);
+            }
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        previewLaser.enabled = false;
-        mainLaser.enabled = true;
+        if (previewLaser != null)
+            previewLaser.enabled = false;
 
+        if (mainLaser != null)
+            mainLaser.enabled = true;
+
+        //========================
+        // Bắn Laser
+        //========================
         bool damaged = false;
         timer = 0f;
 
         while (timer < laserDuration)
         {
-            Vector3 currentStart =
-                firePoint != null
+            startPos = firePoint != null
                 ? firePoint.position
                 : transform.position;
 
-            mainLaser.SetPosition(0, currentStart);
-            mainLaser.SetPosition(1, laserEnd);
+            if (mainLaser != null)
+            {
+                mainLaser.SetPosition(0, startPos);
+                mainLaser.SetPosition(1, laserEnd);
+            }
 
             if (!damaged)
             {
-                RaycastHit2D hit =
-                    Physics2D.Raycast(
-                        currentStart,
-                        direction,
-                        laserMaxDistance);
+                Debug.DrawRay(
+                    startPos,
+                    direction * laserMaxDistance,
+                    Color.red,
+                    1f);
 
-                if (hit.collider != null &&
-                    hit.collider.CompareTag("Player"))
+                RaycastHit2D[] hits = Physics2D.RaycastAll(
+                    startPos,
+                    direction,
+                    laserMaxDistance);
+
+                foreach (RaycastHit2D hit in hits)
                 {
-                    hit.collider.SendMessage(
-                        "TakeDamage",
-                        2,
-                        SendMessageOptions.DontRequireReceiver);
+                    if (hit.collider == null)
+                        continue;
 
-                    damaged = true;
+                    Debug.Log("Raycast hit : " + hit.collider.name);
+
+                    // Bỏ qua chính Boss
+                    if (hit.collider.gameObject == gameObject)
+                        continue;
+
+                    LoiPlayer playerScript =
+                        hit.collider.GetComponent<LoiPlayer>();
+
+                    if (playerScript != null)
+                    {
+                        Debug.Log(">>> Player bị Laser trúng!");
+
+                        playerScript.TakeDamage(laserDamage);
+
+                        Debug.Log("Laser Damage : " + laserDamage);
+
+                        damaged = true;
+                        break;
+                    }
                 }
             }
 
@@ -270,7 +314,8 @@ public class BossAI2 : MonoBehaviour
             yield return null;
         }
 
-        mainLaser.enabled = false;
+        if (mainLaser != null)
+            mainLaser.enabled = false;
     }
     //====================================
     // FIRE RAIN
@@ -292,7 +337,7 @@ public class BossAI2 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         int ballCount =
-            isPhase2 ? 4 : 3;
+            isPhase2 ? 12 : 5;
 
         float targetX =
             player.position.x;
@@ -300,21 +345,7 @@ public class BossAI2 : MonoBehaviour
         for (int i = 0; i < ballCount; i++)
         {
             float offset = 0f;
-
-            switch (i)
-            {
-                case 1:
-                    offset = -1.5f;
-                    break;
-
-                case 2:
-                    offset = 1.5f;
-                    break;
-
-                case 3:
-                    offset = -3f;
-                    break;
-            }
+            offset = Random.Range(-2f, 2f);
 
             Vector3 spawnPos =
                 new Vector3(
@@ -322,10 +353,17 @@ public class BossAI2 : MonoBehaviour
                     transform.position.y + spawnHeight,
                     0f);
 
-            Instantiate(
-                fireBallPrefab,
-                spawnPos,
-                Quaternion.identity);
+            GameObject fire = Instantiate(
+                              fireBallPrefab,
+                                    spawnPos,
+                         Quaternion.identity);
+
+            FireBall fireScript = fire.GetComponent<FireBall>();
+
+            if (fireScript != null)
+            {
+                fireScript.SetDamage(fireRainDamage);
+            }
 
             yield return new WaitForSeconds(
                 delayBetweenBalls);
@@ -334,91 +372,95 @@ public class BossAI2 : MonoBehaviour
     //====================================
     // MELEE ATTACK
     //====================================
-   IEnumerator MeleeAttackRoutine()
-{
-    Debug.Log("Boss Dash Melee");
-
-    // Lưu vị trí ban đầu
-    Vector3 startPosition = transform.position;
-
-    // Tính hướng tới Player
-    Vector3 dir = (player.position - transform.position).normalized;
-
-    // Điểm dừng trước mặt Player
-    Vector3 targetPosition = player.position - dir * stopDistance;
-
-    // Giữ nguyên trục Y để Boss chỉ lướt ngang
-    targetPosition.y = transform.position.y;
-
-    // Tắt collider khi lướt để không đẩy Player
-    Collider2D bossCollider = GetComponent<Collider2D>();
-
-    if (bossCollider != null)
-        bossCollider.enabled = false;
-
-    //========================
-    // Dash tới
-    //========================
-    while (Vector2.Distance(transform.position, targetPosition) > 0.05f)
+    IEnumerator MeleeAttackRoutine()
     {
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            targetPosition,
-            dashSpeed * Time.deltaTime);
+        Debug.Log("Boss Dash Melee");
 
-        yield return null;
+        // Lưu vị trí ban đầu
+        Vector3 startPosition = transform.position;
+
+        // Tính hướng tới Player
+        Vector3 dir = (player.position - transform.position).normalized;
+
+        // Điểm dừng trước mặt Player
+        Vector3 targetPosition = player.position - dir * stopDistance;
+
+        // Giữ nguyên trục Y để Boss chỉ lướt ngang
+        targetPosition.y = transform.position.y;
+
+        // Tắt collider khi lướt để không đẩy Player
+        Collider2D bossCollider = GetComponent<Collider2D>();
+
+        if (bossCollider != null)
+            bossCollider.enabled = false;
+
+        //========================
+        // Dash tới
+        //========================
+        while (Vector2.Distance(transform.position, targetPosition) > 0.05f)
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                targetPosition,
+                dashSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        // Bật collider lại
+        if (bossCollider != null)
+            bossCollider.enabled = true;
+
+        //========================
+        // Animation đánh
+        //========================
+        animator.SetTrigger("Melee");
+
+        yield return new WaitForSeconds(meleeHitDelay);
+
+        //========================
+        // Gây sát thương
+        //========================
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            attackPoint.position,
+            meleeRange,
+            playerLayer);
+
+        foreach (Collider2D hit in hits)
+        {
+            LoiPlayer playerScript = hit.GetComponent<LoiPlayer>();
+
+            if (playerScript != null)
+            {
+                playerScript.TakeDamage(meleeDamage);
+
+                Debug.Log("Melee Damage : " + meleeDamage);
+            }
+        }
+
+        yield return new WaitForSeconds(0.35f);
+
+        //========================
+        // Dash về vị trí cũ
+        //========================
+        if (bossCollider != null)
+            bossCollider.enabled = false;
+
+        while (Vector2.Distance(transform.position, startPosition) > 0.05f)
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                startPosition,
+                returnSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        transform.position = startPosition;
+
+        if (bossCollider != null)
+            bossCollider.enabled = true;
     }
-
-    // Bật collider lại
-    if (bossCollider != null)
-        bossCollider.enabled = true;
-
-    //========================
-    // Animation đánh
-    //========================
-    animator.SetTrigger("Melee");
-
-    yield return new WaitForSeconds(meleeHitDelay);
-
-    //========================
-    // Gây sát thương
-    //========================
-    Collider2D[] hits = Physics2D.OverlapCircleAll(
-        attackPoint.position,
-        meleeRange,
-        playerLayer);
-
-    foreach (Collider2D hit in hits)
-    {
-        hit.SendMessage(
-            "TakeDamage",
-            meleeDamage,
-            SendMessageOptions.DontRequireReceiver);
-    }
-
-    yield return new WaitForSeconds(0.35f);
-
-    //========================
-    // Dash về vị trí cũ
-    //========================
-    if (bossCollider != null)
-        bossCollider.enabled = false;
-
-    while (Vector2.Distance(transform.position, startPosition) > 0.05f)
-    {
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            startPosition,
-            returnSpeed * Time.deltaTime);
-
-        yield return null;
-    }
-
-    transform.position = startPosition;
-
-    if (bossCollider != null)
-        bossCollider.enabled = true;
-}
     //====================================
     // SUMMON ENEMY
     //====================================

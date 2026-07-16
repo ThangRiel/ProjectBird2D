@@ -228,10 +228,19 @@ public class LoiPlayer : MonoBehaviour
 
         if (hit && hitObject != null)
         {
-            hitObject.SendMessage(
-                "TakeDamage",
-                skillDamage,
-                SendMessageOptions.DontRequireReceiver);
+            BossAI boss = hitObject.GetComponent<BossAI>();
+
+            if (boss != null)
+            {
+                boss.TakeDamage(skillDamage);
+            }
+
+            Enemy enemy = hitObject.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                enemy.TakeDamage(skillDamage);
+            }
 
             rb.linearVelocity = Vector2.zero;
 
@@ -264,10 +273,11 @@ public class LoiPlayer : MonoBehaviour
             0,
             maxHealth);
 
+        Debug.Log($"Player nhận {damage} damage. HP: {currentHealth}/{maxHealth}");
+
         if (currentHealth == 0)
             PlayerDie();
     }
-
     private void PlayerDie()
     {
         isPlayerDead = true;
@@ -325,7 +335,19 @@ public class LoiPlayer : MonoBehaviour
 
         foreach (var obj in hitObjects)
         {
-            obj.SendMessage("TakeDamage", attackDamage, SendMessageOptions.DontRequireReceiver);
+            BossAI boss = obj.GetComponent<BossAI>();
+
+            if (boss != null)
+            {
+                boss.TakeDamage(attackDamage);
+            }
+
+            Enemy enemy = obj.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                enemy.TakeDamage(attackDamage);
+            }
         }
     }
 

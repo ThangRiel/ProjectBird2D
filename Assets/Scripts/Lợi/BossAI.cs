@@ -23,11 +23,15 @@ public class BossAI : MonoBehaviour
     [SerializeField] private float laserDuration = 0.5f;
     [SerializeField] private float laserMaxDistance = 30f;
 
+    [SerializeField] private int laserDamage = 10;
+
     [Header("Fire Rain")]
     [SerializeField] private GameObject fireBallPrefab;
     [SerializeField] private float spawnHeight = 8f;
     [SerializeField] private float delayBetweenBalls = 0.4f;
     [SerializeField] private float fireRainRange = 7f;
+
+    [SerializeField] private int fireRainDamage = 5;
 
     [Header("Summon Enemy")]
     [SerializeField] private GameObject enemyPrefab;
@@ -190,20 +194,24 @@ public class BossAI : MonoBehaviour
             if (!damaged)
             {
                 RaycastHit2D hit =
-                    Physics2D.Raycast(
-                        currentStart,
-                        direction,
-                        laserMaxDistance);
+    Physics2D.Raycast(
+        currentStart,
+        direction,
+        laserMaxDistance);
 
-                if (hit.collider != null &&
-                    hit.collider.CompareTag("Player"))
+                // Thêm đoạn này để debug
+                if (hit.collider != null)
                 {
-                    hit.collider.SendMessage(
-                        "TakeDamage",
-                        2,
-                        SendMessageOptions.DontRequireReceiver);
+                    LoiPlayer playerScript = hit.collider.GetComponent<LoiPlayer>();
 
-                    damaged = true;
+                    if (playerScript != null)
+                    {
+                        playerScript.TakeDamage(laserDamage);
+
+                        Debug.Log("Laser Damage : " + laserDamage);
+
+                        damaged = true;
+                    }
                 }
             }
 
@@ -267,10 +275,17 @@ public class BossAI : MonoBehaviour
                     transform.position.y + spawnHeight,
                     0);
 
-            Instantiate(
-                fireBallPrefab,
-                spawnPos,
-                Quaternion.identity);
+            GameObject fire = Instantiate(
+                                fireBallPrefab,
+                                      spawnPos,
+                                Quaternion.identity);
+
+            FireBall fireBall = fire.GetComponent<FireBall>();
+
+            if (fireBall != null)
+            {
+                fireBall.SetDamage(fireRainDamage);
+            }
 
             yield return new WaitForSeconds(
                 delayBetweenBalls);
@@ -325,10 +340,14 @@ public class BossAI : MonoBehaviour
 
         foreach (Collider2D hit in hits)
         {
-            hit.SendMessage(
-                "TakeDamage",
-                meleeDamage,
-                SendMessageOptions.DontRequireReceiver);
+            LoiPlayer playerScript = hit.GetComponent<LoiPlayer>();
+
+            if (playerScript != null)
+            {
+                playerScript.TakeDamage(meleeDamage);
+
+                Debug.Log("Melee Damage : " + meleeDamage);
+            }
         }
 
         yield return new WaitForSeconds(0.5f);

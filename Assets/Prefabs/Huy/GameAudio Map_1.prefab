@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7473096874647916064
+--- !u!1 &6884154218550302579
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8560940550915701493}
-  - component: {fileID: 710857608968929199}
+  - component: {fileID: 1805341333740817864}
+  - component: {fileID: 3134603034121362390}
   m_Layer: 0
-  m_Name: GameAudioH
+  m_Name: GameAudio Map_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8560940550915701493
+--- !u!4 &1805341333740817864
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7473096874647916064}
+  m_GameObject: {fileID: 6884154218550302579}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254.61977, y: 181.85248, z: 0}
+  m_LocalPosition: {x: 128.51176, y: 73.10455, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &710857608968929199
+--- !u!114 &3134603034121362390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7473096874647916064}
+  m_GameObject: {fileID: 6884154218550302579}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92be123a3035d664ba21c1570d935cdf, type: 3}
@@ -46,13 +46,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameAudioH
   gameplayMusic: {fileID: 8300000, guid: d40ed4d1ba242d54d9f00093547d5c10, type: 3}
   mainMenuMusic: {fileID: 8300000, guid: 6b86b153c9a38424c98abc98a3c6a1b2, type: 3}
-  bossSceneMusic: {fileID: 8300000, guid: e740092f92dbf554ca2d24c3cece9d99, type: 3}
-  musicVolume: 0.1
+  musicVolume: 0.102
   jumpClip: {fileID: 8300000, guid: 8717a3152184ac44ca102f4915a012f0, type: 3}
   hitClip: {fileID: 8300000, guid: dfbf8dc4095a3a44c8de0f2a7e46633a, type: 3}
   deathClip: {fileID: 8300000, guid: cb6a16962dabf4c49ba9dc05f21aacee, type: 3}
   buttonClickClip: {fileID: 8300000, guid: 4eeb54c0848b69345913a712d3900e07, type: 3}
-  bossFireDeathClip: {fileID: 8300000, guid: cb6a16962dabf4c49ba9dc05f21aacee, type: 3}
+  bossFireDeathClip: {fileID: 8300000, guid: f99eecb6cefc7e54595e5b95033c55cd, type: 3}
+  bossChargeClip: {fileID: 8300000, guid: 2fa9ebd8d99aceb4fba1e8d826b1c441, type: 3}
+  bossLaserFireClip: {fileID: 8300000, guid: a0434d62a80292a4ebf3a09c7735a007, type: 3}
+  fireRainCastClip: {fileID: 8300000, guid: bc79bc00521be89489eba24ca4825c40, type: 3}
+  fireRainDropClip: {fileID: 8300000, guid: 5bfb474095497f74399300e2ea760262, type: 3}
+  cannonFireClip: {fileID: 8300000, guid: 102c3859d04c2f84888f5db77799c672, type: 3}
+  bombExplodeClip: {fileID: 8300000, guid: 860c71ad27418bf40b3bbe267952b793, type: 3}
   skillDashClip: {fileID: 8300000, guid: 2b8d137112c170f4fb7a0fe5148bdb54, type: 3}
-  sceneMoveClip: {fileID: 8300000, guid: dcce67ffecdde3f4294154386ceedcc3, type: 3}
-  sfxVolume: 0.4
+  sceneMoveClip: {fileID: 8300000, guid: 2ac51155ed0634c43b0a60cfc6b8f814, type: 3}
+  iceBreakClip: {fileID: 8300000, guid: 6600081c38eb7f74abb800083888d20b, type: 3}
+  sfxVolume: 0.5
+  jumpVolume: 1
+  hitVolume: 1
+  deathVolume: 1
+  buttonClickVolume: 1
+  bossFireDeathVolume: 1
+  bossChargeVolume: 1
+  bossLaserFireVolume: 1
+  fireRainCastVolume: 1
+  fireRainDropVolume: 1
+  cannonFireVolume: 1
+  bombExplodeVolume: 1
+  skillDashVolume: 1
+  sceneMoveVolume: 1
+  iceBreakVolume: 1
