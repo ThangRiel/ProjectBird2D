@@ -46,10 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameAudioH
   gameplayMusic: {fileID: 8300000, guid: e740092f92dbf554ca2d24c3cece9d99, type: 3}
   mainMenuMusic: {fileID: 8300000, guid: 6b86b153c9a38424c98abc98a3c6a1b2, type: 3}
-  musicVolume: 0.3
+  musicVolume: 0.15
   jumpClip: {fileID: 8300000, guid: 8717a3152184ac44ca102f4915a012f0, type: 3}
   hitClip: {fileID: 8300000, guid: dfbf8dc4095a3a44c8de0f2a7e46633a, type: 3}
-  deathClip: {fileID: 8300000, guid: cb6a16962dabf4c49ba9dc05f21aacee, type: 3}
+  deathClip: {fileID: 8300000, guid: 835c5ccf66e04d04e96176faaabd3f7d, type: 3}
   buttonClickClip: {fileID: 8300000, guid: 4eeb54c0848b69345913a712d3900e07, type: 3}
   bossFireDeathClip: {fileID: 8300000, guid: f99eecb6cefc7e54595e5b95033c55cd, type: 3}
   bossChargeClip: {fileID: 8300000, guid: 2fa9ebd8d99aceb4fba1e8d826b1c441, type: 3}

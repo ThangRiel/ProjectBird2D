@@ -374,6 +374,12 @@ public class GameAudioH : MonoBehaviour
         musicSource.Play();
     }
 
+    void StopMusic()
+    {
+        if (musicSource != null)
+            musicSource.Stop();
+    }
+
     void PlayOneShot(AudioClip clip, float volumeScale = 1f)
     {
         if (clip != null)
@@ -498,8 +504,8 @@ public class GameAudioH : MonoBehaviour
         if (isGameOver && !wasGameOver)
         {
             // This block only runs on the frame when game over changes from false to true.
+            StopMusic();
             PlayOneShot(deathClip, deathVolume);
-            PlayMusic(gameplayMusic);
         }
 
         // Store this frame's value so next frame can compare against it.
