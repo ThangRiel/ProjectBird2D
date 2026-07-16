@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
             if (gameOverUI != null) gameOverUI.SetActive(false); // ! Đã bỏ comment
             if (winningUI != null) winningUI.SetActive(false);
         }
+        gameOverUI?.SetActive(false);
+        winningUI?.SetActive(false);
     }
 
     void FixedUpdate()
