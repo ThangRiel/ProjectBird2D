@@ -4292,6 +4292,7 @@ MonoBehaviour:
   winningUI: {fileID: 0}
   gameSceneName: Game
   MenuName: UI
+  stopScoreTick: 0
   tags: []
 --- !u!4 &812488632
 Transform:
@@ -5542,17 +5543,21 @@ MonoBehaviour:
     zoneLength: 0
     startX: 0
     zoneConfig: {fileID: 11400000, guid: 05f3a9f0829b141a7a80100ede1c33f6, type: 2}
+  - zoneName: Lava
+    zoneLength: 400
+    startX: 24
+    zoneConfig: {fileID: 11400000, guid: 410e63c2f36464d8e925cf3268c70b99, type: 2}
   - zoneName: Ice
     zoneLength: 400
-    startX: 24.9
+    startX: 400
     zoneConfig: {fileID: 11400000, guid: 1ae900a9fb4e94aaf9a39f7d040cd534, type: 2}
   - zoneName: Ice Portal
     zoneLength: 0
-    startX: 400
+    startX: 401
     zoneConfig: {fileID: 11400000, guid: 6be7dcf0e2e914f689e0821d0ec08734, type: 2}
   - zoneName: none
     zoneLength: 0
-    startX: 401
+    startX: 801
     zoneConfig: {fileID: 11400000, guid: 05f3a9f0829b141a7a80100ede1c33f6, type: 2}
   peakTrapBiasChance: 0.7
   chunkOverlapChance: 0.25
