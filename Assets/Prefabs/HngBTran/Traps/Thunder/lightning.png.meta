@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 70ac3284852a80443aecf4ed56e7e3f4
+guid: f3eceee04c16b45799ef11bc9db11455
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -305,6 +305,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: lightning_8
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 0
+        width: 3
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 132b1829e7e1a4d6b8efb4610c13a391
+      internalID: 1702866812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -329,6 +351,7 @@ TextureImporter:
       lightning_5: -5474615802020834216
       lightning_6: 1432331140008966410
       lightning_7: -7866223080666467939
+      lightning_8: 1702866812
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

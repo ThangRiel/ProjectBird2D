@@ -1,40 +1,43 @@
 fileFormatVersion: 2
-guid: 70ac3284852a80443aecf4ed56e7e3f4
+guid: 208d3b98858144505ba888379a14fadd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2983090718515566234
-    second: lightning_0
+      213: 715368135737836640
+    second: tornado_0
   - first:
-      213: -1461059339494140160
-    second: lightning_1
+      213: -6309994406216402850
+    second: tornado_1
   - first:
-      213: -7846319024340782248
-    second: lightning_2
+      213: -8146329417134413000
+    second: tornado_2
   - first:
-      213: -822904614842124242
-    second: lightning_3
+      213: 6174124654450928253
+    second: tornado_3
   - first:
-      213: 5855786134774209288
-    second: lightning_4
+      213: -8508149933846727963
+    second: tornado_4
   - first:
-      213: -5474615802020834216
-    second: lightning_5
+      213: -1986224622491227114
+    second: tornado_5
   - first:
-      213: 1432331140008966410
-    second: lightning_6
+      213: 6961960587225321616
+    second: tornado_6
   - first:
-      213: -7866223080666467939
-    second: lightning_7
+      213: 2032880742315017720
+    second: tornado_7
   - first:
-      213: -4484483892091351510
-    second: lightning_8
+      213: 230778320399745061
+    second: tornado_8
   - first:
-      213: 2177600045153698133
-    second: lightning_9
+      213: -1193565549627174832
+    second: tornado_9
   - first:
-      213: -2217917113931279675
-    second: lightning_10
+      213: -5370886884495729843
+    second: tornado_10
+  - first:
+      213: -3947255508092271235
+    second: tornado_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -130,13 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lightning_0
+      name: tornado_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6696d1eebcee996d0800000000000000
-      internalID: -2983090718515566234
+      spriteID: 064894e778f7de900800000000000000
+      internalID: 715368135737836640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lightning_1
+      name: tornado_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 0
-        width: 32
-        height: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,42 +170,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0075fa1954649bbe0800000000000000
-      internalID: -1461059339494140160
+      spriteID: e58f4c2f4856e68a0800000000000000
+      internalID: -6309994406216402850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lightning_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 85337cf3b664c1390800000000000000
-      internalID: -7846319024340782248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lightning_3
+      name: tornado_2
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 32
-        height: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e283e4cdc947494f0800000000000000
-      internalID: -822904614842124242
+      spriteID: 83b63646e8c62fe80800000000000000
+      internalID: -8146329417134413000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lightning_4
+      name: tornado_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 144
         y: 0
-        width: 32
-        height: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,42 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80bdfdbd67ee34150800000000000000
-      internalID: 5855786134774209288
+      spriteID: d7a678b49a5eea550800000000000000
+      internalID: 6174124654450928253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lightning_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 96
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 854dece0fe14604b0800000000000000
-      internalID: -5474615802020834216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lightning_6
+      name: tornado_4
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 32
-        height: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a09f6f04599a0e310800000000000000
-      internalID: 1432331140008966410
+      spriteID: 5e27d4996bafce980800000000000000
+      internalID: -8508149933846727963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lightning_7
+      name: tornado_5
       rect:
         serializedVersion: 2
-        x: 224
+        x: 240
         y: 0
-        width: 32
-        height: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,8 +258,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9175e009cf85d290800000000000000
-      internalID: -7866223080666467939
+      spriteID: 61ca644ba338f64e0800000000000000
+      internalID: -1986224622491227114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tornado_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 090d5dd944add9060800000000000000
+      internalID: 6961960587225321616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tornado_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f54b64b34e363c10800000000000000
+      internalID: 2032880742315017720
       vertices: []
       indices: 
       edges: []
@@ -309,7 +312,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ad7598a152bef3745920c62e2e2ca366
+    spriteID: 3baae262590b3fc4b9e95b61482c2a13
     internalID: 0
     vertices: []
     indices: 
@@ -319,16 +322,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":96.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      lightning_0: -2983090718515566234
-      lightning_1: -1461059339494140160
-      lightning_2: -7846319024340782248
-      lightning_3: -822904614842124242
-      lightning_4: 5855786134774209288
-      lightning_5: -5474615802020834216
-      lightning_6: 1432331140008966410
-      lightning_7: -7866223080666467939
+      tornado_0: 715368135737836640
+      tornado_1: -6309994406216402850
+      tornado_2: -8146329417134413000
+      tornado_3: 6174124654450928253
+      tornado_4: -8508149933846727963
+      tornado_5: -1986224622491227114
+      tornado_6: 6961960587225321616
+      tornado_7: 2032880742315017720
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
