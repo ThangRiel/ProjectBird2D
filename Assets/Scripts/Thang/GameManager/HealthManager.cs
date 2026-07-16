@@ -59,9 +59,6 @@ public class HealthManager : MonoBehaviour
             return;
         }
 
-        RunAndFlyH huyPlayer = GetComponent<RunAndFlyH>();
-        if (huyPlayer != null) huyPlayer.Die();
-
         // 2. Delay 1 giây rồi hiện Game Over UI
         StartCoroutine(ShowGameOverAfterDelay(1f));
     }
