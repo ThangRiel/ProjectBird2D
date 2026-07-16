@@ -223,6 +223,14 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3774372943716309889, guid: adac7789dabc8aa408d3f8d58bebd353, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -227.99976
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774372943716309889, guid: adac7789dabc8aa408d3f8d58bebd353, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -19.53003
+      objectReference: {fileID: 0}
     - target: {fileID: 8389737341720514392, guid: adac7789dabc8aa408d3f8d58bebd353, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -355,6 +363,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8813375404991683884, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00390625
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813375404991683884, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0012207031
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -474,6 +490,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302553352333455484, guid: c65acbed8a4b30b4cbd58567cbf62661, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2700012500853619709, guid: c65acbed8a4b30b4cbd58567cbf62661, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10617,6 +10637,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: maxHP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2228451351197406508}
@@ -10624,6 +10648,30 @@ PrefabInstance:
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 461827525}
+    - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: laserDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: meleeDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: spawnHeight
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: fireRainRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: laserDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: fireRainDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2071217077067776080, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.98
@@ -11094,7 +11142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 649854013327013990, guid: 655aa2fa7f3f62e40b1fd52d3ebff862, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 649854013327013990, guid: 655aa2fa7f3f62e40b1fd52d3ebff862, type: 3}
       propertyPath: m_AnchoredPosition.y
