@@ -26,7 +26,7 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("Hit by bullet");
         }
-        else if (collision.CompareTag("Obstacle") || collision.CompareTag("SlowZone"))
+        else if (collision.CompareTag("Obstacle") || collision.CompareTag("SlowZone") || collision.CompareTag("Tornado"))
         {
             // Đã có ObstacleHandler xử lý riêng, bỏ qua ở đây
             return;

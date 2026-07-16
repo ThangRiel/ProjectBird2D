@@ -59,13 +59,8 @@ public class ChunkLevelGenerator : MonoBehaviour
     // ! MỚI: để tính % tiến trình
     private float zoneStartX;
     private readonly Queue<string> recentChunkIds = new Queue<string>();
-    private int consecutiveHardCount = 0;
     private string lastLoggedStage = null; // theo gõi stage hiện tại để log khi chuyển stage
-    // Const mới
-    private const float EASY_DIFFICULTY_THRESHOLD = 1f; // "dễ" = difficultyRating <= 1
-    private const float HARD_DIFFICULTY_THRESHOLD = 2.5f;
-    private const int MAX_HARD_STREAK = 2; // sau 2 chunk khó liên tiếp -> chèn 1 chunk nghỉ
-
+    
 
 
     void Start()
@@ -98,9 +93,9 @@ public class ChunkLevelGenerator : MonoBehaviour
         {
             currentZoneIndex++;
 
-            zoneStartX = lastEndX;        //* MỚI: reset mốc % tiến trình cho zone mới
-            recentChunkIds.Clear();       //* MỚI: qua zone mới thì quên lịch sử no-repeat của zone cũ
-            lastLoggedStage = null; // MỚI: qua zone mới thì reset log stage
+            zoneStartX = lastEndX;        //* reset mốc % tiến trình cho zone mới
+            recentChunkIds.Clear();       //* qua zone mới thì quên lịch sử no-repeat của zone cũ
+            lastLoggedStage = null; //* qua zone mới thì reset log stage
 
             Debug.Log($"[ChunkGen] Chuyển sang zone: {zones[currentZoneIndex].zoneName}");
 
