@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public bool stopScoreTick = false;
     [SerializeField] public Tag[] tags;
 
-
     void Start()
     {
         if (gameUI == null)
@@ -174,4 +173,5 @@ public class GameManager : MonoBehaviour
     {
         stopScoreTick = value;
     }
+
 }
