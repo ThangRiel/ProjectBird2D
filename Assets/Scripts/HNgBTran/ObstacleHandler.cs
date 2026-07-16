@@ -49,23 +49,29 @@ public class ObstacleHandler : MonoBehaviour
         if (logHits)
             Debug.Log("[ObstacleHandler] Chạm gai!");
 
-        HitByObstacle();
+        HitByObstacle(other);
     }
 
-    void HitByObstacle()
+    void HitByObstacle(Collider2D other)
     {
+        // cho phép từng obstacle tự định nghĩa lực bắn riêng (Bomb bắn mạnh hơn gai thường)
+        float appliedForce = knockbackForce;
+        ObstacleKnockback customKnockback = other.GetComponent<ObstacleKnockback>();
+        if (customKnockback != null)
+            appliedForce = customKnockback.knockbackForce;
+
         // Knockback
         if (rb != null)
         {
             rb.linearVelocity = Vector2.zero;
-            rb.AddForce(new Vector2(-knockbackForce, knockbackForce * 0.8f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(-appliedForce, appliedForce * 0.8f), ForceMode2D.Impulse);
         }
 
         // Trừ máu
         HealthManager health = GetComponent<HealthManager>();
         if (health != null)
             health.TakeDamage(1);
-        
+
         // Bất tử tạm thời
         isInvincible = true;
         invincibleTimer = invincibleDuration;

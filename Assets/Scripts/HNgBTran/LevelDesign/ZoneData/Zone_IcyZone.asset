@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8bea6fc0e033543439f0858b66dcfdad, type: 2}
   - {fileID: 11400000, guid: 8e7a263d332944770847993ff80023a2, type: 2}
   - {fileID: 11400000, guid: 804e29d98b0ff450bab54d719025aa6c, type: 2}
+  - {fileID: 11400000, guid: 872d6d8b1ac2b4f3a883034d4f437288, type: 2}
   difficultyOverDistance:
     serializedVersion: 2
     m_Curve:
@@ -63,7 +64,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   noRepeatWindow: 2
   easyOnlyProgress: 0.2
-  peakStageProgress: 0.6
+  peakStageProgress: 0.5
   weatherEffectStartProgress: 0.7
   windForceCurve:
     serializedVersion: 2

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chunk_IceLayerHitsTrap00
   m_EditorClassIdentifier: Assembly-CSharp::ChunkDataSO
   chunkId: IceLayerHitsTrap00
-  chunkPrefab: {fileID: 103179645824539472, guid: c966cc55bd5da4a4988cdd3981e226ff, type: 3}
+  chunkPrefab: {fileID: 103179645824539472, guid: 903785b5c31024823b0b03baeae36cb5, type: 3}
   zone: 0
   difficultyRating: 1
   chunkLength: 13

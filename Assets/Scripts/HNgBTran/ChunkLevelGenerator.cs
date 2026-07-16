@@ -28,7 +28,7 @@ public class ChunkLevelGenerator : MonoBehaviour
     [Range(0f, 1f)]
     public float peakTrapBiasChance = 0.7f; // % cơ hội ưu tiên chunk có gai/cột thụt ở peak
 
-    [Header("Overlap/Gap Feature (biến 'bug' thành tính năng có kiểm soát)")]
+    [Header("Overlap/Gap Feature")]
     [Range(0f, 1f)] public float chunkOverlapChance = 0.1f;   // % cơ hội xảy ra hiệu ứng
     public float chunkOverlapMinOffset = 0f; // có thể cho âm = chồng lên chunk trước
     public float chunkOverlapMaxOffset = 3f;  // dương = cách xa ra thêm (khoảng nghỉ)

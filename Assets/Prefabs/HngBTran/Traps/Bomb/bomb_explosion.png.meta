@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: 6f93cdb0ae8804b42aeb31ed1b7dcd48
+guid: 7c5eca59e19784d10bddf7f58ef0f2ec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -282803389941045344
-    second: saw_0
+      213: 4323829753409748129
+    second: bomb_explosion_0
   - first:
-      213: -361055377474261852
-    second: saw_1
+      213: 4436693064181886209
+    second: bomb_explosion_1
+  - first:
+      213: -7460063741521379795
+    second: bomb_explosion_2
+  - first:
+      213: 706566833043775456
+    second: bomb_explosion_3
+  - first:
+      213: -7013739732545936135
+    second: bomb_explosion_4
+  - first:
+      213: 3633805952752192785
+    second: bomb_explosion_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: saw_0
+      name: bomb_explosion_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 34
-        width: 34
-        height: 34
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0a7a941b0d7431cf0800000000000000
-      internalID: -282803389941045344
+      spriteID: 1acb0498044510c30800000000000000
+      internalID: 4323829753409748129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saw_1
+      name: bomb_explosion_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 32
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,30 +152,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ace6611c064dfaf0800000000000000
-      internalID: -361055377474261852
+      spriteID: 10d2004d5dc429d30800000000000000
+      internalID: 4436693064181886209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: saw_2
+      name: bomb_explosion_2
       rect:
         serializedVersion: 2
-        x: 34
+        x: 64
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 81ef08d03e414ed41827a89d921de585
-      internalID: 1247208367
+      spriteID: d2eb8dc5d87887890800000000000000
+      internalID: -7460063741521379795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb_explosion_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef95a58aca3ec900800000000000000
+      internalID: 706566833043775456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb_explosion_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f46e86afd03aae90800000000000000
+      internalID: -7013739732545936135
       vertices: []
       indices: 
       edges: []
@@ -172,7 +228,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7b32bc83e60d61e42ba0b8f5c3dcea6f
+    spriteID: e9f3ebaa878a804408cb888af8727a18
     internalID: 0
     vertices: []
     indices: 
@@ -182,11 +238,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":34.0,"y":34.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      saw_0: -282803389941045344
-      saw_1: -361055377474261852
-      saw_2: 1247208367
+      bomb_explosion_0: 4323829753409748129
+      bomb_explosion_1: 4436693064181886209
+      bomb_explosion_2: -7460063741521379795
+      bomb_explosion_3: 706566833043775456
+      bomb_explosion_4: -7013739732545936135
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

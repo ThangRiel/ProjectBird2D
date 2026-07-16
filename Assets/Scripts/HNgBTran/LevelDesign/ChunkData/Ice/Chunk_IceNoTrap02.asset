@@ -15,7 +15,7 @@ MonoBehaviour:
   chunkId: Chunk_IceNoTrap02
   chunkPrefab: {fileID: 103179645824539472, guid: 59fc2acb142ee48109fb2926fff85278, type: 3}
   zone: 0
-  difficultyRating: 1
+  difficultyRating: 0
   chunkLength: 17
   containedTraps: 
   enemySlotCount: 0
