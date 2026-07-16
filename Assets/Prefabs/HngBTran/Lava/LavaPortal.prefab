@@ -5513,8 +5513,16 @@ PrefabInstance:
       value: -157604927
       objectReference: {fileID: 0}
     - target: {fileID: 1153359330386221431, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153359330386221431, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: nextScene
       value: BossFireScenes
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153359330386221431, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      propertyPath: alredyOpen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6602663639736446984, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5560,6 +5568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: congGame
       objectReference: {fileID: 0}
+    - target: {fileID: 6767020197608063287, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7085859370720480973, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -5579,8 +5591,79 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6648966762352442210, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 419029888122895617}
+    - targetCorrespondingSourceObject: {fileID: 6648966762352442210, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7155240516230696735}
   m_SourcePrefab: {fileID: 100100000, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+--- !u!1 &6440195371934183960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6648966762352442210, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+  m_PrefabInstance: {fileID: 370926412471011706}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &419029888122895617
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440195371934183960}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 12}
+    newSize: {x: 9, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 9, y: 12}
+  m_EdgeRadius: 0
+--- !u!114 &7155240516230696735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440195371934183960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec23d3fb8e147c744974e797809f11cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  nextScene: BossGolemScene
+  alredyOpen: 1
 --- !u!4 &6810731274089920882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6602663639736446984, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}

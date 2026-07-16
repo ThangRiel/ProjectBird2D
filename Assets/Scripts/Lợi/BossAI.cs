@@ -397,6 +397,7 @@ public class BossAI : MonoBehaviour
     void Die()
     {
         isDead = true;
+        GameManager.OnAnyBossDied?.Invoke();
 
         StopAllCoroutines();
 

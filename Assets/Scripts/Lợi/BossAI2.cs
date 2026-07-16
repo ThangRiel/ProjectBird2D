@@ -57,7 +57,7 @@ public class BossAI2 : MonoBehaviour
 
     private int currentHP;
 
-    private bool isDead;
+    public static bool isDead;
     private bool isAttacking;
     private bool isPhase2;
 
@@ -540,7 +540,8 @@ public class BossAI2 : MonoBehaviour
     void Die()
     {
         isDead = true;
-
+        //! Phát loa thông báo: "Có boss vừa chết!"
+        GameManager.OnAnyBossDied?.Invoke();
         StopAllCoroutines();
 
         if (mainLaser != null)

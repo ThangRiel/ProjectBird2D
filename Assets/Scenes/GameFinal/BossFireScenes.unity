@@ -775,6 +775,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76e316d53f07c044856340b2210a7f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  player: {fileID: 0}
+  camera: {fileID: 0}
+  switchControllerAt: 0
   scoreText: {fileID: 0}
   scoreTextTMP:
   - {fileID: 166315520}
@@ -11698,6 +11701,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &569378789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6648966762352442210, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+  m_PrefabInstance: {fileID: 864856493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &569378792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569378789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec23d3fb8e147c744974e797809f11cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  nextScene: Map Lava
+  alredyOpen: 0
+--- !u!61 &569378793
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569378789}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 12}
+    newSize: {x: 9, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 9, y: 12}
+  m_EdgeRadius: 0
 --- !u!114 &602355071 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5339071576693838880, guid: b75ec6df35e0ae942a5bab58d8e73200, type: 3}
@@ -11727,11 +11795,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6602663639736446984, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.55
+      value: 19.2
       objectReference: {fileID: 0}
     - target: {fileID: 6602663639736446984, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.98
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6602663639736446984, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11769,14 +11837,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: congGame
       objectReference: {fileID: 0}
+    - target: {fileID: 6648966762352442210, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 7085859370720480973, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8189233826712571466, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6648966762352442210, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 569378792}
+    - targetCorrespondingSourceObject: {fileID: 6648966762352442210, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 569378793}
   m_SourcePrefab: {fileID: 100100000, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
 --- !u!1001 &873054258
 PrefabInstance:
@@ -11994,7 +12076,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: maxHP
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: player
@@ -12265,9 +12347,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1730249009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02553839b2abde4fa43b7f72b16b840, type: 3}
+  m_Script: {fileID: 11500000, guid: 116a48170c9015644b6c75f11a602994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowH
+  target: {fileID: 2228451351197406508}
+  offset: {x: 0, y: 1.5, z: -10}
+  smoothTime: 0.15
 --- !u!1 &1763298175
 GameObject:
   m_ObjectHideFlags: 0

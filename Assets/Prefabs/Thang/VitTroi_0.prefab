@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 1350462548458765095}
   - component: {fileID: 674572383714868896}
   - component: {fileID: 3741522286245683063}
+  - component: {fileID: 294057945937335141}
   m_Layer: 0
   m_Name: VitTroi_0
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,19 +141,20 @@ MonoBehaviour:
   moveSpeed: 5
   speedAdjust: 4
   jumpForce: 5
+  speedMultiplier: 1
   anchorTransform: {fileID: 0}
   maxForwardOffset: 11
-  maxBackwardOffset: 11
+  maxBackwardOffset: 10.9
   outOfBoundsTimeLimit: 5
   isOutOfBounds: 1
   outOfBoundsPushForce: 15
-  Delay: 1
-  fallThresholdAngle: 10
-  uprightSpeed: 5
+  Delay: 2.48
+  fallThresholdAngle: 15
+  uprightSpeed: 6
   SpeedMultiplier: 0.5
   dustPooler: {fileID: 0}
-  dustCreationRate: 0.2
-  wallCheckDistance: 0.79
+  dustCreationRate: 0.23
+  wallCheckDistance: 0.7
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -190,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279cb6bcceb569f46beeee1c7c403d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleHandler
-  knockbackForce: 5
+  knockbackForce: 7
   invincibleDuration: 1
   logHits: 1
 --- !u!114 &1350462548458765095
@@ -293,3 +295,17 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &294057945937335141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194613383886184398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8841e09546e3049beab396812c6f6a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlowZoneHandler
+  config: {fileID: 11400000, guid: 31e8962f4761f4ea0bd4a1d22a029799, type: 2}
+  frozenTint: {r: 0.5, g: 0.8, b: 1, a: 1}

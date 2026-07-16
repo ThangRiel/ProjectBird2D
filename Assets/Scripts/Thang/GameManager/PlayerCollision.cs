@@ -11,8 +11,8 @@ public class PlayerCollision : MonoBehaviour
     [Obsolete]
     private void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
-        openChest = FindObjectOfType<OpenChest>();
+        gameManager = FindAnyObjectByType<GameManager>();
+        openChest = FindAnyObjectByType<OpenChest>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,6 +30,10 @@ public class PlayerCollision : MonoBehaviour
         {
             // Đã có ObstacleHandler xử lý riêng, bỏ qua ở đây
             return;
+        }else if (collision.CompareTag("Switch"))
+        {
+            gameManager.SwitchController();
+            Debug.Log("Switch controller");
         }
         else
         //if (isTargeted)
@@ -46,5 +50,6 @@ public class PlayerCollision : MonoBehaviour
         //{
         //    gameManager.GameOver();
         //}
+
     }
 }

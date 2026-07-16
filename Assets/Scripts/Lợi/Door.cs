@@ -6,7 +6,20 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private string nextScene;
     private bool isLoading;
+    public bool alredyOpen = false;
 
+
+    void OnEnable()
+    {
+        // Đăng ký nghe thông báo
+        GameManager.OnAnyBossDied += OpenDoor;
+    }
+
+
+    void Start()
+    {
+        gameObject.SetActive(alredyOpen);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (isLoading || !other.CompareTag("Player"))
@@ -28,5 +41,10 @@ public class Door : MonoBehaviour
         }
 
         SceneManager.LoadScene(nextScene);
+    }
+    
+    private void OpenDoor()
+    {
+        gameObject.SetActive(!alredyOpen);
     }
 }

@@ -18,6 +18,8 @@ TagManager:
   - Boss
   - SlowZone
   - Tornado
+  - Switch
+  - Door
   layers:
   - Default
   - TransparentFX

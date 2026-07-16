@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1325627887265816491}
   - component: {fileID: 6789616600676570704}
-  - component: {fileID: 8226710463696262589}
   - component: {fileID: 8661384934918794357}
+  - component: {fileID: 2651831372371282135}
+  - component: {fileID: 6535994538741010341}
   m_Layer: 0
   m_Name: VitTroiReal
   m_TagString: Untagged
@@ -93,8 +94,47 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!68 &8226710463696262589
-EdgeCollider2D:
+--- !u!50 &8661384934918794357
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860562008939145886}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &2651831372371282135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860562008939145886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8bdefd27f9e574986959733a2a2a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!61 &6535994538741010341
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,78 +163,19 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.09, y: 3.28}
+    newSize: {x: 4.09, y: 3.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4.09, y: 3.28}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -2.0274801, y: 0.7008098}
-  - {x: -1.9744433, y: 0.9285733}
-  - {x: -1.4942732, y: 1.1923627}
-  - {x: -1.338468, y: 1.504379}
-  - {x: -0.8882443, y: 1.5913414}
-  - {x: -0.5463282, y: 1.3777909}
-  - {x: -0.35277915, y: 1.0163963}
-  - {x: -0.3233896, y: 0.736189}
-  - {x: 0.030201703, y: 0.70429677}
-  - {x: 0.6011423, y: 0.5339835}
-  - {x: 1.0160934, y: 0.4226386}
-  - {x: 1.4076515, y: 0.14228517}
-  - {x: 1.6275469, y: -0.18635303}
-  - {x: 1.8282329, y: -0.13383898}
-  - {x: 1.877161, y: -0.26050094}
-  - {x: 1.9800212, y: -0.3525763}
-  - {x: 1.7534626, y: -0.6542834}
-  - {x: 0.93598104, y: -0.91294104}
-  - {x: 0.23285285, y: -0.9300654}
-  - {x: 0.06094781, y: -1.0447457}
-  - {x: -0.067000255, y: -1.3808739}
-  - {x: -0.11683597, y: -1.6048135}
-  - {x: -0.5662795, y: -1.6622257}
-  - {x: -0.8913021, y: -1.6456735}
-  - {x: -0.9220516, y: -1.4303921}
-  - {x: -0.66119355, y: -1.3347462}
-  - {x: -0.31356254, y: -1.3704875}
-  - {x: -0.1954186, y: -1.0226136}
-  - {x: -0.51495385, y: -1.0229201}
-  - {x: -1.0172169, y: -0.81192833}
-  - {x: -1.5104554, y: -0.42154408}
-  - {x: -1.7706487, y: -0.069620885}
-  - {x: -1.659398, y: 0.49203512}
-  - {x: -0.9799869, y: 0.81759006}
-  - {x: -1.2035325, y: 0.9261522}
-  - {x: -1.8950186, y: 0.71354574}
-  - {x: -2.0459807, y: 0.80593216}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!50 &8661384934918794357
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4860562008939145886}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

@@ -4,9 +4,13 @@ using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using UnityEngine.Assertions.Must;
 using TMPro;
+using System;
 public class GameManager : MonoBehaviour
 {
     private int score = ScoreHolder.Instance != null ? ScoreHolder.Instance.score : 0;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject camera;
+    [SerializeField] private float switchControllerAt = 0;
     private int scoreTickCounter = 0;
     [SerializeField] private Text scoreText;
     [SerializeField] private TMP_Text[] scoreTextTMP;
@@ -19,6 +23,8 @@ public class GameManager : MonoBehaviour
     private bool isGameWon = false;
     public bool stopScoreTick = false;
     [SerializeField] public Tag[] tags;
+    public static Action OnAnyBossDied;
+    private bool isSwitchingController = false;
 
     void Start()
     {
@@ -55,6 +61,14 @@ public class GameManager : MonoBehaviour
                     score = ScoreHolder.Instance.score;
                     UpdateScoreText();
                 }
+            }
+        }
+
+        if (player != null && camera != null && switchControllerAt != 0f && !isSwitchingController)
+        {
+            if (player.transform.position.x >= switchControllerAt)
+            {
+                SwitchController();
             }
         }
     }
@@ -141,7 +155,7 @@ public class GameManager : MonoBehaviour
                 winningUI.SetActive(true);
             }
             Debug.Log("Chúc mừng! Mày đã thắng!");
-            
+
         }
     }
     public void RestartGame()
@@ -174,4 +188,30 @@ public class GameManager : MonoBehaviour
         stopScoreTick = value;
     }
 
+    public void SwitchController()
+    {
+        if (player != null)
+        {
+            RunAndFly runAndFly = player.GetComponent<RunAndFly>();
+            LoiPlayer loiPlayer = player.GetComponent<LoiPlayer>();
+            if (runAndFly != null && loiPlayer != null)
+            {
+                runAndFly.enabled = !runAndFly.enabled;
+                loiPlayer.enabled = !loiPlayer.enabled;
+            }
+            isSwitchingController = true;
+        }
+        if (camera != null)
+        {
+            CameraMoveIndependent cameraMoveIndependent = camera.GetComponent<CameraMoveIndependent>();
+            CameraFollow cameraFollow = camera.GetComponent<CameraFollow>();
+            if (cameraMoveIndependent != null && cameraFollow != null)
+            {
+                cameraFollow.enabled = !cameraFollow.enabled;
+                cameraMoveIndependent.enabled = !cameraMoveIndependent.enabled;
+            }
+            isSwitchingController = true;
+        }
+        stopScoreTick = true;
+    }
 }

@@ -73,6 +73,7 @@ public class LoiPlayer : MonoBehaviour
 
     private void Update()
     {
+        CheckAndRecoverFromFall();
         if (Keyboard.current == null || Mouse.current == null)
             return;
 
@@ -367,6 +368,26 @@ public class LoiPlayer : MonoBehaviour
             Gizmos.DrawWireSphere(
                 attackPoint.position,
                 attackRadius);
+        }
+    }
+
+    void CheckAndRecoverFromFall()
+    {
+        // Lấy góc Z hiện tại của nhân vật (chuyển về khoảng -180 đến 180 để dễ tính toán)
+        float currentZAngle = transform.eulerAngles.z;
+        if (currentZAngle > 180) currentZAngle -= 360;
+
+        // Nếu góc nghiêng tuyệt đối lớn hơn ngưỡng cho phép (đang bị ngã)
+        if (Mathf.Abs(currentZAngle) > 10f)
+        {
+            // Nếu đang ở trên mặt đất thì cho tự đứng dậy
+            if (isGrounded)
+            {
+                // Tạo mục tiêu góc quay thẳng đứng (Z = 0)
+                Quaternion targetRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+                // Xoay mượt mà về góc thẳng đứng
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 15f);
+            }
         }
     }
 }
