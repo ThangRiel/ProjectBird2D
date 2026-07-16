@@ -17,9 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public string MenuName = "UI";
     private bool isGameOver = false;
     private bool isGameWon = false;
+    public bool stopScoreTick = false;
     [SerializeField] public Tag[] tags;
 
-    
+
     void Start()
     {
         if (gameUI == null)
@@ -47,9 +48,12 @@ public class GameManager : MonoBehaviour
             if (scoreTickCounter >= 10)
             {
                 scoreTickCounter = 0;
-                ScoreHolder.Instance.score += 1;
-                score = ScoreHolder.Instance.score;
-                UpdateScoreText();
+                if (!stopScoreTick)
+                {
+                    ScoreHolder.Instance.score += 1;
+                    score = ScoreHolder.Instance.score;
+                    UpdateScoreText();
+                }
             }
         }
     }
@@ -60,7 +64,7 @@ public class GameManager : MonoBehaviour
         ResetScore();
         Time.timeScale = 1f;
         SceneManager.LoadScene(gameSceneName);
-        
+
     }
     public void BackToMenu()
     {
@@ -117,6 +121,7 @@ public class GameManager : MonoBehaviour
             {
                 gameOverUI.SetActive(true);
             }
+            Debug.LogError("Game Over! Mày đã thua!");
             Time.timeScale = 0f;
         }
     }
@@ -133,6 +138,7 @@ public class GameManager : MonoBehaviour
             {
                 winningUI.SetActive(true);
             }
+            Debug.Log("Chúc mừng! Mày đã thắng!");
             Time.timeScale = 0f;
         }
     }
@@ -143,12 +149,14 @@ public class GameManager : MonoBehaviour
         // UpdateScoreText();
         Time.timeScale = 1f;
         ResetScore();
+        Debug.Log("Restarting game...");
         SceneManager.LoadScene(gameSceneName);
     }
-    public void ResetScore()
+    public void ResetScore() //! không dùng nếu đã dùng restartGame
     {
         ScoreHolder.Instance.score = 0;
         score = 0;
+        Debug.Log("Score reset to 0.");
     }
     public bool IsGameOver()
     {
@@ -157,5 +165,10 @@ public class GameManager : MonoBehaviour
     public bool IsGameWon()
     {
         return isGameWon;
+    }
+
+    public void StopScoreTick(bool value)
+    {
+        stopScoreTick = value;
     }
 }

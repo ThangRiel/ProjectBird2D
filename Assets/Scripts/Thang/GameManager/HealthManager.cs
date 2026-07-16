@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
-    public int maxHealth = 5;
+    public int maxHealth = 4;
     private int currentHealth;
 
     public Image[] hearts; // Mảng chứa các UI Image trái tim

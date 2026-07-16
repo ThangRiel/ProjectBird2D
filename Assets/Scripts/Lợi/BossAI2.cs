@@ -512,7 +512,12 @@ public class BossAI2 : MonoBehaviour
 
         Debug.Log("Boss Dead");
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1.8f);
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.StopScoreTick(true);
+        }
     }
 
 

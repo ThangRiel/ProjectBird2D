@@ -206,7 +206,7 @@ public class BossWinWatcherH : MonoBehaviour
         GameManager manager = FindAnyObjectByType<GameManager>(FindObjectsInactive.Include);
         if (manager != null)
         {
-            manager.WinGame();
+            // manager.WinGame();
             return;
         }
 
