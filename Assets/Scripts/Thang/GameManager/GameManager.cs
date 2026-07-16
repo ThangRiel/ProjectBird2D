@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
             if (gameOverUI != null) gameOverUI.SetActive(false); // ! Đã bỏ comment
             if (winningUI != null) winningUI.SetActive(false);
         }
+        gameOverUI?.SetActive(false);
+        winningUI?.SetActive(false);
     }
 
     void FixedUpdate()
@@ -113,6 +115,7 @@ public class GameManager : MonoBehaviour
         if (!isGameOver && !isGameWon)
         {
             isGameOver = true;
+            Time.timeScale = 0f;
             if (gameUI != null)
             {
                 gameUI.ShowGameOver();
@@ -122,7 +125,6 @@ public class GameManager : MonoBehaviour
                 gameOverUI.SetActive(true);
             }
             Debug.LogError("Game Over! Mày đã thua!");
-            Time.timeScale = 0f;
         }
     }
     public void WinGame()
@@ -130,6 +132,7 @@ public class GameManager : MonoBehaviour
         if (!isGameOver && !isGameWon)
         {
             isGameWon = true;
+            Time.timeScale = 0f;
             if (gameUI != null)
             {
                 gameUI.ShowWin();
@@ -139,7 +142,7 @@ public class GameManager : MonoBehaviour
                 winningUI.SetActive(true);
             }
             Debug.Log("Chúc mừng! Mày đã thắng!");
-            Time.timeScale = 0f;
+            
         }
     }
     public void RestartGame()

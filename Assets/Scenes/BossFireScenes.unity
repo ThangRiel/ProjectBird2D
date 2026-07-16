@@ -354,17 +354,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7526757675133199261, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
   m_PrefabInstance: {fileID: 196887739}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &196887741 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2833324891688639525, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
-  m_PrefabInstance: {fileID: 196887739}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &250186754
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,12 +668,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   scoreText: {fileID: 0}
-  scoreTextTMP: {fileID: 196887741}
+  scoreTextTMP:
+  - {fileID: 0}
   gameUI: {fileID: 0}
   gameOverUI: {fileID: 196887740}
   winningUI: {fileID: 0}
   gameSceneName: Game1
   MenuName: UI
+  stopScoreTick: 0
   tags: []
 --- !u!4 &320860213
 Transform:
@@ -10275,6 +10266,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461827525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3857853137121277332, guid: adac7789dabc8aa408d3f8d58bebd353, type: 3}
+  m_PrefabInstance: {fileID: 24405833}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!114 &602355071 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5339071576693838880, guid: b75ec6df35e0ae942a5bab58d8e73200, type: 3}
@@ -10549,7 +10551,7 @@ Transform:
   - {fileID: 1763298176}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1708662726
+--- !u!1001 &1679911937
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10564,42 +10566,46 @@ PrefabInstance:
     - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: hpSlider
       value: 
+      objectReference: {fileID: 461827525}
+    - target: {fileID: 2071217077067776080, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.98
       objectReference: {fileID: 0}
-    - target: {fileID: 3562785576995433407, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
-      propertyPath: m_Size.x
-      value: 3.1070106
+    - target: {fileID: 2071217077067776080, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 3562785576995433407, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_Size.y
-      value: 4.2028913
+      value: 4.188156
       objectReference: {fileID: 0}
     - target: {fileID: 3562785576995433407, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_Offset.x
-      value: -0.53499943
+      value: -0.011999965
       objectReference: {fileID: 0}
     - target: {fileID: 3562785576995433407, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_Offset.y
-      value: 5.3292665
+      value: 3.379612
       objectReference: {fileID: 0}
     - target: {fileID: 7297113788534149342, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.77
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7297113788534149342, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.77
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7297113788534149342, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.77
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7297113788534149342, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.2
+      value: 21.1
       objectReference: {fileID: 0}
     - target: {fileID: 7297113788534149342, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.59
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 7297113788534149342, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10801,9 +10807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02553839b2abde4fa43b7f72b16b840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowH
-  target: {fileID: 2228451351197406508}
-  offset: {x: 5, y: 1.5, z: -10}
-  smoothTime: 0.15
 --- !u!1 &1763298175
 GameObject:
   m_ObjectHideFlags: 0
@@ -11110,6 +11113,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4042245895984185292, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042245895984185292, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
       propertyPath: dashSkillUI
       value: 
       objectReference: {fileID: 602355071}
@@ -11119,7 +11126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6076573476336701282, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6076573476336701282, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
       propertyPath: 'hearts.Array.data[0]'
@@ -11154,7 +11161,7 @@ SceneRoots:
   - {fileID: 1730249012}
   - {fileID: 1296709976}
   - {fileID: 63770427089642065}
-  - {fileID: 1708662726}
+  - {fileID: 1679911937}
   - {fileID: 1832571791}
   - {fileID: 873054258}
   - {fileID: 287263470}

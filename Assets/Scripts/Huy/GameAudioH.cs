@@ -28,6 +28,7 @@ public class GameAudioH : MonoBehaviour
     [SerializeField] AudioClip buttonClickClip;
     [SerializeField] AudioClip bossFireDeathClip;
     [SerializeField] AudioClip skillDashClip;
+    [SerializeField] AudioClip sceneMoveClip;
     [SerializeField, Range(0f, 1f)] float sfxVolume = 0.85f;
 
     AudioSource musicSource; // Plays looping background music.
@@ -115,6 +116,21 @@ public class GameAudioH : MonoBehaviour
         PlaySharedOneShot(audio => audio.skillDashClip);
     }
 
+    public static void PlaySceneMove()
+    {
+        PlaySharedOneShot(audio => audio.sceneMoveClip);
+    }
+
+    public static float GetSceneMoveDuration(float fallbackDuration = 0.25f)
+    {
+        GameAudioH audio = FindInstance();
+
+        if (audio == null || audio.sceneMoveClip == null)
+            return fallbackDuration;
+
+        return audio.sceneMoveClip.length;
+    }
+
     static void PlaySharedOneShot(System.Func<GameAudioH, AudioClip> clipSelector)
     {
         GameAudioH audio = FindInstance();
@@ -189,6 +205,12 @@ public class GameAudioH : MonoBehaviour
         {
             // Loads Assets/Resources/Audio/Huy/SkillDash.wav.
             skillDashClip = Resources.Load<AudioClip>(AudioPath + "SkillDash");
+        }
+
+        if (sceneMoveClip == null)
+        {
+            // Loads Assets/Resources/Audio/Huy/SceneMove.wav.
+            sceneMoveClip = Resources.Load<AudioClip>(AudioPath + "SceneMove");
         }
     }
 
