@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5094df623171441e6ade41c301d99060, type: 3}
   m_Name: Zone_LavaZone
   m_EditorClassIdentifier: Assembly-CSharp::ZoneConfigSO
-  zoneType: 0
+  zoneType: 2
   chunkPool:
   - {fileID: 11400000, guid: e9a9ed6b32d924681b0a2d7e53c424fc, type: 2}
   - {fileID: 11400000, guid: 72cffb4332dc84e9fa50705520822a36, type: 2}
