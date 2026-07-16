@@ -19,6 +19,8 @@ public class ChunkLevelGenerator : MonoBehaviour
     public Camera cam;
     public float testGapX = 0f; // Khoảng cách giữa các chunk, dùng để test khi chuyển zone
     public float zoom = 1f;
+    //* thêm hàm để kiểm soát zoom
+    public int MaxNumberOfZoomSessions = 4; // Số lần zoom tối đa, để tránh zoom quá nhiều
     [Header("Zones Setup")]
     public MapZone[] zones; // Kéo các mảng map vào đây
     private int currentZoneIndex = 0;
@@ -102,10 +104,11 @@ public class ChunkLevelGenerator : MonoBehaviour
 
             Debug.Log($"[ChunkGen] Chuyển sang zone: {zones[currentZoneIndex].zoneName}");
 
-            if (lastEndX >= testGapX)
+            if (cam != null && MaxNumberOfZoomSessions > 0)
             {
                 cam.orthographicSize += zoom;
                 Debug.Log($"[ChunkGen] Camera orthographicSize tăng lên: {cam.orthographicSize}");
+                MaxNumberOfZoomSessions--;
             }
         }
 
