@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4051639378775213139}
   - component: {fileID: 8409154641463522164}
   - component: {fileID: 447012002354456978}
+  - component: {fileID: 5508629904217020423}
   m_Layer: 9
   m_Name: VitReal
   m_TagString: Untagged
@@ -249,8 +250,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.3092275, y: 2.79211}
-  m_Size: {x: 3.8704646, y: 1.6457775}
+  m_Offset: {x: 1.1337572, y: 3.0030074}
+  m_Size: {x: 3.0181866, y: 1.2239827}
   m_Direction: 1
 --- !u!114 &8409154641463522164
 MonoBehaviour:
@@ -277,3 +278,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyObject
   destroyTime: 30
+--- !u!68 &5508629904217020423
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150292284628926603}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.53309727, y: 3.5232391}
+  - {x: 0.721254, y: 3.5728626}
+  - {x: 1.3969506, y: 3.6400683}
+  - {x: 1.8414444, y: 2.975631}
+  - {x: 2.5227444, y: 2.6263363}
+  - {x: 2.2682736, y: 2.2628179}
+  - {x: 1.5911242, y: 2.5952535}
+  - {x: 0.9540955, y: 2.2258456}
+  - {x: 0.68536687, y: 1.02476}
+  - {x: 1.0300906, y: -0.14806372}
+  - {x: 0.93873036, y: -1.0567344}
+  - {x: 0.30723786, y: -2.0121279}
+  - {x: 0.014697492, y: -2.8806944}
+  - {x: 0.2671025, y: -3.2779515}
+  - {x: 0.191181, y: -3.6306393}
+  - {x: -1.9192003, y: -3.589652}
+  - {x: -1.8465205, y: -2.7493184}
+  - {x: -2.6858764, y: -1.8195907}
+  - {x: -2.5189018, y: -0.7047449}
+  - {x: -1.9737327, y: -0.15325397}
+  - {x: -1.5037521, y: 0.5295075}
+  - {x: -0.42086163, y: 1.0793049}
+  - {x: 0.0361315, y: 2.0597153}
+  - {x: 0.17408794, y: 2.9631715}
+  - {x: 0.7318334, y: 3.7395387}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
