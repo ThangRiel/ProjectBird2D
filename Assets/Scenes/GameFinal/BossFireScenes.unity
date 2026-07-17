@@ -11718,7 +11718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec23d3fb8e147c744974e797809f11cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  nextScene: Map Lava
+  nextScene: MapEndGame
 --- !u!61 &569378793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11790,7 +11790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1153359330386221431, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: nextScene
-      value: Map Lava
+      value: Map Ice
       objectReference: {fileID: 0}
     - target: {fileID: 6602663639736446984, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11849,7 +11849,8 @@ PrefabInstance:
       value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8189233826712571466, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6648966762352442210, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}
@@ -12075,7 +12076,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: maxHP
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1957046416154273484, guid: bd3676ee37b9f6c45b1c392abf8eed6b, type: 3}
       propertyPath: player
@@ -12665,6 +12666,10 @@ PrefabInstance:
       propertyPath: dashSkillUI
       value: 
       objectReference: {fileID: 602355071}
+    - target: {fileID: 4042245895984185292, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
+      propertyPath: attackDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4321656441860453343, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
       propertyPath: m_Name
       value: Player
