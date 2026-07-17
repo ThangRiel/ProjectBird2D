@@ -48,6 +48,14 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    public void SyncHealth(int lHealth, int lMaxHealth)
+    {
+        // Tính toán số máu tương ứng trên UI
+        float percentage = (float)lHealth / lMaxHealth;
+        currentHealth = Mathf.CeilToInt(percentage * maxHealth);
+        UpdateHeartsUI();
+    }
+
     // ! Đã chỉnh sửa
     void GameOver()
     {

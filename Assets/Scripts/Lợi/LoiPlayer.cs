@@ -275,6 +275,12 @@ public class LoiPlayer : MonoBehaviour
             maxHealth);
 
         Debug.Log($"Player nhận {damage} damage. HP: {currentHealth}/{maxHealth}");
+        
+        HealthManager hm = GetComponent<HealthManager>();
+        if (hm != null)
+        {
+            hm.SyncHealth(currentHealth, maxHealth);
+        }
 
         if (currentHealth == 0)
             PlayerDie();
@@ -292,6 +298,12 @@ public class LoiPlayer : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
 
         enabled = false;
+
+        GameManager gm = FindAnyObjectByType<GameManager>();
+        if (gm != null)
+        {
+            gm.GameOver();
+        }
     }
 
     private void FindBoss()
