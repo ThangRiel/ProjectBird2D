@@ -5658,7 +5658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec23d3fb8e147c744974e797809f11cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  nextScene: BossGolemScene
+  nextScene: BossFireScenes
 --- !u!4 &6810731274089920882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6602663639736446984, guid: b6b51d5d2e35daa4db4d4b59bddc595c, type: 3}

@@ -1106,7 +1106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4042245895984185292, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4042245895984185292, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
       propertyPath: dashSkillUI
@@ -1134,7 +1134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6076573476336701282, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6076573476336701282, guid: 5cbeeaebfd48a624ab1a11b335079f7e, type: 3}
       propertyPath: 'hearts.Array.data[0]'
