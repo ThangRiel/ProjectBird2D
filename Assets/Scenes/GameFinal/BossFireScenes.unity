@@ -426,82 +426,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &250186754
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 250186756}
-  - component: {fileID: 250186755}
-  m_Layer: 0
-  m_Name: GameAudioH
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &250186755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250186754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92be123a3035d664ba21c1570d935cdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameAudioH
-  gameplayMusic: {fileID: 8300000, guid: e740092f92dbf554ca2d24c3cece9d99, type: 3}
-  mainMenuMusic: {fileID: 8300000, guid: 6b86b153c9a38424c98abc98a3c6a1b2, type: 3}
-  musicVolume: 0.102
-  jumpClip: {fileID: 8300000, guid: 8717a3152184ac44ca102f4915a012f0, type: 3}
-  hitClip: {fileID: 8300000, guid: dfbf8dc4095a3a44c8de0f2a7e46633a, type: 3}
-  deathClip: {fileID: 8300000, guid: cb6a16962dabf4c49ba9dc05f21aacee, type: 3}
-  buttonClickClip: {fileID: 8300000, guid: 4eeb54c0848b69345913a712d3900e07, type: 3}
-  bossFireDeathClip: {fileID: 8300000, guid: f99eecb6cefc7e54595e5b95033c55cd, type: 3}
-  bossChargeClip: {fileID: 0}
-  bossLaserFireClip: {fileID: 0}
-  fireRainCastClip: {fileID: 0}
-  fireRainDropClip: {fileID: 0}
-  cannonFireClip: {fileID: 0}
-  bombExplodeClip: {fileID: 0}
-  skillDashClip: {fileID: 8300000, guid: d59e64d7be642de46a484039935ab36f, type: 3}
-  sceneMoveClip: {fileID: 0}
-  iceBreakClip: {fileID: 0}
-  sfxVolume: 0.412
-  jumpVolume: 1
-  hitVolume: 1
-  deathVolume: 1
-  buttonClickVolume: 1
-  bossFireDeathVolume: 1
-  bossChargeVolume: 1
-  bossLaserFireVolume: 1
-  fireRainCastVolume: 1
-  fireRainDropVolume: 1
-  cannonFireVolume: 1
-  bombExplodeVolume: 1
-  skillDashVolume: 1
-  sceneMoveVolume: 1
-  iceBreakVolume: 1
---- !u!4 &250186756
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250186754}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 128.51176, y: 73.10455, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &287263470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12066,6 +11990,63 @@ Transform:
   - {fileID: 1763298176}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1486413939
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 305279332342685426, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_Name
+      value: GameAudio Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 383.83243
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.31303
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807628089281266761, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d26d5b0f5daaa4244942a3f067b63e42, type: 3}
 --- !u!1001 &1679911937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12717,9 +12698,9 @@ SceneRoots:
   - {fileID: 287263470}
   - {fileID: 320860213}
   - {fileID: 24405833}
-  - {fileID: 250186756}
   - {fileID: 864856493}
   - {fileID: 419192064}
   - {fileID: 345738550}
   - {fileID: 196887739}
   - {fileID: 210539546}
+  - {fileID: 1486413939}
