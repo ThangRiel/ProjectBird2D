@@ -29,9 +29,22 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        // Ban đầu cửa bị khóa
-        sr.enabled = false;
-        col.enabled = false;
+        bool hasBoss =
+            FindFirstObjectByType<BossAI>() != null ||
+            FindFirstObjectByType<BossAI2>() != null;
+
+        if (hasBoss)
+        {
+            // Có boss -> khóa cửa
+            sr.enabled = false;
+            col.enabled = false;
+        }
+        else
+        {
+            // Không có boss -> mở cửa luôn
+            sr.enabled = true;
+            col.enabled = true;
+        }
     }
 
     private void OpenDoor()
