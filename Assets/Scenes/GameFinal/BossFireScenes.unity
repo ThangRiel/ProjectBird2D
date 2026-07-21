@@ -359,6 +359,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6795305782155159737, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 320860212}
+    - target: {fileID: 6795305782155159737, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130660376071527434, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130660376071527434, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130660376071527434, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 320860212}
+    - target: {fileID: 7130660376071527434, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130660376071527434, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130660376071527434, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130660376071527434, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7526757675133199261, guid: b803c990eee106e4ea589f796e7089e7, type: 3}
       propertyPath: m_Name
       value: GameOverCanvas
@@ -709,7 +745,7 @@ MonoBehaviour:
   gameUI: {fileID: 0}
   gameOverUI: {fileID: 196887740}
   winningUI: {fileID: 0}
-  gameSceneName: Game1
+  gameSceneName: MapIce
   MenuName: UI
   stopScoreTick: 1
   tags: []
@@ -853,6 +889,34 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 320860212}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8892384292948499596, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -874,6 +938,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+--- !u!114 &345738551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1662093125896972594, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+  m_PrefabInstance: {fileID: 345738550}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d760ae10dbb97499ee2d909943dc0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinitSettings
 --- !u!1 &408724458
 GameObject:
   m_ObjectHideFlags: 0
@@ -12585,6 +12660,14 @@ PrefabInstance:
     - target: {fileID: 3245136680251701247, guid: 655aa2fa7f3f62e40b1fd52d3ebff862, type: 3}
       propertyPath: m_Name
       value: Button Setting
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312347672004948086, guid: 655aa2fa7f3f62e40b1fd52d3ebff862, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 345738551}
+    - target: {fileID: 3312347672004948086, guid: 655aa2fa7f3f62e40b1fd52d3ebff862, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenSetting
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

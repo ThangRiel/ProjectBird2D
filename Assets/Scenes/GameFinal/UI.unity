@@ -259,6 +259,34 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2119575250}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665550841223072515, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8892384292948499596, guid: 888fde93e5b1c5247855dc1d6dd6b28f, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -913,9 +941,9 @@ MonoBehaviour:
   gameUI: {fileID: 0}
   gameOverUI: {fileID: 1690234386}
   winningUI: {fileID: 790634277}
-  gameSceneName: Map Ice
+  gameSceneName: MapIce
   MenuName: UI
-  stopScoreTick: 0
+  stopScoreTick: 1
   tags: []
 --- !u!4 &2119575251
 Transform:
